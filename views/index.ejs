@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src="/javascripts/main.js"></script>
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Mutation Testing</h1>
+         <table class="table">
+            <tr class="thead-dark">
+              <th scope="col">Page</th>
+              <th scope="col">Source</th>
+              <th scope="col">Mutation Applied</th>
+              <th scope="col">Number of Violations</th>
+              <th scope="col">Violation IDs </th>
+              <th scope="col">Mutant Status</th>
+            </tr>
+            <% for(let i in data.sources){%>
+              <tr class="source-row">
+                <td><a target="_blank" href='<%= data.sources[i].route%>'> <%= data.sources[i].id%> </a></td>
+                <td></td>
+                <td></td>
+                <td><%= data.sources[i].axe.violations.length%></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <% for(let j in data.sources[i].mutants){
+                let mutant = data.sources[i].mutants[j];
+                %>
+                 <tr>
+                  <td style="padding-left:2em"><a target="_blank" href='<%= mutant.route%>'> <%= mutant.id%></a></td>
+                  <td><a target="_blank" href='<%= data.sources[i].route%>'> <%= data.sources[i].id%> </a></td>
+                  <td><%= mutant.mutation.name%></td>
+                  <td><%= mutant.axe.violations.length%></td>
+                  <td><%for(k in mutant.axe.violations){%> <%=mutant.axe.violations[k].id%> <br> <%}%></td>
+                  <td class="<%= mutant.live  ? (mutant.equiv ? 'table-warning' : 'table-danger') : 'table-success'%>"><%= mutant.live ? (mutant.equiv ? "Equiv" :"Live") : "Dead"%></td> 
+                </tr>
+              <%}%>
+            
+          <%}%>  
+          </table>
+        
+        </div>
+          
+    </div>
+  </body>
+</html>

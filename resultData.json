@@ -1,0 +1,455 @@
+{
+	"sources": [
+		{
+			"id": "button-aria-label",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/button-aria-label.html",
+			"route": "sources/button-aria-label",
+			"mutants": [
+				{
+					"id": "button-aria-label-m3",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m3.html",
+					"route": "/mutants/button-aria-label-m3",
+					"mutation": {
+						"id": 3,
+						"name": "empty-aria-label",
+						"description": "Buttons should be labeled",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				},
+				{
+					"id": "button-aria-label-m4",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m4.html",
+					"route": "/mutants/button-aria-label-m4",
+					"mutation": {
+						"id": 4,
+						"name": "remove-aria-label",
+						"description": "Buttons should be labeled",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				},
+				{
+					"id": "button-aria-label-m5",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m5.html",
+					"route": "/mutants/button-aria-label-m5",
+					"mutation": {
+						"id": 5,
+						"name": "empty-title",
+						"description": "Ensures page has a title",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures each HTML document contains a non-empty <title> element",
+								"help": "Documents must have <title> element to aid in navigation",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/document-title?application=webdriverjs",
+								"id": "document-title",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "doc-has-title",
+												"impact": "serious",
+												"message": "Document does not have a non-empty <title> element",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
+										"html": "<html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n\n</body></html>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"html"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag242"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "button-aria-label-m6",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m6.html",
+					"route": "/mutants/button-aria-label-m6",
+					"mutation": {
+						"id": 6,
+						"name": "remove-button-text",
+						"description": "Ensures buttons have discernible text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\"></button>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
+			"id": "button",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/button.html",
+			"route": "sources/button",
+			"mutants": [
+				{
+					"id": "button-m5",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-m5.html",
+					"route": "/mutants/button-m5",
+					"mutation": {
+						"id": 5,
+						"name": "empty-title",
+						"description": "Ensures page has a title",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures each HTML document contains a non-empty <title> element",
+								"help": "Documents must have <title> element to aid in navigation",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/document-title?application=webdriverjs",
+								"id": "document-title",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "doc-has-title",
+												"impact": "serious",
+												"message": "Document does not have a non-empty <title> element",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
+										"html": "<html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n\n</body></html>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"html"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag242"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "button-m6",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-m6.html",
+					"route": "/mutants/button-m6",
+					"mutation": {
+						"id": 6,
+						"name": "remove-button-text",
+						"description": "Ensures buttons have discernible text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\"></button>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures buttons have discernible text",
+								"help": "Buttons must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/button-name?application=webdriverjs",
+								"id": "button-name",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-if-present",
+												"impact": "critical",
+												"message": "Element has a value attribute and the value attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-value",
+												"impact": "critical",
+												"message": "Element has no value attribute or the value attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": "",
+												"id": "button-has-visible-text",
+												"impact": "critical",
+												"message": "Element does not have inner text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element has a value attribute and the value attribute is empty\n  Element has no value attribute or the value attribute is empty\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<button id=\"button\"></button>",
+										"impact": "critical",
+										"none": [
+											{
+												"data": null,
+												"id": "focusable-no-name",
+												"impact": "serious",
+												"message": "Element is in tab order and does not have accessible text",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#button"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag412",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
+			"id": "image",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/image.html",
+			"route": "sources/image",
+			"mutants": [
+				{
+					"id": "image-m1",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m1.html",
+					"route": "/mutants/image-m1",
+					"mutation": {
+						"id": 1,
+						"name": "empty-img-alt-text",
+						"description": "Image must have alt text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				},
+				{
+					"id": "image-m2",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m2.html",
+					"route": "/mutants/image-m2",
+					"mutation": {
+						"id": 2,
+						"name": "remove-img-alt-text",
+						"description": "Image must have alt text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <img> elements have alternate text or a role of none or presentation",
+								"help": "Images must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/image-alt?application=webdriverjs",
+								"id": "image-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-alt",
+												"impact": "critical",
+												"message": "Element does not have an alt attribute",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"[role=\"main\"] > img[src$=\"logo.svg\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "image-m5",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m5.html",
+					"route": "/mutants/image-m5",
+					"mutation": {
+						"id": 5,
+						"name": "empty-title",
+						"description": "Ensures page has a title",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures each HTML document contains a non-empty <title> element",
+								"help": "Documents must have <title> element to aid in navigation",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/document-title?application=webdriverjs",
+								"id": "document-title",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "doc-has-title",
+												"impact": "serious",
+												"message": "Document does not have a non-empty <title> element",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
+										"html": "<html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n\n</body></html>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"html"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag242"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		}
+	]
+}
