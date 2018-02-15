@@ -1,6 +1,8 @@
 function test() {
+  console.log("Testing: " + $('#url').val());
+
   $.post("http://localhost:3001", {
-    url: "http://localhost:3000/mutants/button-m1",
+    url: $('#url').val(),
     crossDomain: true,
   }).done(data => {
     if (data) {
@@ -15,7 +17,7 @@ function test() {
         output += "</tr>";
       })
       output += "</table>";
-      $("#result").html(output);
+      $("#results").html(output);
     }
   });
 }

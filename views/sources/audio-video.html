@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Audio and Video</title>
+</head>
+
+<body>
+  <div role="main">
+    <h1>Media Tests </h1>
+    <h2>Video Test </h2>
+    <video width="600" height="400" controls>
+      <source src="/example_src/MIB2.mp4" type="video/mp4">
+      <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="subtitles" srclang="en" label="Spannish 1" />
+      <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="captions" srclang="en" label="Spannish 2" />
+      <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="descriptions" srclang="en" label="Spannish 3" />
+    </video>
+
+    <h2>Audio Test </h2>
+    <audio controls>
+      <source src="/example_src/sample.mp3" type="audio/mpeg">
+      <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="captions" srclang="en" label="TEST" /> Your browser does not support the audio tag.
+    </audio>
+  </div>
+</body>
+
+</html>

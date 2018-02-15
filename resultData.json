@@ -1,16 +1,44 @@
 {
 	"sources": [
 		{
+			"id": "audio-video",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/audio-video.html",
+			"route": "sources/audio-video",
+			"mutants": [
+				{
+					"id": "audio-video-m1.2.2-01",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/audio-video-m1.2.2-01.html",
+					"route": "/mutants/audio-video-m1.2.2-01",
+					"mutation": {
+						"id": "1.2.2-01",
+						"name": "remove-audio-caption",
+						"description": "Remove caption track from audio element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n       Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
 			"id": "button-aria-label",
 			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/button-aria-label.html",
 			"route": "sources/button-aria-label",
 			"mutants": [
 				{
-					"id": "button-aria-label-m3",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m3.html",
-					"route": "/mutants/button-aria-label-m3",
+					"id": "button-aria-label-m1.1.1-05",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m1.1.1-05.html",
+					"route": "/mutants/button-aria-label-m1.1.1-05",
 					"mutation": {
-						"id": 3,
+						"id": "1.1.1-05",
 						"name": "empty-aria-label",
 						"description": "Buttons should be labeled",
 						"class": "Attribute Change"
@@ -24,86 +52,16 @@
 					"equiv": false
 				},
 				{
-					"id": "button-aria-label-m4",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m4.html",
-					"route": "/mutants/button-aria-label-m4",
+					"id": "button-aria-label-m1.1.1-06",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m1.1.1-06.html",
+					"route": "/mutants/button-aria-label-m1.1.1-06",
 					"mutation": {
-						"id": 4,
+						"id": "1.1.1-06",
 						"name": "remove-aria-label",
 						"description": "Buttons should be labeled",
 						"class": "Attribute Change"
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
-					"axe": {
-						"violations": []
-					},
-					"live": true,
-					"equiv": false
-				},
-				{
-					"id": "button-aria-label-m5",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m5.html",
-					"route": "/mutants/button-aria-label-m5",
-					"mutation": {
-						"id": 5,
-						"name": "empty-title",
-						"description": "Ensures page has a title",
-						"class": "Attribute Change"
-					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
-					"axe": {
-						"violations": [
-							{
-								"description": "Ensures each HTML document contains a non-empty <title> element",
-								"help": "Documents must have <title> element to aid in navigation",
-								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/document-title?application=webdriverjs",
-								"id": "document-title",
-								"impact": "serious",
-								"nodes": [
-									{
-										"all": [],
-										"any": [
-											{
-												"data": null,
-												"id": "doc-has-title",
-												"impact": "serious",
-												"message": "Document does not have a non-empty <title> element",
-												"relatedNodes": []
-											}
-										],
-										"failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
-										"html": "<html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n\n</body></html>",
-										"impact": "serious",
-										"none": [],
-										"target": [
-											"html"
-										]
-									}
-								],
-								"tags": [
-									"cat.text-alternatives",
-									"wcag2a",
-									"wcag242"
-								]
-							}
-						]
-					},
-					"live": false,
-					"equiv": false
-				},
-				{
-					"id": "button-aria-label-m6",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-aria-label-m6.html",
-					"route": "/mutants/button-aria-label-m6",
-					"mutation": {
-						"id": 6,
-						"name": "remove-button-text",
-						"description": "Ensures buttons have discernible text",
-						"class": "Attribute Change"
-					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\"></button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
 					"axe": {
 						"violations": []
@@ -120,78 +78,35 @@
 			"id": "button",
 			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/button.html",
 			"route": "sources/button",
+			"mutants": [],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
+			"id": "image-area",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/image-area.html",
+			"route": "sources/image-area",
 			"mutants": [
 				{
-					"id": "button-m5",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-m5.html",
-					"route": "/mutants/button-m5",
+					"id": "image-area-m1.1.1-02",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-area-m1.1.1-02.html",
+					"route": "/mutants/image-area-m1.1.1-02",
 					"mutation": {
-						"id": 5,
-						"name": "empty-title",
-						"description": "Ensures page has a title",
+						"id": "1.1.1-02",
+						"name": "remove-img-alt-text",
+						"description": "Image must have alt text",
 						"class": "Attribute Change"
 					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\">\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
 					"axe": {
 						"violations": [
 							{
-								"description": "Ensures each HTML document contains a non-empty <title> element",
-								"help": "Documents must have <title> element to aid in navigation",
-								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/document-title?application=webdriverjs",
-								"id": "document-title",
-								"impact": "serious",
-								"nodes": [
-									{
-										"all": [],
-										"any": [
-											{
-												"data": null,
-												"id": "doc-has-title",
-												"impact": "serious",
-												"message": "Document does not have a non-empty <title> element",
-												"relatedNodes": []
-											}
-										],
-										"failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
-										"html": "<html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n\n</body></html>",
-										"impact": "serious",
-										"none": [],
-										"target": [
-											"html"
-										]
-									}
-								],
-								"tags": [
-									"cat.text-alternatives",
-									"wcag2a",
-									"wcag242"
-								]
-							}
-						]
-					},
-					"live": false,
-					"equiv": false
-				},
-				{
-					"id": "button-m6",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/button-m6.html",
-					"route": "/mutants/button-m6",
-					"mutation": {
-						"id": 6,
-						"name": "remove-button-text",
-						"description": "Ensures buttons have discernible text",
-						"class": "Attribute Change"
-					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\"></button>\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
-					"axe": {
-						"violations": [
-							{
-								"description": "Ensures buttons have discernible text",
-								"help": "Buttons must have discernible text",
-								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/button-name?application=webdriverjs",
-								"id": "button-name",
+								"description": "Ensures <img> elements have alternate text or a role of none or presentation",
+								"help": "Images must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/image-alt?application=webdriverjs",
+								"id": "image-alt",
 								"impact": "critical",
 								"nodes": [
 									{
@@ -199,23 +114,9 @@
 										"any": [
 											{
 												"data": null,
-												"id": "non-empty-if-present",
+												"id": "has-alt",
 												"impact": "critical",
-												"message": "Element has a value attribute and the value attribute is empty",
-												"relatedNodes": []
-											},
-											{
-												"data": null,
-												"id": "non-empty-value",
-												"impact": "critical",
-												"message": "Element has no value attribute or the value attribute is empty",
-												"relatedNodes": []
-											},
-											{
-												"data": "",
-												"id": "button-has-visible-text",
-												"impact": "critical",
-												"message": "Element does not have inner text that is visible to screen readers",
+												"message": "Element does not have an alt attribute",
 												"relatedNodes": []
 											},
 											{
@@ -234,6 +135,13 @@
 											},
 											{
 												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
 												"id": "role-presentation",
 												"impact": "minor",
 												"message": "Element's default semantics were not overridden with role=\"presentation\"",
@@ -247,27 +155,249 @@
 												"relatedNodes": []
 											}
 										],
-										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element has a value attribute and the value attribute is empty\n  Element has no value attribute or the value attribute is empty\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
-										"html": "<button id=\"button\"></button>",
+										"failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<img usemap=\"#primary\" src=\"http://placehold.it/350x150\">",
 										"impact": "critical",
-										"none": [
-											{
-												"data": null,
-												"id": "focusable-no-name",
-												"impact": "serious",
-												"message": "Element is in tab order and does not have accessible text",
-												"relatedNodes": []
-											}
-										],
+										"none": [],
 										"target": [
-											"#button"
+											"[role=\"main\"] > img"
 										]
 									}
 								],
 								"tags": [
-									"cat.name-role-value",
+									"cat.text-alternatives",
 									"wcag2a",
-									"wcag412",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "image-area-m1.1.1-07",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-area-m1.1.1-07.html",
+					"route": "/mutants/image-area-m1.1.1-07",
+					"mutation": {
+						"id": "1.1.1-07",
+						"name": "empty-area-alt",
+						"description": "Ensures <area> elements of image maps have alternate text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <area> elements of image maps have alternate text",
+								"help": "Active <area> elements must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/area-alt?application=webdriverjs",
+								"id": "area-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  Element has no title attribute or the title attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+										"html": "<area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"map > area[href$=\"left.html\"]"
+										]
+									},
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  Element has no title attribute or the title attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+										"html": "<area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"map > area[href$=\"right.html\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "image-area-m1.1.1-08",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-area-m1.1.1-08.html",
+					"route": "/mutants/image-area-m1.1.1-08",
+					"mutation": {
+						"id": "1.1.1-08",
+						"name": "remove-area-alt",
+						"description": "Ensures <area> elements of image maps have alternate text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <area> elements of image maps have alternate text",
+								"help": "Active <area> elements must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/area-alt?application=webdriverjs",
+								"id": "area-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  Element has no title attribute or the title attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+										"html": "<area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"map > area[href$=\"left.html\"]"
+										]
+									},
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  Element has no title attribute or the title attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+										"html": "<area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"map > area[href$=\"right.html\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
 									"section508",
 									"section508.22.a"
 								]
@@ -288,35 +418,17 @@
 			"route": "sources/image",
 			"mutants": [
 				{
-					"id": "image-m1",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m1.html",
-					"route": "/mutants/image-m1",
+					"id": "image-m1.1.1-02",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m1.1.1-02.html",
+					"route": "/mutants/image-m1.1.1-02",
 					"mutation": {
-						"id": 1,
-						"name": "empty-img-alt-text",
-						"description": "Image must have alt text",
-						"class": "Attribute Change"
-					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
-					"axe": {
-						"violations": []
-					},
-					"live": true,
-					"equiv": false
-				},
-				{
-					"id": "image-m2",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m2.html",
-					"route": "/mutants/image-m2",
-					"mutation": {
-						"id": 2,
+						"id": "1.1.1-02",
 						"name": "remove-img-alt-text",
 						"description": "Image must have alt text",
 						"class": "Attribute Change"
 					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
 					"axe": {
 						"violations": [
 							{
@@ -395,24 +507,184 @@
 					"equiv": false
 				},
 				{
-					"id": "image-m5",
-					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m5.html",
-					"route": "/mutants/image-m5",
+					"id": "image-m1.1.1-03",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m1.1.1-03.html",
+					"route": "/mutants/image-m1.1.1-03",
 					"mutation": {
-						"id": 5,
-						"name": "empty-title",
-						"description": "Ensures page has a title",
+						"id": "1.1.1-03",
+						"name": "empty-input-image-alt-text",
+						"description": "Empty alternative text from <input type='image'> element",
 						"class": "Attribute Change"
 					},
-					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
-					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
 					"axe": {
 						"violations": [
 							{
-								"description": "Ensures each HTML document contains a non-empty <title> element",
-								"help": "Documents must have <title> element to aid in navigation",
-								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/document-title?application=webdriverjs",
-								"id": "document-title",
+								"description": "Ensures <input type=\"image\"> elements have alternate text",
+								"help": "Image buttons must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/input-image-alt?application=webdriverjs",
+								"id": "input-image-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty",
+										"html": "<input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"[role=\"main\"] > input[type=\"image\"][src$=\"logo.svg\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "image-m1.1.1-04",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/image-m1.1.1-04.html",
+					"route": "/mutants/image-m1.1.1-04",
+					"mutation": {
+						"id": "1.1.1-04",
+						"name": "remove-input-image-alt-text",
+						"description": "Remove alternative text from <input type='image'> element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <input type=\"image\"> elements have alternate text",
+								"help": "Image buttons must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/input-image-alt?application=webdriverjs",
+								"id": "input-image-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty",
+										"html": "<input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"[role=\"main\"] > input[type=\"image\"][src$=\"logo.svg\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
+			"id": "links",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/links.html",
+			"route": "sources/links",
+			"mutants": [
+				{
+					"id": "links-m1.1.1-09",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-09.html",
+					"route": "/mutants/links-m1.1.1-09",
+					"mutation": {
+						"id": "1.1.1-09",
+						"name": "empty-link-text",
+						"description": "Remove text from link",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\"></a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
 								"impact": "serious",
 								"nodes": [
 									{
@@ -420,25 +692,938 @@
 										"any": [
 											{
 												"data": null,
-												"id": "doc-has-title",
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
 												"impact": "serious",
-												"message": "Document does not have a non-empty <title> element",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
 												"relatedNodes": []
 											}
 										],
-										"failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
-										"html": "<html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n\n</body></html>",
+										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<a href=\"#\" id=\"a\"></a>",
+										"impact": "serious",
+										"none": [
+											{
+												"data": null,
+												"id": "focusable-no-name",
+												"impact": "serious",
+												"message": "Element is in tab order and does not have accessible text",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#a"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-10",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-10.html",
+					"route": "/mutants/links-m1.1.1-10",
+					"mutation": {
+						"id": "1.1.1-10",
+						"name": "empty-link-aria-label",
+						"description": "Empty aria label of link without inner text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<a href=\"#\" id=\"b\" aria-label=\"\"></a>",
+										"impact": "serious",
+										"none": [
+											{
+												"data": null,
+												"id": "focusable-no-name",
+												"impact": "serious",
+												"message": "Element is in tab order and does not have accessible text",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#b"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-11",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-11.html",
+					"route": "/mutants/links-m1.1.1-11",
+					"mutation": {
+						"id": "1.1.1-11",
+						"name": "change-link-labelledby-nonexistant",
+						"description": "Change the aria labelled by to a non existant element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"doesnotexist\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures all ARIA attributes have valid values",
+								"help": "ARIA attributes must conform to valid values",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-valid-attr-value?application=webdriverjs",
+								"id": "aria-valid-attr-value",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [
+											{
+												"data": [
+													"aria-labelledby=\"doesnotexist\""
+												],
+												"id": "aria-valid-attr-value",
+												"impact": "critical",
+												"message": "Invalid ARIA attribute value: aria-labelledby=\"doesnotexist\"",
+												"relatedNodes": []
+											}
+										],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-labelledby=\"doesnotexist\"",
+										"html": "<a href=\"#\" id=\"c\" aria-labelledby=\"doesnotexist\"></a>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#c"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131",
+									"wcag411",
+									"wcag412"
+								]
+							},
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<a href=\"#\" id=\"c\" aria-labelledby=\"doesnotexist\"></a>",
+										"impact": "serious",
+										"none": [
+											{
+												"data": null,
+												"id": "focusable-no-name",
+												"impact": "serious",
+												"message": "Element is in tab order and does not have accessible text",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#c"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-12",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-12.html",
+					"route": "/mutants/links-m1.1.1-12",
+					"mutation": {
+						"id": "1.1.1-12",
+						"name": "change-link-labelledby-invalid",
+						"description": "Change the aria labelled by element to a invalid element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\"></div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>",
+										"impact": "serious",
+										"none": [
+											{
+												"data": null,
+												"id": "focusable-no-name",
+												"impact": "serious",
+												"message": "Element is in tab order and does not have accessible text",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#c"
+										]
+									},
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>",
 										"impact": "serious",
 										"none": [],
 										"target": [
-											"html"
+											"#f"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-13",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-13.html",
+					"route": "/mutants/links-m1.1.1-13",
+					"mutation": {
+						"id": "1.1.1-13",
+						"name": "empty-role-link-text",
+						"description": "Remove text from element with role='link'",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\"></span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<span role=\"link\" href=\"#\" id=\"d\"></span>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"#d"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-14",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-14.html",
+					"route": "/mutants/links-m1.1.1-14",
+					"mutation": {
+						"id": "1.1.1-14",
+						"name": "empty-role-link-aria-label",
+						"description": "Empty aria label of element with role='link' without inner text",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<span role=\"link\" href=\"#\" id=\"e\" aria-label=\"\"></span>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"#e"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-15",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-15.html",
+					"route": "/mutants/links-m1.1.1-15",
+					"mutation": {
+						"id": "1.1.1-15",
+						"name": "change-role-link-labelledby-nonexistant",
+						"description": "Change the aria labelledby of element with role='link' to a non existant element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"doesnotexist\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures all ARIA attributes have valid values",
+								"help": "ARIA attributes must conform to valid values",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-valid-attr-value?application=webdriverjs",
+								"id": "aria-valid-attr-value",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [
+											{
+												"data": [
+													"aria-labelledby=\"doesnotexist\""
+												],
+												"id": "aria-valid-attr-value",
+												"impact": "critical",
+												"message": "Invalid ARIA attribute value: aria-labelledby=\"doesnotexist\"",
+												"relatedNodes": []
+											}
+										],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-labelledby=\"doesnotexist\"",
+										"html": "<span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"doesnotexist\"></span>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#f"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131",
+									"wcag411",
+									"wcag412"
+								]
+							},
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"doesnotexist\"></span>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"#f"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "links-m1.1.1-16",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/links-m1.1.1-16.html",
+					"route": "/mutants/links-m1.1.1-16",
+					"mutation": {
+						"id": "1.1.1-16",
+						"name": "change-role-link-labelledby-invalid",
+						"description": "Change the aria labelledby of element with role='link' to a invalid element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\"></div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures links have discernible text",
+								"help": "Links must have discernible text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/link-name?application=webdriverjs",
+								"id": "link-name",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>",
+										"impact": "serious",
+										"none": [
+											{
+												"data": null,
+												"id": "focusable-no-name",
+												"impact": "serious",
+												"message": "Element is in tab order and does not have accessible text",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#c"
+										]
+									},
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-presentation",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"presentation\"",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "role-none",
+												"impact": "minor",
+												"message": "Element's default semantics were not overridden with role=\"none\"",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
+										"html": "<span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"#f"
+										]
+									}
+								],
+								"tags": [
+									"cat.name-role-value",
+									"wcag2a",
+									"wcag111",
+									"wcag412",
+									"wcag244",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
+			"id": "object",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/object.html",
+			"route": "sources/object",
+			"mutants": [
+				{
+					"id": "object-m1.1.1-17",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/object-m1.1.1-17.html",
+					"route": "/mutants/object-m1.1.1-17",
+					"mutation": {
+						"id": "1.1.1-17",
+						"name": "remove-object-alt-text",
+						"description": "Remove alt text from object element",
+						"class": "Attribute Change"
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\"></object>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <object> elements have alternate text",
+								"help": "<object> elements must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/object-alt?application=webdriverjs",
+								"id": "object-alt",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "has-visible-text",
+												"impact": "minor",
+												"message": "Element does not have text that is visible to screen readers",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty",
+										"html": "<object data=\"../example_src/eg.swf\"></object>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"[role=\"main\"] > object"
 										]
 									}
 								],
 								"tags": [
 									"cat.text-alternatives",
 									"wcag2a",
-									"wcag242"
+									"wcag111",
+									"section508",
+									"section508.22.a"
 								]
 							}
 						]
