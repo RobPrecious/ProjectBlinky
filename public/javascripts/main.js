@@ -21,3 +21,10 @@ function test() {
     }
   });
 }
+
+$(document).ready(function () {
+  $('#mutants').DataTable({
+    paging: false,
+    scrollY: 700,
+  });
+});

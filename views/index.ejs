@@ -11,16 +11,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
+ 
+    <link rel='stylesheet' href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" >
+    <script src="">"https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"</script>
+    
     <script src="/javascripts/main.js"></script>
 
     <title><%= title %></title>
   </head>
 
   <body>
-    <div class="container">
+  <%- include("navbar") %>
+
+    <div class="container-fluid">
       <h1 class="float-left">Mutation Testing</h1>
-      <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onclick="document.location='/run'">Rerun test</button>
+      <%if(data){%>
+              <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onClick="document.location='/run'; this.disabled=true; this.innerHTML='Running...';" >Run Test</button>
          <table class="table">
             <tr class="thead-dark">
               <th scope="col">Page</th>
@@ -54,7 +60,9 @@
             
           <%}%>  
           </table>
-        
+        <%}else{%>
+              <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onClick="document.location='/run'; this.disabled=true; this.innerHTML='Running...';" >Run Test</button>
+        <%}%>
         </div>
           
     </div>

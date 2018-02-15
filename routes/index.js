@@ -6,17 +6,21 @@ const fs = require('fs-extra');
 
 const mutationController = require('../controller/mutationController');
 const axeController = require('../controller/axeController');
-
-const url = "http://localhost:3000";
+const mutationLibrary = require('../controller/mutationLibrary');
 
 const jsdom = require("jsdom");
 const {
   JSDOM
 } = jsdom;
 
+const url = "http://localhost:3000";
+let ran = false;
+let running = false;
+
+
 function run() {
   //Create mutants
-  Promise.all(mutationController.getMutationPromises())
+  return Promise.all(mutationController.getMutationPromises())
     .then(results => {
       return {
         sources: results
@@ -82,28 +86,68 @@ function run() {
       console.log("---------- Run Complete -----------")
     })
 };
-run();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
+  if (ran) {
+    fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
+      return res.render('index', {
+        title: 'Mutation Testing',
+        data
+      });
+    });
+  } else {
     return res.render('index', {
       title: 'Mutation Testing',
-      data
+      data: false,
     });
-  });
+  }
 });
 
 /* GET run. */
 router.get('/run', (req, res, next) => {
-  run();
-  return res.redirect('/');
+  if (!running) {
+    running = true;
+    run()
+      .then(() => {
+        ran = true;
+        running = false;
+      })
+      .then(() => {
+        return res.redirect('/');
+      })
+  }
 });
 
 /* GET axe test. */
 router.get('/axe', (req, res, next) => {
   return res.render('axetest', {
     title: 'Axe Testing',
+  })
+});
+
+/* GET mutation view */
+router.get('/mutant-operators', (req, res, next) => {
+  fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
+
+    mutationLibrary.map(mutation => {
+      mutation.live = 0;
+      mutation.violations = 0;
+
+      data.sources.map(source => {
+        source.mutants.map(mutant => {
+          if (mutant.mutation.id == mutation.id) {
+            mutation.violations += mutant.axe.violations.length;
+            mutation.live += mutant.live ? 1 : 0;
+          }
+        });
+      });
+    });
+  });
+
+  return res.render('mutant-operators', {
+    title: 'Mutants',
+    mutations: mutationLibrary,
   })
 });
 

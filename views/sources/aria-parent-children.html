@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Button</title>
+</head>
+
+<body>
+  <div role="main">
+    <div role="list" id="a">
+      <div role="listitem" id="a-child">Item a</div>
+    </div>
+
+    <div role="list" id="b" aria-owns="b-child"></div>
+    <div role="listitem" id="b-child">Item b</div>
+  </div>
+
+  <div aria-live="polite">Correct</div>
+
+
+</body>
+
+</html>

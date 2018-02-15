@@ -1,6 +1,594 @@
 {
 	"sources": [
 		{
+			"id": "aria-parent-children",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/aria-parent-children.html",
+			"route": "sources/aria-parent-children",
+			"mutants": [
+				{
+					"id": "aria-parent-children-m1.3.1-01",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-01.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-01",
+					"mutation": {
+						"id": "1.3.1-01",
+						"name": "empty-arc-children",
+						"description": "aria-required-children - parent role does not match expected children",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\"></div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures elements with an ARIA role that require child roles contain them",
+								"help": "Certain ARIA roles must contain particular children",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-children?application=webdriverjs",
+								"id": "aria-required-children",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"listitem"
+												],
+												"id": "aria-required-children",
+												"impact": "critical",
+												"message": "Required ARIA child role not present: listitem",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA child role not present: listitem",
+										"html": "<div role=\"list\" id=\"a\"></div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#a"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "aria-parent-children-m1.3.1-02",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-02.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-02",
+					"mutation": {
+						"id": "1.3.1-02",
+						"name": "change-arc-children-role",
+						"description": "aria-required-children - parent role does not match expected children",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"menuitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures elements with an ARIA role that require child roles contain them",
+								"help": "Certain ARIA roles must contain particular children",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-children?application=webdriverjs",
+								"id": "aria-required-children",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"listitem"
+												],
+												"id": "aria-required-children",
+												"impact": "critical",
+												"message": "Required ARIA child role not present: listitem",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA child role not present: listitem",
+										"html": "<div role=\"list\" id=\"a\">\n      <div role=\"menuitem\" id=\"a-child\">Item a</div>\n    </div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#a"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							},
+							{
+								"description": "Ensures elements with an ARIA role that require parent roles are contained by them",
+								"help": "Certain ARIA roles must be contained by particular parents",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-parent?application=webdriverjs",
+								"id": "aria-required-parent",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"menu",
+													"menubar"
+												],
+												"id": "aria-required-parent",
+												"impact": "critical",
+												"message": "Required ARIA parents role not present: menu menubar",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA parents role not present: menu menubar",
+										"html": "<div role=\"menuitem\" id=\"a-child\">Item a</div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#a-child"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "aria-parent-children-m1.3.1-03",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-03.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-03",
+					"mutation": {
+						"id": "1.3.1-03",
+						"name": "empty-arc-children-owns",
+						"description": "aria-required-children - parent role does not match expected children",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    \n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures elements with an ARIA role that require child roles contain them",
+								"help": "Certain ARIA roles must contain particular children",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-children?application=webdriverjs",
+								"id": "aria-required-children",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"listitem"
+												],
+												"id": "aria-required-children",
+												"impact": "critical",
+												"message": "Required ARIA child role not present: listitem",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA child role not present: listitem",
+										"html": "<div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#b"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							},
+							{
+								"description": "Ensures all ARIA attributes have valid values",
+								"help": "ARIA attributes must conform to valid values",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-valid-attr-value?application=webdriverjs",
+								"id": "aria-valid-attr-value",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [
+											{
+												"data": [
+													"aria-owns=\"b-child\""
+												],
+												"id": "aria-valid-attr-value",
+												"impact": "critical",
+												"message": "Invalid ARIA attribute value: aria-owns=\"b-child\"",
+												"relatedNodes": []
+											}
+										],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-owns=\"b-child\"",
+										"html": "<div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#b"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131",
+									"wcag411",
+									"wcag412"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "aria-parent-children-m1.3.1-04",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-04.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-04",
+					"mutation": {
+						"id": "1.3.1-04",
+						"name": "change-arc-children-role-owns",
+						"description": "aria-required-children - parent role does not match expected children",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"menuitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures elements with an ARIA role that require child roles contain them",
+								"help": "Certain ARIA roles must contain particular children",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-children?application=webdriverjs",
+								"id": "aria-required-children",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"listitem"
+												],
+												"id": "aria-required-children",
+												"impact": "critical",
+												"message": "Required ARIA child role not present: listitem",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA child role not present: listitem",
+										"html": "<div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#b"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							},
+							{
+								"description": "Ensures elements with an ARIA role that require parent roles are contained by them",
+								"help": "Certain ARIA roles must be contained by particular parents",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-parent?application=webdriverjs",
+								"id": "aria-required-parent",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"menu",
+													"menubar"
+												],
+												"id": "aria-required-parent",
+												"impact": "critical",
+												"message": "Required ARIA parents role not present: menu menubar",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA parents role not present: menu menubar",
+										"html": "<div role=\"menuitem\" id=\"b-child\">Item b</div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#b-child"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "aria-parent-children-m1.3.1-05",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-05.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-05",
+					"mutation": {
+						"id": "1.3.1-05",
+						"name": "remove-arp-parent",
+						"description": "aria-required-parent - certain ARIA roles must be contained by particular parents",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    \n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures elements with an ARIA role that require parent roles are contained by them",
+								"help": "Certain ARIA roles must be contained by particular parents",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-parent?application=webdriverjs",
+								"id": "aria-required-parent",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"list"
+												],
+												"id": "aria-required-parent",
+												"impact": "critical",
+												"message": "Required ARIA parent role not present: list",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA parent role not present: list",
+										"html": "<div role=\"listitem\" id=\"b-child\">Item b</div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#b-child"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "aria-parent-children-m1.3.1-06",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-06.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-06",
+					"mutation": {
+						"id": "1.3.1-06",
+						"name": "change-aria-role",
+						"description": "aria-roles - ARIA roles used must conform to valid values",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"lists\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"lists\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures elements with an ARIA role that require parent roles are contained by them",
+								"help": "Certain ARIA roles must be contained by particular parents",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-required-parent?application=webdriverjs",
+								"id": "aria-required-parent",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"list"
+												],
+												"id": "aria-required-parent",
+												"impact": "critical",
+												"message": "Required ARIA parent role not present: list",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA parent role not present: list",
+										"html": "<div role=\"listitem\" id=\"a-child\">Item a</div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#a-child"
+										]
+									},
+									{
+										"all": [],
+										"any": [
+											{
+												"data": [
+													"list"
+												],
+												"id": "aria-required-parent",
+												"impact": "critical",
+												"message": "Required ARIA parent role not present: list",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Required ARIA parent role not present: list",
+										"html": "<div role=\"listitem\" id=\"b-child\">Item b</div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"#b-child"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131"
+								]
+							},
+							{
+								"description": "Ensures all elements with a role attribute use a valid value",
+								"help": "ARIA roles used must conform to valid values",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-roles?application=webdriverjs",
+								"id": "aria-roles",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  Role must be one of the valid ARIA roles",
+										"html": "<div role=\"lists\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>",
+										"impact": "critical",
+										"none": [
+											{
+												"data": null,
+												"id": "invalidrole",
+												"impact": "critical",
+												"message": "Role must be one of the valid ARIA roles",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#a"
+										]
+									},
+									{
+										"all": [],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  Role must be one of the valid ARIA roles",
+										"html": "<div role=\"lists\" id=\"b\" aria-owns=\"b-child\"></div>",
+										"impact": "critical",
+										"none": [
+											{
+												"data": null,
+												"id": "invalidrole",
+												"impact": "critical",
+												"message": "Role must be one of the valid ARIA roles",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"#b"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131",
+									"wcag411",
+									"wcag412"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "aria-parent-children-m1.3.1-07",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/aria-parent-children-m1.3.1-07.html",
+					"route": "/mutants/aria-parent-children-m1.3.1-07",
+					"mutation": {
+						"id": "1.3.1-07",
+						"name": "change-avav-role",
+						"description": "aria-required-parent - child role does not have expected parent",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"invalid\">Correct</div>\n\n\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures all ARIA attributes have valid values",
+								"help": "ARIA attributes must conform to valid values",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/aria-valid-attr-value?application=webdriverjs",
+								"id": "aria-valid-attr-value",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [
+											{
+												"data": [
+													"aria-live=\"invalid\""
+												],
+												"id": "aria-valid-attr-value",
+												"impact": "critical",
+												"message": "Invalid ARIA attribute value: aria-live=\"invalid\"",
+												"relatedNodes": []
+											}
+										],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-live=\"invalid\"",
+										"html": "<div aria-live=\"invalid\">Correct</div>",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"body > div:nth-child(2)"
+										]
+									}
+								],
+								"tags": [
+									"cat.aria",
+									"wcag2a",
+									"wcag131",
+									"wcag411",
+									"wcag412"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
 			"id": "audio-video",
 			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/audio-video.html",
 			"route": "sources/audio-video",
@@ -13,9 +601,184 @@
 						"id": "1.2.2-01",
 						"name": "remove-audio-caption",
 						"description": "Remove caption track from audio element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 1,
+						"violations": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n       Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				},
+				{
+					"id": "audio-video-m1.2.2-02",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/audio-video-m1.2.2-02.html",
+					"route": "/mutants/audio-video-m1.2.2-02",
+					"mutation": {
+						"id": "1.2.2-02",
+						"name": "change-audio-caption-source",
+						"description": "Change track source to incorrect source on audio element",
+						"class": "Attribute Change",
+						"live": 1,
+						"violations": 0
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"doesnotexist\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				},
+				{
+					"id": "audio-video-m1.2.3-01",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/audio-video-m1.2.3-01.html",
+					"route": "/mutants/audio-video-m1.2.3-01",
+					"mutation": {
+						"id": "1.2.3-01",
+						"name": "remove-video-caption",
+						"description": "Remove caption track from video element",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      \n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <video> elements have captions",
+								"help": "<video> elements must have captions",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/video-caption?application=webdriverjs",
+								"id": "video-caption",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  The multimedia element does not have a captions track",
+										"html": "<video width=\"600\" height=\"400\" controls=\"\">",
+										"impact": "critical",
+										"none": [
+											{
+												"data": null,
+												"id": "caption",
+												"impact": "critical",
+												"message": "The multimedia element does not have a captions track",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"[role=\"main\"] > video"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag122",
+									"wcag123",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "audio-video-m1.2.3-02",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/audio-video-m1.2.3-02.html",
+					"route": "/mutants/audio-video-m1.2.3-02",
+					"mutation": {
+						"id": "1.2.3-02",
+						"name": "change-video-caption-source",
+						"description": "Remove caption track from video element",
+						"class": "Attribute Change",
+						"live": 1,
+						"violations": 0
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"doesnotexist\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": []
+					},
+					"live": true,
+					"equiv": false
+				},
+				{
+					"id": "audio-video-m1.2.5-01",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/audio-video-m1.2.5-01.html",
+					"route": "/mutants/audio-video-m1.2.5-01",
+					"mutation": {
+						"id": "1.2.5-01",
+						"name": "remove-video-description",
+						"description": "Remove description track from video element",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      \n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <video> elements have audio descriptions",
+								"help": "<video> elements must have an audio description track",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/video-description?application=webdriverjs",
+								"id": "video-description",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  The multimedia element does not have an audio description track",
+										"html": "<video width=\"600\" height=\"400\" controls=\"\">",
+										"impact": "critical",
+										"none": [
+											{
+												"data": null,
+												"id": "description",
+												"impact": "critical",
+												"message": "The multimedia element does not have an audio description track",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"[role=\"main\"] > video"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2aa",
+									"wcag125",
+									"section508",
+									"section508.22.b"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				},
+				{
+					"id": "audio-video-m1.2.5-02",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/audio-video-m1.2.5-02.html",
+					"route": "/mutants/audio-video-m1.2.5-02",
+					"mutation": {
+						"id": "1.2.5-02",
+						"name": "change-video-description-source",
+						"description": "Remove description track from video element",
+						"class": "Attribute Change",
+						"live": 1,
+						"violations": 0
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"doesnotexist\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"axe": {
 						"violations": []
@@ -41,7 +804,9 @@
 						"id": "1.1.1-05",
 						"name": "empty-aria-label",
 						"description": "Buttons should be labeled",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 1,
+						"violations": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
@@ -59,7 +824,9 @@
 						"id": "1.1.1-06",
 						"name": "remove-aria-label",
 						"description": "Buttons should be labeled",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 1,
+						"violations": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
@@ -96,7 +863,9 @@
 						"id": "1.1.1-02",
 						"name": "remove-img-alt-text",
 						"description": "Image must have alt text",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -185,7 +954,9 @@
 						"id": "1.1.1-07",
 						"name": "empty-area-alt",
 						"description": "Ensures <area> elements of image maps have alternate text",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -300,7 +1071,9 @@
 						"id": "1.1.1-08",
 						"name": "remove-area-alt",
 						"description": "Ensures <area> elements of image maps have alternate text",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -425,7 +1198,9 @@
 						"id": "1.1.1-02",
 						"name": "remove-img-alt-text",
 						"description": "Image must have alt text",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -514,7 +1289,9 @@
 						"id": "1.1.1-03",
 						"name": "empty-input-image-alt-text",
 						"description": "Empty alternative text from <input type='image'> element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -589,7 +1366,9 @@
 						"id": "1.1.1-04",
 						"name": "remove-input-image-alt-text",
 						"description": "Remove alternative text from <input type='image'> element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -674,7 +1453,9 @@
 						"id": "1.1.1-09",
 						"name": "empty-link-text",
 						"description": "Remove text from link",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\"></a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -766,7 +1547,9 @@
 						"id": "1.1.1-10",
 						"name": "empty-link-aria-label",
 						"description": "Empty aria label of link without inner text",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -858,7 +1641,9 @@
 						"id": "1.1.1-11",
 						"name": "change-link-labelledby-nonexistant",
 						"description": "Change the aria labelled by to a non existant element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"doesnotexist\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -987,7 +1772,9 @@
 						"id": "1.1.1-12",
 						"name": "change-link-labelledby-invalid",
 						"description": "Change the aria labelled by element to a invalid element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\"></div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -1126,7 +1913,9 @@
 						"id": "1.1.1-13",
 						"name": "empty-role-link-text",
 						"description": "Remove text from element with role='link'",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\"></span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -1210,7 +1999,9 @@
 						"id": "1.1.1-14",
 						"name": "empty-role-link-aria-label",
 						"description": "Empty aria label of element with role='link' without inner text",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -1294,7 +2085,9 @@
 						"id": "1.1.1-15",
 						"name": "change-role-link-labelledby-nonexistant",
 						"description": "Change the aria labelledby of element with role='link' to a non existant element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"doesnotexist\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -1415,7 +2208,9 @@
 						"id": "1.1.1-16",
 						"name": "change-role-link-labelledby-invalid",
 						"description": "Change the aria labelledby of element with role='link' to a invalid element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\"></div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -1552,6 +2347,103 @@
 			}
 		},
 		{
+			"id": "lists",
+			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/lists.html",
+			"route": "sources/lists",
+			"mutants": [
+				{
+					"id": "lists-m1.3.1-08",
+					"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/lists-m1.3.1-08.html",
+					"route": "/mutants/lists-m1.3.1-08",
+					"mutation": {
+						"id": "1.3.1-08",
+						"name": "reorder-definition-list",
+						"description": "definition-list - must be structured correctly",
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 2
+					},
+					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dt>Coffee</dt><dl>\n      \n      <dd>Black hot drink</dd>\n    </dl>\n  </div>\n\n\n</body></html>",
+					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n  </div>\n\n\n</body></html>",
+					"axe": {
+						"violations": [
+							{
+								"description": "Ensures <dl> elements are structured correctly",
+								"help": "<dl> elements must only directly contain properly-ordered <dt> and <dd> groups, <script> or <template> elements",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/definition-list?application=webdriverjs",
+								"id": "definition-list",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [],
+										"failureSummary": "Fix all of the following:\n  When not empty, element does not have at least one <dt> element followed by at least one <dd> element",
+										"html": "<dl>\n      \n      <dd>Black hot drink</dd>\n    </dl>",
+										"impact": "serious",
+										"none": [
+											{
+												"data": null,
+												"id": "structured-dlitems",
+												"impact": "serious",
+												"message": "When not empty, element does not have at least one <dt> element followed by at least one <dd> element",
+												"relatedNodes": []
+											}
+										],
+										"target": [
+											"[role=\"main\"] > dl"
+										]
+									}
+								],
+								"tags": [
+									"cat.structure",
+									"wcag2a",
+									"wcag131"
+								]
+							},
+							{
+								"description": "Ensures <dt> and <dd> elements are contained by a <dl>",
+								"help": "<dt> and <dd> elements must be contained by a <dl>",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/dlitem?application=webdriverjs",
+								"id": "dlitem",
+								"impact": "serious",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "dlitem",
+												"impact": "serious",
+												"message": "Description list item does not have a <dl> parent element",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Description list item does not have a <dl> parent element",
+										"html": "<dt>Coffee</dt>",
+										"impact": "serious",
+										"none": [],
+										"target": [
+											"[role=\"main\"] > dt"
+										]
+									}
+								],
+								"tags": [
+									"cat.structure",
+									"wcag2a",
+									"wcag131"
+								]
+							}
+						]
+					},
+					"live": false,
+					"equiv": false
+				}
+			],
+			"axe": {
+				"violations": []
+			}
+		},
+		{
 			"id": "object",
 			"file": "/Users/robert/OneDrive/University/Project/Test/server/views/sources/object.html",
 			"route": "sources/object",
@@ -1564,7 +2456,9 @@
 						"id": "1.1.1-17",
 						"name": "remove-object-alt-text",
 						"description": "Remove alt text from object element",
-						"class": "Attribute Change"
+						"class": "Attribute Change",
+						"live": 0,
+						"violations": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\"></object>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n  </div>\n\n\n</body></html>",
