@@ -19,7 +19,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <%- include("navbar") %>
+
+    <div class="container-fluid" style="margin-top:20px">
       <h1 class="">Axe Testing</h1>
       <input type="text" id="url" value="" style="width:40%" autocomplete></input>
       <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onclick="test()">Rerun test</button>

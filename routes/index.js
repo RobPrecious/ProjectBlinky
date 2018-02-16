@@ -20,7 +20,11 @@ let running = false;
 
 function run() {
   //Create mutants
-  return Promise.all(mutationController.getMutationPromises())
+  return Promise.all(mutationController.getMutationPromises(
+      mutationLibrary.filter(mut => {
+        return true; //mut.successCriteria == "1.3.2"
+      })
+    ))
     .then(results => {
       return {
         sources: results

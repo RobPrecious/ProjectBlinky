@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Labels</title>
+</head>
+
+<body>
+  <div role="main">
+    <form action="#">
+      <!-- aria label -->
+      <input type="text" aria-label="label" id="inputa">
+      <select aria-label="label" id="selecta"></select>
+      <textarea aria-label="label" id="textareaa"></textarea>
+
+      <!-- aria labelledby -->
+      <label id="labelbya">Label</label>
+      <input type="text" aria-labelledby="labelbya" id="labelledbya">
+
+      <label id="labelbyb">Label</label>
+      <select aria-labelledby="labelbyb" id="labelledbyb"></select>
+
+      <label id="labelbyc">Label</label>
+      <textarea aria-labelledby="labelbyc" id="labelledbyc"></textarea>
+
+      <!-- label for -->
+      <label id="labela" for="labelledfora">Label</label>
+      <input type="text" id="labelledfora">
+
+      <label id="labelb" for="labelledforb">Label</label>
+      <select id="labelledforb"></select>
+
+      <label id="labelc" for="labelledforc">Label</label>
+      <textarea id="labelledforc"></textarea>
+
+    </form>
+  </div>
+</body>
+
+</html>

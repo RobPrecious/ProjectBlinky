@@ -23,7 +23,7 @@
   <body>
   <%- include("navbar") %>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:20px">
       <h1 class="float-left">Mutation Testing</h1>
       <%if(data){%>
               <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onClick="document.location='/run'; this.disabled=true; this.innerHTML='Running...';" >Run Test</button>
@@ -42,7 +42,7 @@
                 <td></td>
                 <td></td>
                 <td><%= data.sources[i].axe.violations.length%></td>
-                <td></td>
+                <td><%for(k in data.sources[i].axe.violations){%> <%=data.sources[i].axe.violations[k].id%> <br> <%}%></td>
                 <td></td>
               </tr>
               <% for(let j in data.sources[i].mutants){

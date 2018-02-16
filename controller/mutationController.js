@@ -6,7 +6,6 @@ const {
 } = jsdom;
 
 const mutator = require('./mutator');
-const mutationLibrary = require('./mutationLibrary');
 
 const mutationController = {
   getSources: () => {
@@ -23,17 +22,17 @@ const mutationController = {
     return output;
   },
 
-  getMutations: (source) => {
+  getMutations: (source, availableMutants) => {
     return JSDOM.fromFile(source.file)
       .then(dom => {
-        return mutationLibrary.filter(mutation => mutation.check(dom))
+        return availableMutants.filter(mutation => mutation.check(dom))
       })
       .catch(err => {
         console.log(err);
       })
   },
 
-  getMutationPromises: () => {
+  getMutationPromises: (availableMutants) => {
     return mutationController.getSources().map((source, index) => {
       return new Promise((res, rej) => {
         let source_data = {
@@ -42,7 +41,7 @@ const mutationController = {
           route: source.route,
           mutants: []
         }
-        mutationController.getMutations(source)
+        mutationController.getMutations(source, availableMutants)
           .then(mutations => {
             return mutator(source, mutations)
               .then(result => source_data.mutants = result);

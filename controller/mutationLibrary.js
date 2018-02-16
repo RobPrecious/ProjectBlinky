@@ -3,12 +3,12 @@ const {
   JSDOM
 } = jsdom;
 
-module.exports = [
-  /*{
+module.exports = [{
     "id": "1.1.1-01",
     "name": "empty-img-alt-text",
     "description": "Image must have alt text",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       return $("img").length;
@@ -18,13 +18,14 @@ module.exports = [
       $("img").attr('alt', '');
       return mutant_dom.serialize();
     }
-  },*/
+  },
 
   {
     "id": "1.1.1-02",
     "name": "remove-img-alt-text",
     "description": "Image must have alt text",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       return $("img").length;
@@ -41,6 +42,7 @@ module.exports = [
     "name": "empty-input-image-alt-text",
     "description": "Empty alternative text from <input type='image'> element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -61,6 +63,7 @@ module.exports = [
     "name": "remove-input-image-alt-text",
     "description": "Remove alternative text from <input type='image'> element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -81,6 +84,7 @@ module.exports = [
     "name": "empty-aria-label",
     "description": "Buttons should be labeled",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -100,6 +104,7 @@ module.exports = [
     "name": "remove-aria-label",
     "description": "Buttons should be labeled",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -120,6 +125,7 @@ module.exports = [
     "name": "empty-area-alt",
     "description": "Ensures <area> elements of image maps have alternate text",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -140,6 +146,7 @@ module.exports = [
     "name": "remove-area-alt",
     "description": "Ensures <area> elements of image maps have alternate text",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -160,6 +167,7 @@ module.exports = [
     "name": "empty-link-text",
     "description": "Remove text from link",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -180,6 +188,7 @@ module.exports = [
     "name": "empty-link-aria-label",
     "description": "Empty aria label of link without inner text",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("a[aria-label]").length) {
@@ -199,6 +208,7 @@ module.exports = [
     "name": "change-link-labelledby-nonexistant",
     "description": "Change the aria labelled by to a non existant element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("a[aria-labelledby]").length) {
@@ -219,6 +229,7 @@ module.exports = [
     "name": "change-link-labelledby-invalid",
     "description": "Change the aria labelled by element to a invalid element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("a[aria-labelledby]").length) {
@@ -238,6 +249,7 @@ module.exports = [
     "name": "empty-role-link-text",
     "description": "Remove text from element with role='link'",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
 
@@ -258,6 +270,7 @@ module.exports = [
     "name": "empty-role-link-aria-label",
     "description": "Empty aria label of element with role='link' without inner text",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("span[role='link'][aria-label]").length) {
@@ -277,6 +290,7 @@ module.exports = [
     "name": "change-role-link-labelledby-nonexistant",
     "description": "Change the aria labelledby of element with role='link' to a non existant element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("span[role='link'][aria-labelledby]").length) {
@@ -297,6 +311,7 @@ module.exports = [
     "name": "change-role-link-labelledby-invalid",
     "description": "Change the aria labelledby of element with role='link' to a invalid element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("span[role='link'][aria-labelledby]").length) {
@@ -316,6 +331,7 @@ module.exports = [
     "name": "remove-object-alt-text",
     "description": "Remove alt text from object element",
     "class": "Attribute Change",
+    "successCriteria": "1.1.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("object").length) {
@@ -335,6 +351,7 @@ module.exports = [
     "name": "remove-audio-caption",
     "description": "Remove caption track from audio element",
     "class": "Remove Element",
+    "successCriteria": "1.2.2",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("audio track[kind='captions']").length) {
@@ -354,6 +371,7 @@ module.exports = [
     "name": "change-audio-caption-source",
     "description": "Change track source to incorrect source on audio element",
     "class": "Attribute Change",
+    "successCriteria": "1.2.2",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("audio track[kind='captions']").length) {
@@ -373,6 +391,7 @@ module.exports = [
     "name": "remove-video-caption",
     "description": "Remove caption track from video element",
     "class": "Remove Element",
+    "successCriteria": "1.2.3",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("video track[kind='captions']").length) {
@@ -392,6 +411,7 @@ module.exports = [
     "name": "change-video-caption-source",
     "description": "Remove caption track from video element",
     "class": "Attribute Change",
+    "successCriteria": "1.2.3",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("video track[kind='captions']").length) {
@@ -411,6 +431,7 @@ module.exports = [
     "name": "remove-video-description",
     "description": "Remove description track from video element",
     "class": "Remove Element",
+    "successCriteria": "1.2.5",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("video track[kind='descriptions']").length) {
@@ -430,6 +451,7 @@ module.exports = [
     "name": "change-video-description-source",
     "description": "Remove description track from video element",
     "class": "Attribute Change",
+    "successCriteria": "1.2.5",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("video track[kind='descriptions']").length) {
@@ -449,6 +471,7 @@ module.exports = [
     "name": "empty-arc-children",
     "description": "aria-required-children - parent role does not match expected children",
     "class": "Attribute Change",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[role='list']").length) {
@@ -468,6 +491,7 @@ module.exports = [
     "name": "change-arc-children-role",
     "description": "aria-required-children - parent role does not match expected children",
     "class": "Attribute Change",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[role='list']").length) {
@@ -487,6 +511,7 @@ module.exports = [
     "name": "empty-arc-children-owns",
     "description": "aria-required-children - parent role does not match expected children",
     "class": "Remove Element",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[role='list'][aria-owns]").length) {
@@ -506,6 +531,7 @@ module.exports = [
     "name": "change-arc-children-role-owns",
     "description": "aria-required-children - parent role does not match expected children",
     "class": "Attribute Change",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[role='list'][aria-owns]").length) {
@@ -525,6 +551,7 @@ module.exports = [
     "name": "remove-arp-parent",
     "description": "aria-required-parent - certain ARIA roles must be contained by particular parents",
     "class": "Remove Element",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[role='list'][aria-owns]").length) {
@@ -544,6 +571,7 @@ module.exports = [
     "name": "change-aria-role",
     "description": "aria-roles - ARIA roles used must conform to valid values",
     "class": "Attribute Change",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[role='list']").length) {
@@ -563,6 +591,7 @@ module.exports = [
     "name": "change-avav-role",
     "description": "aria-required-parent - child role does not have expected parent",
     "class": "Attribute Change",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("div[aria-live]").length) {
@@ -582,6 +611,7 @@ module.exports = [
     "name": "reorder-definition-list",
     "description": "definition-list - must be structured correctly",
     "class": "Reorder Element",
+    "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
       if ($("dt").length) {
@@ -591,11 +621,535 @@ module.exports = [
     },
     "mutation": (mutant_dom) => {
       let $ = require('jquery')(mutant_dom.window);
-      let dt = $("dt");
+      let dt = $("dt").first();
       dt.insertBefore(dt.parent());
       return mutant_dom.serialize();
     }
   },
+
+  {
+    "id": "1.3.1-09",
+    "name": "reorder-ordered-list",
+    "description": "Ordered-list - must be structured correctly",
+    "class": "Reorder Element",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("ol").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let ol = $("ol > li").first();
+      ol.insertBefore(ol.parent());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-10",
+    "name": "reorder-unordered-list",
+    "description": "Unordered-list - must be structured correctly",
+    "class": "Reorder Element",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("ol").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let li = $("ul > li").first();
+      li.insertBefore(li.parent());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-11",
+    "name": "empty-input-aria-label",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("input[aria-label]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("input[aria-label]").attr("aria-label", "");
+      return mutant_dom.serialize();
+    }
+  },
+  {
+    "id": "1.3.1-12",
+    "name": "remove-input-aria-label",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("input[aria-label]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("input[aria-label]").attr("aria-label", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-13",
+    "name": "empty-input-aria-labelledby",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("input[aria-labelledby]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("input[aria-labelledby]").attr("aria-labelledby", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-14",
+    "name": "remove-input-aria-labelledby",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("input[aria-labelledby]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("input[aria-labelledby]").attr("aria-labelledby", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-15",
+    "name": "remove-input-aria-labelfor",
+    "description": "Labels - must be structured correctly",
+    "class": "Remove Element",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("label[for]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("label[for]").remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-16",
+    "name": "empty-select-aria-label",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("select[aria-label]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("select[aria-label]").attr("aria-label", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-17",
+    "name": "empty-textarea-aria-label",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("textarea[aria-label]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("textarea[aria-label]").attr("aria-label", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-18",
+    "name": "remove-select-aria-labelledby",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("select[aria-labelledby]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("select[aria-labelledby]").attr("aria-labelledby", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-19",
+    "name": "remove-textarea-aria-labelledby",
+    "description": "Labels - must be structured correctly",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("textarea[aria-labelledby]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("textarea[aria-labelledby]").attr("aria-labelledby", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-20",
+    "name": "change-p-as-heading",
+    "description": "Paragraph elements should not be styled as headers",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("p").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("p").css("font-size", "150%").css("font-weight", "bold");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-21",
+    "name": "change-table-role",
+    "description": "Change presentational tables to other roles",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("table[role='presentation']").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("table[role='presentation']").attr("role", "grid");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-22",
+    "name": "empty-td-header",
+    "description": "Empty td header",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("td[headers]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("td[headers]").attr("headers", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.1-23",
+    "name": "change-td-header",
+    "description": "Change td header",
+    "class": "Attribute Change",
+    "successCriteria": "1.3.1",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("td[headers]").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("td[headers]").attr("headers", "doesnotexist");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-01",
+    "name": "reorder-heading1-order",
+    "description": "Change heading order",
+    "class": "Reorder Element",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h1").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let h1 = $("h1").first();
+      h1.insertAfter(h1.next());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-02",
+    "name": "reorder-heading2-order",
+    "description": "Change heading order",
+    "class": "Reorder Element",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h2").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let h2 = $("h2").first();
+      h2.insertBefore(h2.prev());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-03",
+    "name": "reorder-heading3-order",
+    "description": "Change heading order",
+    "class": "Reorder Element",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h3").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let h3 = $("h3").first();
+      h3.insertBefore(h3.prev());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-04",
+    "name": "change-h1-to-h2",
+    "description": "Change heading tag -  h1 -> h2",
+    "class": "Change element tag",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h1").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let heading = $("h1").first();
+      let newHeading = "<h2>" + heading.innerHTML + "</h2>";
+      heading.insertAfter(newHeading);
+      heading.remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-05",
+    "name": "change-h2-to-h3",
+    "description": "Change heading tag -  h2 -> h3",
+    "class": "Change element tag",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h2").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let heading = $("h2").first();
+      let newHeading = "<h3>" + heading.innerHTML + "</h3>";
+      heading.insertAfter(newHeading);
+      heading.remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-06",
+    "name": "change-h3-to-h4",
+    "description": "Change heading tag -  h3 -> h4",
+    "class": "Change element tag",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h3").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let heading = $("h3").first();
+      let newHeading = "<h4>" + heading.innerHTML + "</h4>";
+      heading.insertAfter(newHeading);
+      heading.remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+
+
+  {
+    "id": "1.3.2-07",
+    "name": "change-h2-to-h1",
+    "description": "Change heading tag -  h2 -> h1",
+    "class": "Change element tag",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h2").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let heading = $("h2").first();
+      let newHeading = "<h1>" + heading.innerHTML + "</h1>";
+      heading.insertAfter(newHeading);
+      heading.remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-08",
+    "name": "change-h3-to-h2",
+    "description": "Change heading tag -  h3 -> h2",
+    "class": "Change element tag",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h3").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let heading = $("h3").first();
+      let newHeading = "<h2>" + heading.innerHTML + "</h2>";
+      heading.insertAfter(newHeading);
+      heading.remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.3.2-09",
+    "name": "change-h4-to-h3",
+    "description": "Change heading tag -  h4 -> h3",
+    "class": "Change element tag",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h4").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let heading = $("h4").first();
+      let newHeading = "<h3>" + heading.innerHTML + "</h3>";
+      heading.insertAfter(newHeading);
+      heading.remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "2.4.2-01",
+    "name": "empty-title",
+    "description": "Empty title",
+    "class": "Change Attribute",
+    "successCriteria": "1.3.2",
+    "check": (dom) => {
+      const document = dom.window.document;
+      return document.title.length > 0;
+    },
+    "mutation": (mutant_dom) => {
+      const document = mutant_dom.window.document;
+      document.title = "";
+      return mutant_dom.serialize();
+    }
+  },
+
+
+
   /*
 
         {

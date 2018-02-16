@@ -13,6 +13,7 @@ const axeController = {
       .get(url)
       .then(function () {
         return AxeBuilder(driver)
+          .withTags(['best-practice', 'wcag2a', 'wcag2aa', 'section508', 'cat'])
           .analyze(function (results) {
             return results;
           });
