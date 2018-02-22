@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
   
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script src="/javascripts/Chart.bundle.min.js"></script>
     <script src="/javascripts/main.js"></script>
-
     <title><%= title %></title>
   </head>
 
@@ -25,6 +25,7 @@
 
     <div class="container-fluid" style="margin-top:20px">
       <h1 class="float-left"><%= title %></h1>
+
       <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onclick="document.location='/run'">Rerun test</button>
          
       <table class="table display" id="mutants">

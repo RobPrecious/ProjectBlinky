@@ -75,12 +75,45 @@ function run() {
       let data = {
         sources: results.sources
       };
+      let categories_list = [];
+      let categories_obj = [];
+
       data.sources.map(source => {
         source.mutants.map(mutant => {
           mutant.live = mutant.axe.violations.length == source.axe.violations.length ? true : false;
           mutant.equiv = mutant.thisHTML == mutant.sourceHTML ? true : false;
         })
       });
+
+      // Compile Mutation Data
+      data.mutations = mutationLibrary.map(mutation => {
+        if (categories_list.indexOf(mutation.class) == -1) {
+          categories_list.push(mutation.class);
+          categories_obj.push({
+            name: mutation.class,
+            violations: 0,
+            live: 0,
+            total: 0,
+
+          });
+        }
+        mutation.total = 0;
+        mutation.violations = 0;
+        mutation.live = 0;
+
+        data.sources.map(source => {
+          source.mutants.map(mutant => {
+            if (mutant.mutation.id == mutation.id) {
+              mutation.violations += mutant.axe.violations.length;
+              mutation.live += mutant.live ? 1 : 0;
+              mutation.total++;
+            }
+          });
+        });
+        return mutation;
+      });
+
+      data.analysis = mutationController.analyse(data, categories_obj);
 
       fs.outputJson('resultData.json', data, {
         spaces: '\t'
@@ -133,26 +166,25 @@ router.get('/axe', (req, res, next) => {
 /* GET mutation view */
 router.get('/mutant-operators', (req, res, next) => {
   fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
-
-    mutationLibrary.map(mutation => {
-      mutation.live = 0;
-      mutation.violations = 0;
-
-      data.sources.map(source => {
-        source.mutants.map(mutant => {
-          if (mutant.mutation.id == mutation.id) {
-            mutation.violations += mutant.axe.violations.length;
-            mutation.live += mutant.live ? 1 : 0;
-          }
-        });
-      });
-    });
+    return res.render('mutant-operators', {
+      title: 'Mutants',
+      mutations: data.mutations,
+    })
   });
+});
 
-  return res.render('mutant-operators', {
-    title: 'Mutants',
-    mutations: mutationLibrary,
-  })
+/* GET analysis */
+router.get('/analysis', (req, res, next) => {
+  fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
+    data.analysis = mutationController.analyse(data, data.analysis.categories);
+    fs.outputJson('resultData.json', data, {
+      spaces: '\t'
+    }, err => {});
+    return res.render('analysis', {
+      title: 'Analysis',
+      data,
+    })
+  });
 });
 
 module.exports = router;

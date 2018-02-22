@@ -14,7 +14,10 @@
 						"name": "empty-arc-children",
 						"description": "aria-required-children - parent role does not match expected children",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\"></div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -108,7 +111,10 @@
 						"name": "change-arc-children-role",
 						"description": "aria-required-children - parent role does not match expected children",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"menuitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -238,7 +244,10 @@
 						"name": "empty-arc-children-owns",
 						"description": "aria-required-children - parent role does not match expected children",
 						"class": "Remove Element",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    \n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -369,7 +378,10 @@
 						"name": "change-arc-children-role-owns",
 						"description": "aria-required-children - parent role does not match expected children",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"menuitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -499,7 +511,10 @@
 						"name": "remove-arp-parent",
 						"description": "aria-required-parent - certain ARIA roles must be contained by particular parents",
 						"class": "Remove Element",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    \n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -593,7 +608,10 @@
 						"name": "change-aria-role",
 						"description": "aria-roles - ARIA roles used must conform to valid values",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"lists\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"lists\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -762,7 +780,10 @@
 						"name": "change-avav-role",
 						"description": "aria-required-parent - child role does not have expected parent",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"invalid\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -858,7 +879,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <div role=\"list\" id=\"a\">\n      <div role=\"listitem\" id=\"a-child\">Item a</div>\n    </div>\n\n    <div role=\"list\" id=\"b\" aria-owns=\"b-child\"></div>\n    <div role=\"listitem\" id=\"b-child\">Item b</div>\n  </div>\n\n  <div aria-live=\"polite\">Correct</div>\n\n\n\n\n</body></html>",
@@ -1000,7 +1024,10 @@
 						"name": "remove-audio-caption",
 						"description": "Remove caption track from audio element",
 						"class": "Remove Element",
-						"successCriteria": "1.2.2"
+						"successCriteria": "1.2.2",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n       Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1019,7 +1046,10 @@
 						"name": "change-audio-caption-source",
 						"description": "Change track source to incorrect source on audio element",
 						"class": "Attribute Change",
-						"successCriteria": "1.2.2"
+						"successCriteria": "1.2.2",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"doesnotexist\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1038,7 +1068,10 @@
 						"name": "remove-video-caption",
 						"description": "Remove caption track from video element",
 						"class": "Remove Element",
-						"successCriteria": "1.2.3"
+						"successCriteria": "1.2.3",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      \n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1094,7 +1127,10 @@
 						"name": "change-video-caption-source",
 						"description": "Remove caption track from video element",
 						"class": "Attribute Change",
-						"successCriteria": "1.2.3"
+						"successCriteria": "1.2.3",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"doesnotexist\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1113,7 +1149,10 @@
 						"name": "remove-video-description",
 						"description": "Remove description track from video element",
 						"class": "Remove Element",
-						"successCriteria": "1.2.5"
+						"successCriteria": "1.2.5",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      \n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1168,7 +1207,10 @@
 						"name": "change-video-description-source",
 						"description": "Remove description track from video element",
 						"class": "Attribute Change",
-						"successCriteria": "1.2.5"
+						"successCriteria": "1.2.5",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"doesnotexist\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1187,7 +1229,10 @@
 						"name": "reorder-heading1-order",
 						"description": "Change heading order",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    \n    <h2>Video Test </h2><h1>Media Tests </h1>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1206,7 +1251,10 @@
 						"name": "reorder-heading2-order",
 						"description": "Change heading order",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h2>Video Test </h2><h1>Media Tests </h1>\n    \n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1225,7 +1273,10 @@
 						"name": "change-h1-to-h2",
 						"description": "Change heading tag -  h1 -> h2",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 0,
+						"live": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    \n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1244,7 +1295,10 @@
 						"name": "change-h2-to-h3",
 						"description": "Change heading tag -  h2 -> h3",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    \n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1263,7 +1317,10 @@
 						"name": "change-h2-to-h1",
 						"description": "Change heading tag -  h2 -> h1",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    \n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1282,7 +1339,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Audio and Video</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Media Tests </h1>\n    <h2>Video Test </h2>\n    <video width=\"600\" height=\"400\" controls=\"\">\n      <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n    </video>\n\n    <h2>Audio Test </h2>\n    <audio controls=\"\">\n      <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n      <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n    </audio>\n  </div>\n\n\n</body></html>",
@@ -1345,7 +1405,10 @@
 						"name": "empty-aria-label",
 						"description": "Buttons should be labeled",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
@@ -1364,7 +1427,10 @@
 						"name": "remove-aria-label",
 						"description": "Buttons should be labeled",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
@@ -1383,7 +1449,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n  </div>\n\n\n</body></html>",
@@ -1446,7 +1515,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <button id=\"button\">Test</button>\n  </div>\n\n\n</body></html>",
@@ -1509,7 +1581,10 @@
 						"name": "change-p-as-heading",
 						"description": "Paragraph elements should not be styled as headers",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 2,
+						"violations": 2,
+						"live": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p style=\"font-size: 150%; font-weight: bold;\">Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1528,7 +1603,10 @@
 						"name": "reorder-heading1-order",
 						"description": "Change heading order",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    \n    <h2>Small Heading</h2><h1>Main Heading</h1>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1580,7 +1658,10 @@
 						"name": "reorder-heading2-order",
 						"description": "Change heading order",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h2>Small Heading</h2><h1>Main Heading</h1>\n    \n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1632,7 +1713,10 @@
 						"name": "reorder-heading3-order",
 						"description": "Change heading order",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h3>Smaller Heading</h3><h2>Small Heading</h2>\n    \n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1684,7 +1768,10 @@
 						"name": "change-h1-to-h2",
 						"description": "Change heading tag -  h1 -> h2",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 0,
+						"live": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    \n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1703,7 +1790,10 @@
 						"name": "change-h2-to-h3",
 						"description": "Change heading tag -  h2 -> h3",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    \n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1755,7 +1845,10 @@
 						"name": "change-h3-to-h4",
 						"description": "Change heading tag -  h3 -> h4",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    \n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1774,7 +1867,10 @@
 						"name": "change-h2-to-h1",
 						"description": "Change heading tag -  h2 -> h1",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 2,
+						"violations": 1,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    \n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1826,7 +1922,10 @@
 						"name": "change-h3-to-h2",
 						"description": "Change heading tag -  h3 -> h2",
 						"class": "Change element tag",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    \n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1845,7 +1944,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Headings</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <h1>Main Heading</h1>\n    <h2>Small Heading</h2>\n    <h3>Smaller Heading</h3>\n    <p>Text</p>\n  </div>\n\n\n</body></html>",
@@ -1908,7 +2010,10 @@
 						"name": "empty-img-alt-text",
 						"description": "Image must have alt text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 2,
+						"violations": 0,
+						"live": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -1927,7 +2032,10 @@
 						"name": "remove-img-alt-text",
 						"description": "Image must have alt text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 2,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -2017,7 +2125,10 @@
 						"name": "empty-area-alt",
 						"description": "Ensures <area> elements of image maps have alternate text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -2133,7 +2244,10 @@
 						"name": "remove-area-alt",
 						"description": "Ensures <area> elements of image maps have alternate text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -2249,7 +2363,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <map name=\"primary\">\n      <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n      <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n    </map>\n    <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n  </div>\n\n\n</body></html>",
@@ -2312,7 +2429,10 @@
 						"name": "empty-img-alt-text",
 						"description": "Image must have alt text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 2,
+						"violations": 0,
+						"live": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -2331,7 +2451,10 @@
 						"name": "remove-img-alt-text",
 						"description": "Image must have alt text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 2,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -2421,7 +2544,10 @@
 						"name": "empty-input-image-alt-text",
 						"description": "Empty alternative text from <input type='image'> element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -2497,7 +2623,10 @@
 						"name": "remove-input-image-alt-text",
 						"description": "Remove alternative text from <input type='image'> element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -2573,7 +2702,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Image</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n  </div>\n\n\n</body></html>",
@@ -2636,7 +2768,10 @@
 						"name": "empty-input-aria-label",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -2720,7 +2855,10 @@
 						"name": "remove-input-aria-label",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -2804,7 +2942,10 @@
 						"name": "empty-input-aria-labelledby",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -2925,7 +3066,10 @@
 						"name": "remove-input-aria-labelledby",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3009,7 +3153,10 @@
 						"name": "remove-input-aria-labelfor",
 						"description": "Labels - must be structured correctly",
 						"class": "Remove Element",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      \n      <input type=\"text\" id=\"labelledfora\">\n\n      \n      <select id=\"labelledforb\"></select>\n\n      \n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3187,7 +3334,10 @@
 						"name": "empty-select-aria-label",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3271,7 +3421,10 @@
 						"name": "empty-textarea-aria-label",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3355,7 +3508,10 @@
 						"name": "remove-select-aria-labelledby",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3439,7 +3595,10 @@
 						"name": "remove-textarea-aria-labelledby",
 						"description": "Labels - must be structured correctly",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3523,7 +3682,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Labels</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <form action=\"#\">\n      <!-- aria label -->\n      <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n      <select aria-label=\"label\" id=\"selecta\"></select>\n      <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n      <!-- aria labelledby -->\n      <label id=\"labelbya\">Label</label>\n      <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n      <label id=\"labelbyb\">Label</label>\n      <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n      <label id=\"labelbyc\">Label</label>\n      <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n      <!-- label for -->\n      <label id=\"labela\" for=\"labelledfora\">Label</label>\n      <input type=\"text\" id=\"labelledfora\">\n\n      <label id=\"labelb\" for=\"labelledforb\">Label</label>\n      <select id=\"labelledforb\"></select>\n\n      <label id=\"labelc\" for=\"labelledforc\">Label</label>\n      <textarea id=\"labelledforc\"></textarea>\n\n    </form>\n  </div>\n\n\n</body></html>",
@@ -3586,7 +3748,10 @@
 						"name": "empty-link-text",
 						"description": "Remove text from link",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 2,
+						"violations": 6,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\"></a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -3781,7 +3946,10 @@
 						"name": "empty-link-aria-label",
 						"description": "Empty aria label of link without inner text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -3976,7 +4144,10 @@
 						"name": "change-link-labelledby-nonexistant",
 						"description": "Change the aria labelled by to a non existant element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 4,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"doesnotexist\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -4208,7 +4379,10 @@
 						"name": "change-link-labelledby-invalid",
 						"description": "Change the aria labelled by element to a invalid element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\"></div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -4450,7 +4624,10 @@
 						"name": "empty-role-link-text",
 						"description": "Remove text from element with role='link'",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\"></span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -4637,7 +4814,10 @@
 						"name": "empty-role-link-aria-label",
 						"description": "Empty aria label of element with role='link' without inner text",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -4824,7 +5004,10 @@
 						"name": "change-role-link-labelledby-nonexistant",
 						"description": "Change the aria labelledby of element with role='link' to a non existant element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 4,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"doesnotexist\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -5048,7 +5231,10 @@
 						"name": "change-role-link-labelledby-invalid",
 						"description": "Change the aria labelledby of element with role='link' to a invalid element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 3,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\"></div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -5290,7 +5476,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Links</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <a href=\"#\" id=\"a\">This link has text</a>\n    <a href=\"#\" id=\"b\" aria-label=\"link text\"></a>\n\n    <div id=\"linklabel\">Text</div>\n    <a href=\"#\" id=\"c\" aria-labelledby=\"linklabel\"></a>\n\n    <span role=\"link\" href=\"#\" id=\"d\">This link has text</span>\n    <span role=\"link\" href=\"#\" id=\"e\" aria-label=\"link text\"></span>\n    <span role=\"link\" href=\"#\" id=\"f\" aria-labelledby=\"linklabel\"></span>\n\n  </div>\n\n\n</body></html>",
@@ -5558,7 +5747,10 @@
 						"name": "reorder-definition-list",
 						"description": "definition-list - must be structured correctly",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 2,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dt>Coffee</dt><dl>\n      \n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
@@ -5644,7 +5836,10 @@
 						"name": "reorder-ordered-list",
 						"description": "Ordered-list - must be structured correctly",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <li>a</li><ol>\n      \n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
@@ -5697,7 +5892,10 @@
 						"name": "reorder-unordered-list",
 						"description": "Unordered-list - must be structured correctly",
 						"class": "Reorder Element",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <li>a</li><ul>\n      \n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
@@ -5750,7 +5948,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <dl>\n      <dt>Coffee</dt>\n      <dd>Black hot drink</dd>\n    </dl>\n\n    <ul>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ul>\n\n    <ol>\n      <li>a</li>\n      <li>b</li>\n      <li>c</li>\n    </ol>\n  </div>\n\n\n</body></html>",
@@ -5813,7 +6014,10 @@
 						"name": "remove-object-alt-text",
 						"description": "Remove alt text from object element",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\"></object>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n  </div>\n\n\n</body></html>",
@@ -5889,7 +6093,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n  </div>\n\n\n</body></html>",
@@ -5952,7 +6159,10 @@
 						"name": "change-table-role",
 						"description": "Change presentational tables to other roles",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"hi\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"hi\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
@@ -5971,7 +6181,10 @@
 						"name": "empty-td-header",
 						"description": "Empty td header",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 0,
+						"live": 1
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"hi\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
@@ -5990,7 +6203,10 @@
 						"name": "change-td-header",
 						"description": "Change td header",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 1,
+						"violations": 1,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"doesnotexist\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"hi\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
@@ -6052,7 +6268,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"hi\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Tables</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <table id=\"presentational-table\" role=\"presentation\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"a\" role=\"grid\">\n      <tbody><tr>\n        <th colspan=\"2\">AXE</th>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n    <table id=\"b\" role=\"grid\">\n      <tbody><tr>\n        <td colspan=\"2\">AXE</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        </tr><tr>\n    </tr></tbody></table>\n\n\n    <table id=\"c\">\n      <tbody><tr>\n        <th>AXE</th>\n        <th>AXE</th>\n        <th>AXE</th>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n    <table id=\"d\">\n      <tbody><tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <th>AXE</th>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n      <tr>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n        <td>aXe</td>\n      </tr>\n    </tbody></table>\n\n\n    <table>\n      <tbody><tr>\n        <th id=\"hi\"> </th>\n      </tr>\n      <tr>\n        <td headers=\"hi\">goodbye\n      </td></tr>\n    </tbody></table>\n  </div>\n\n\n</body></html>",
@@ -6115,7 +6334,10 @@
 						"name": "empty-link-text",
 						"description": "Remove text from link",
 						"class": "Attribute Change",
-						"successCriteria": "1.1.1"
+						"successCriteria": "1.1.1",
+						"total": 2,
+						"violations": 6,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <p style=\"color:black\">\n      paragraph of text\n      <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\"></a>\n      <br>\n      <a href=\"#\" id=\"ignore10\"></a>\n    </p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <p style=\"color:black\">\n      paragraph of text\n      <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n        Link text</a>\n      <br>\n      <a href=\"#\" id=\"ignore10\">Link!</a>\n    </p>\n  </div>\n\n\n</body></html>",
@@ -6346,7 +6568,10 @@
 						"name": "change-p-as-heading",
 						"description": "Paragraph elements should not be styled as headers",
 						"class": "Attribute Change",
-						"successCriteria": "1.3.1"
+						"successCriteria": "1.3.1",
+						"total": 2,
+						"violations": 2,
+						"live": 2
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <p style=\"color: black; font-size: 150%; font-weight: bold;\">\n      paragraph of text\n      <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n        Link text</a>\n      <br>\n      <a href=\"#\" id=\"ignore10\">Link!</a>\n    </p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <p style=\"color:black\">\n      paragraph of text\n      <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n        Link text</a>\n      <br>\n      <a href=\"#\" id=\"ignore10\">Link!</a>\n    </p>\n  </div>\n\n\n</body></html>",
@@ -6449,7 +6674,10 @@
 						"name": "empty-title",
 						"description": "Empty title",
 						"class": "Change Attribute",
-						"successCriteria": "1.3.2"
+						"successCriteria": "1.3.2",
+						"total": 13,
+						"violations": 18,
+						"live": 0
 					},
 					"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title></title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <p style=\"color:black\">\n      paragraph of text\n      <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n        Link text</a>\n      <br>\n      <a href=\"#\" id=\"ignore10\">Link!</a>\n    </p>\n  </div>\n\n\n</body></html>",
 					"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>Button</title>\n</head>\n\n<body>\n  <div role=\"main\">\n    <p style=\"color:black\">\n      paragraph of text\n      <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n        Link text</a>\n      <br>\n      <a href=\"#\" id=\"ignore10\">Link!</a>\n    </p>\n  </div>\n\n\n</body></html>",
@@ -6665,5 +6893,612 @@
 				]
 			}
 		}
-	]
+	],
+	"mutations": [
+		{
+			"id": "1.1.1-01",
+			"name": "empty-img-alt-text",
+			"description": "Image must have alt text",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 2,
+			"violations": 0,
+			"live": 2
+		},
+		{
+			"id": "1.1.1-02",
+			"name": "remove-img-alt-text",
+			"description": "Image must have alt text",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 2,
+			"violations": 2,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-03",
+			"name": "empty-input-image-alt-text",
+			"description": "Empty alternative text from <input type='image'> element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-04",
+			"name": "remove-input-image-alt-text",
+			"description": "Remove alternative text from <input type='image'> element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-05",
+			"name": "empty-aria-label",
+			"description": "Buttons should be labeled",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.1.1-06",
+			"name": "remove-aria-label",
+			"description": "Buttons should be labeled",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.1.1-07",
+			"name": "empty-area-alt",
+			"description": "Ensures <area> elements of image maps have alternate text",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-08",
+			"name": "remove-area-alt",
+			"description": "Ensures <area> elements of image maps have alternate text",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-09",
+			"name": "empty-link-text",
+			"description": "Remove text from link",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 2,
+			"violations": 6,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-10",
+			"name": "empty-link-aria-label",
+			"description": "Empty aria label of link without inner text",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-11",
+			"name": "change-link-labelledby-nonexistant",
+			"description": "Change the aria labelled by to a non existant element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 4,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-12",
+			"name": "change-link-labelledby-invalid",
+			"description": "Change the aria labelled by element to a invalid element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-13",
+			"name": "empty-role-link-text",
+			"description": "Remove text from element with role='link'",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-14",
+			"name": "empty-role-link-aria-label",
+			"description": "Empty aria label of element with role='link' without inner text",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-15",
+			"name": "change-role-link-labelledby-nonexistant",
+			"description": "Change the aria labelledby of element with role='link' to a non existant element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 4,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-16",
+			"name": "change-role-link-labelledby-invalid",
+			"description": "Change the aria labelledby of element with role='link' to a invalid element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.1.1-17",
+			"name": "remove-object-alt-text",
+			"description": "Remove alt text from object element",
+			"class": "Attribute Change",
+			"successCriteria": "1.1.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.2.2-01",
+			"name": "remove-audio-caption",
+			"description": "Remove caption track from audio element",
+			"class": "Remove Element",
+			"successCriteria": "1.2.2",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.2.2-02",
+			"name": "change-audio-caption-source",
+			"description": "Change track source to incorrect source on audio element",
+			"class": "Attribute Change",
+			"successCriteria": "1.2.2",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.2.3-01",
+			"name": "remove-video-caption",
+			"description": "Remove caption track from video element",
+			"class": "Remove Element",
+			"successCriteria": "1.2.3",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.2.3-02",
+			"name": "change-video-caption-source",
+			"description": "Remove caption track from video element",
+			"class": "Attribute Change",
+			"successCriteria": "1.2.3",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.2.5-01",
+			"name": "remove-video-description",
+			"description": "Remove description track from video element",
+			"class": "Remove Element",
+			"successCriteria": "1.2.5",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.2.5-02",
+			"name": "change-video-description-source",
+			"description": "Remove description track from video element",
+			"class": "Attribute Change",
+			"successCriteria": "1.2.5",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.3.1-01",
+			"name": "empty-arc-children",
+			"description": "aria-required-children - parent role does not match expected children",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 2,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-02",
+			"name": "change-arc-children-role",
+			"description": "aria-required-children - parent role does not match expected children",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-03",
+			"name": "empty-arc-children-owns",
+			"description": "aria-required-children - parent role does not match expected children",
+			"class": "Remove Element",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-04",
+			"name": "change-arc-children-role-owns",
+			"description": "aria-required-children - parent role does not match expected children",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-05",
+			"name": "remove-arp-parent",
+			"description": "aria-required-parent - certain ARIA roles must be contained by particular parents",
+			"class": "Remove Element",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 2,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-06",
+			"name": "change-aria-role",
+			"description": "aria-roles - ARIA roles used must conform to valid values",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 3,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-07",
+			"name": "change-avav-role",
+			"description": "aria-required-parent - child role does not have expected parent",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 2,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-08",
+			"name": "reorder-definition-list",
+			"description": "definition-list - must be structured correctly",
+			"class": "Reorder Element",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 2,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-09",
+			"name": "reorder-ordered-list",
+			"description": "Ordered-list - must be structured correctly",
+			"class": "Reorder Element",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-10",
+			"name": "reorder-unordered-list",
+			"description": "Unordered-list - must be structured correctly",
+			"class": "Reorder Element",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-11",
+			"name": "empty-input-aria-label",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-12",
+			"name": "remove-input-aria-label",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-13",
+			"name": "empty-input-aria-labelledby",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 2,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-14",
+			"name": "remove-input-aria-labelledby",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-15",
+			"name": "remove-input-aria-labelfor",
+			"description": "Labels - must be structured correctly",
+			"class": "Remove Element",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-16",
+			"name": "empty-select-aria-label",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-17",
+			"name": "empty-textarea-aria-label",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-18",
+			"name": "remove-select-aria-labelledby",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-19",
+			"name": "remove-textarea-aria-labelledby",
+			"description": "Labels - must be structured correctly",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.1-20",
+			"name": "change-p-as-heading",
+			"description": "Paragraph elements should not be styled as headers",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 2,
+			"violations": 2,
+			"live": 2
+		},
+		{
+			"id": "1.3.1-21",
+			"name": "change-table-role",
+			"description": "Change presentational tables to other roles",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.3.1-22",
+			"name": "empty-td-header",
+			"description": "Empty td header",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.3.1-23",
+			"name": "change-td-header",
+			"description": "Change td header",
+			"class": "Attribute Change",
+			"successCriteria": "1.3.1",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.2-01",
+			"name": "reorder-heading1-order",
+			"description": "Change heading order",
+			"class": "Reorder Element",
+			"successCriteria": "1.3.2",
+			"total": 2,
+			"violations": 1,
+			"live": 1
+		},
+		{
+			"id": "1.3.2-02",
+			"name": "reorder-heading2-order",
+			"description": "Change heading order",
+			"class": "Reorder Element",
+			"successCriteria": "1.3.2",
+			"total": 2,
+			"violations": 1,
+			"live": 1
+		},
+		{
+			"id": "1.3.2-03",
+			"name": "reorder-heading3-order",
+			"description": "Change heading order",
+			"class": "Reorder Element",
+			"successCriteria": "1.3.2",
+			"total": 1,
+			"violations": 1,
+			"live": 0
+		},
+		{
+			"id": "1.3.2-04",
+			"name": "change-h1-to-h2",
+			"description": "Change heading tag -  h1 -> h2",
+			"class": "Change element tag",
+			"successCriteria": "1.3.2",
+			"total": 2,
+			"violations": 0,
+			"live": 2
+		},
+		{
+			"id": "1.3.2-05",
+			"name": "change-h2-to-h3",
+			"description": "Change heading tag -  h2 -> h3",
+			"class": "Change element tag",
+			"successCriteria": "1.3.2",
+			"total": 2,
+			"violations": 1,
+			"live": 1
+		},
+		{
+			"id": "1.3.2-06",
+			"name": "change-h3-to-h4",
+			"description": "Change heading tag -  h3 -> h4",
+			"class": "Change element tag",
+			"successCriteria": "1.3.2",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.3.2-07",
+			"name": "change-h2-to-h1",
+			"description": "Change heading tag -  h2 -> h1",
+			"class": "Change element tag",
+			"successCriteria": "1.3.2",
+			"total": 2,
+			"violations": 1,
+			"live": 1
+		},
+		{
+			"id": "1.3.2-08",
+			"name": "change-h3-to-h2",
+			"description": "Change heading tag -  h3 -> h2",
+			"class": "Change element tag",
+			"successCriteria": "1.3.2",
+			"total": 1,
+			"violations": 0,
+			"live": 1
+		},
+		{
+			"id": "1.3.2-09",
+			"name": "change-h4-to-h3",
+			"description": "Change heading tag -  h4 -> h3",
+			"class": "Change element tag",
+			"successCriteria": "1.3.2",
+			"total": 0,
+			"violations": 0,
+			"live": 0
+		},
+		{
+			"id": "2.4.2-01",
+			"name": "empty-title",
+			"description": "Empty title",
+			"class": "Change Attribute",
+			"successCriteria": "1.3.2",
+			"total": 13,
+			"violations": 18,
+			"live": 0
+		}
+	],
+	"analysis": {
+		"all": {
+			"total": 0,
+			"violations": 96,
+			"live": 20,
+			"killed": 76
+		},
+		"categories": [
+			{
+				"name": "Attribute Change",
+				"violations": 976,
+				"live": 176,
+				"total": 518,
+				"killed": 885
+			},
+			{
+				"name": "Remove Element",
+				"violations": 128,
+				"live": 16,
+				"total": 84,
+				"killed": 120
+			},
+			{
+				"name": "Reorder Element",
+				"violations": 112,
+				"live": 32,
+				"total": 84,
+				"killed": 75
+			},
+			{
+				"name": "Change element tag",
+				"violations": 32,
+				"live": 96,
+				"total": 84,
+				"killed": 0
+			},
+			{
+				"name": "Change Attribute",
+				"violations": 288,
+				"live": 0,
+				"total": 14,
+				"killed": 270
+			}
+		]
+	}
 }

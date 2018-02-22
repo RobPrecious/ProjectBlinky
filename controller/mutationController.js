@@ -52,6 +52,31 @@ const mutationController = {
     });
   },
 
+  analyse: (data, categories) => {
+    let all = {
+      total: 0,
+      violations: 0,
+      live: 0,
+      killed: 0,
+    };
+    data.mutations.map(mut => {
+      all.violations += mut.violations;
+      all.live += mut.live;
+      all.killed += mut.violations - mut.live;
+
+      let mut_class = categories.find(cat => cat.name == mut.class);
+      mut_class.violations += mut.violations;
+      mut_class.live += mut.live;
+      mut_class.killed += mut.violations - mut.live > 0 ? mut.violations - mut.live : 0;
+      mut_class.total++;
+    })
+
+    return {
+      all,
+      categories,
+    };
+  }
+
 }
 
 
