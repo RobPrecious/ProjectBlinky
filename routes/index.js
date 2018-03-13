@@ -7,8 +7,10 @@ const fs = require('fs-extra');
 const mutationController = require('../controller/mutationController');
 const axeController = require('../controller/axeController');
 const mutationLibrary = require('../controller/mutationLibrary');
+const mutator = require('../controller/mutator');
 
-const validator = require('html-validator')
+
+const validator = require('html-validator');
 const jsdom = require("jsdom");
 const {
   JSDOM
@@ -127,19 +129,28 @@ function run() {
 };
 
 router.get('/', (req, res, next) => {
+  if (!req.session.data) {
+    req.session.data = {}
+  }
   return res.render('index', {})
 })
 
 router.get('/testbench', (req, res, next) => {
-  loadSource("TestBench.v.0.0.1.html");
+  const source = "TestBench.v.0.0.1.html";
+  loadSource(source);
 
-  Promise.all([mutantCheckSource("TestBench.v.0.0.1.html"), axeTestSource(), validityCheckSource("TestBench.v.0.0.1.html")])
+  Promise.all([mutantCheckSource(source), axeTestSource(), validityCheckSource(source)])
     .then(results => {
-      return res.json({
-        "sourceURL": "/v2/source",
+      req.session.data = {
+        "source": {
+          "id": "TestBench",
+          "file": path.resolve(__dirname, '../views/' + source),
+          "route": "/v2/source",
+        },
         "mutations": {
           "mutantCount": mutationLibrary.length,
           "viableCount": results[0].length,
+          "viableRaw": results[0],
         },
         "axe": {
           "violationsCount": results[1].violations.length,
@@ -149,9 +160,150 @@ router.get('/testbench', (req, res, next) => {
           "valid": results[2].messages.length == 0,
           "raw": results[2],
         },
-      })
+      }
+      return res.json(req.session.data);
     })
 })
+
+router.get('/view-mutation-summary', (req, res, next) => {
+  if (!req.session.data) {
+    return res.redirect('/')
+  } else {
+    return res.render('mutation-summary', {
+      "allMutations": mutationLibrary,
+      "viableMutations": req.session.data.mutations.viableRaw,
+    })
+  }
+})
+
+router.get('/view-violation-summary', (req, res, next) => {
+  if (!req.session.data) {
+    return res.redirect('/');
+  } else {
+    return res.render('violations-summary', {
+      "axe": req.session.data.axe
+    });
+  }
+})
+
+router.get('/view-validation-summary', (req, res, next) => {
+  if (!req.session.data) {
+    return res.redirect('/');
+  } else {
+    return res.render('validation-summary', {
+      "validity": req.session.data.validity
+    });
+  }
+})
+
+router.get('/mutate-source', (req, res, next) => {
+  if (!req.session.data) {
+    return res.redirect('/');
+  } else {
+    return mutationController.mutateSource(req.session.data.source, mutationLibrary)
+      .then(result => {
+        result.mutants.map(mutant => {
+          router.get('/mutants/' + mutant.id, (req, res, next) => {
+            res.render('main', {
+              template: mutant.file
+            });
+          });
+        })
+        return result;
+      })
+      .then(result => {
+        req.session.data.source = result;
+        return res.json(result);
+      })
+  }
+})
+
+router.get('/view-mutants-summary', (req, res, next) => {
+  if (!req.session.data) {
+    return res.redirect('/');
+  } else {
+    return res.render('mutants-summary', {
+      "mutatedSource": req.session.data.mutatedSource
+    });
+  }
+})
+
+router.get('/run-axe-agaist-axe', (req, res, next) => {
+  if (!req.session.data) {
+    return res.redirect('/');
+  } else {
+    let source = req.session.data.source;
+    return axeController.testURL(url + "/" + source.route).then(result => {
+        source.axe = {
+          violations: result.violations
+        };
+        return source;
+      })
+      .then((source) => {
+        return Promise.all(source.mutants.map(mutant => {
+            return axeController.testURL(url + mutant.route).then(result => {
+              mutant.axe = {
+                violations: result.violations
+              };
+            })
+          }))
+          .then(() => {
+            return source;
+          })
+      })
+      //Analyse and Export Results
+      .then(result => {
+        let data = {
+          sources: [result]
+        };
+        let categories_list = [];
+        let categories_obj = [];
+
+        data.sources.map(source => {
+          source.mutants.map(mutant => {
+            mutant.live = mutant.axe.violations.length == source.axe.violations.length ? true : false;
+            mutant.equiv = mutant.thisHTML == mutant.sourceHTML ? true : false;
+          })
+        });
+
+        // Compile Mutation Data
+        data.mutations = mutationLibrary.map(mutation => {
+          if (categories_list.indexOf(mutation.class) == -1) {
+            categories_list.push(mutation.class);
+            categories_obj.push({
+              name: mutation.class,
+              violations: 0,
+              live: 0,
+              total: 0,
+              killed: 0,
+            });
+          }
+          mutation.total = 0;
+          mutation.violations = 0;
+          mutation.live = 0;
+
+          data.sources.map(source => {
+            source.mutants.map(mutant => {
+              if (mutant.mutation.id == mutation.id) {
+                mutation.violations += mutant.axe.violations.length;
+                mutation.live += mutant.live ? 1 : 0;
+                mutation.total++;
+              }
+            });
+          });
+          return mutation;
+        });
+
+        data.analysis = mutationController.analyse(data, categories_obj);
+        console.log(data.analysis);
+        req.session.data.source = data;
+        return res.json(data);
+      })
+
+  }
+})
+
+
 
 function loadSource(location) {
   router.get('/v2/source', (req, res, next) => {

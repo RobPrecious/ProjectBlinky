@@ -97,6 +97,7 @@ body {
   padding: 1px;
 }
 
-#source-analysis-options {
+#source-analysis-options,
+#mutant-analysis-options {
   padding-right: 10px;
 }

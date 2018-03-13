@@ -1,6 +1,7 @@
 const pify = require('pify');
 const fs = require('fs-extra');
 const path = require('path');
+const validator = require('html-validator');
 const jsdom = require("jsdom");
 const {
   JSDOM
@@ -12,6 +13,7 @@ module.exports = (source, mutations) => {
         return JSDOM.fromFile(path.resolve(__dirname, source.file))
           .then(dom => {
             let sourceHTML = dom.serialize();
+
             return pify(fs).writeFile(path.resolve(__dirname, '../views/mutants/' + source.id + '-m' + mutation.id + '.html'), mutation.mutation(dom))
               .then(data => {
                 return {
@@ -23,6 +25,13 @@ module.exports = (source, mutations) => {
                   sourceHTML,
                 };
 
+              })
+              .then(data => {
+                return validityCheck(dom)
+                  .then(validityResult => {
+                    data.validity = validityResult;
+                    return data;
+                  })
               });
           });
       }));
@@ -32,3 +41,13 @@ module.exports = (source, mutations) => {
       console.log(err)
     })
 };
+
+function validityCheck(dom) {
+  return validator({
+      format: 'json',
+      data: dom.serialize(),
+    })
+    .then((data) => {
+      return data;
+    })
+}

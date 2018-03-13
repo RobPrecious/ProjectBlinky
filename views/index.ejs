@@ -3,6 +3,7 @@
   <head>
     <%- include("partials/html-header") %>
     <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/Chart.bundle.min.js"></script>
 
     <title>Blinky: Web Mutation Testing</title>
   </head>
@@ -89,9 +90,11 @@
                 </div>
                 <div id="source-analysis-options">
                   <button type="button" class="btn btn-info btn-lg btn-block" id="btnViewSource">View Source</button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block" id="btnMutationSummary">View Mutation Summary</button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block" id="btnViolationSummary">View Violations Summary</button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block" id="btnRunMutations">Run Mutations</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnMutationSummary">View Mutation Summary</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnViolationSummary">View Violations Summary</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnValidationSummary">View Validation Summary</button>
+                  <hr>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnRunMutations">Run Mutations</button>
                 </div>
 
             </div>
@@ -102,7 +105,31 @@
               <i data-col-id="mutation-results-section" data-active=false class="fas fa-plus"></i>        
               <h1>Mutation Results</h1>
             </div>
-            <div class="section-content hide">HELLO</div>
+            <div class="section-content hide">
+              <h2>Mutation Results</h2>
+              <div id="stat-cards">
+                <div id="total-count" class="card bg-warning mb-3 stat-card" >
+                  <div class="card-header">Total Mutations</div>
+                  <div class="card-body"></div>
+                </div>
+
+                <div id="valid-mutant-count" class="card bg-warning mb-3 stat-card" >
+                  <div class="card-header">Valid Mutations</div>
+                  <div class="card-body"></div>
+                </div>
+
+                <div id="something-count" class="card bg-warning mb-3 stat-card" >
+                  <div class="card-header">Something else</div>
+                  <div class="card-body">:)</div>
+                </div>
+              </div>
+              <div id="mutant-analysis-options">
+                <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewSource">View Source</button>
+                <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewMutants">View Mutants</button>
+                 <hr>
+                  <button type="button" class="btn btn-warning btn-lg btn-block" id="btnRunAxe">Run Axe</button>
+              </div>
+            </div>
           </div>   
 
           <div class="c-col disabled" id="axe-results-section">
@@ -111,13 +138,38 @@
                 <h1>Axe Results</h1>
               </div>
                         
-              <div class="section-content hide">HELLO</div>
+              <div class="section-content hide">
+                <h2>Axe Results</h2>
+                 <div id="stat-cards">
+                  <div id="total-violations" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Total Violations</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="total-live" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Killed Mutants</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="kill-score" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Killed</div>
+                    <div class="card-body">0</div>
+                  </div>
+                </div>
+          
+                <div class="canvas-holder" style="position: relative; width:52vw">
+                  <canvas id="categories-area"></canvas>
+                </div>
+              </div>
 
           </div>
         </div>
       
       
       </div>   
-    </div>       
+    </div>    
+   
   </body>
 </html>
+
+

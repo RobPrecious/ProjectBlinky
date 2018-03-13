@@ -8,6 +8,23 @@ const {
 const mutator = require('./mutator');
 
 const mutationController = {
+  mutateSource: (source, mutationLibrary) => {
+    return new Promise((res, rej) => {
+      let source_data = {
+        id: source.id,
+        file: source.file,
+        route: source.route,
+        mutants: []
+      }
+      mutationController.getMutations(source, mutationLibrary)
+        .then(mutations => {
+          return mutator(source, mutations)
+            .then(result => source_data.mutants = result);
+        }).then((result) => {
+          res(source_data);
+        });
+    });
+  },
   getSources: () => {
     const files = fs.readdirSync(path.resolve(__dirname, '../views/sources'));
     let output = [];
@@ -78,6 +95,5 @@ const mutationController = {
   }
 
 }
-
 
 module.exports = mutationController;

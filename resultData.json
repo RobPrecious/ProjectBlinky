@@ -30531,38 +30531,38 @@
 		"categories": [
 			{
 				"name": "Attribute Change",
-				"violations": 468,
-				"live": 52,
-				"total": 148,
-				"killed": 333
+				"violations": 585,
+				"live": 65,
+				"total": 185,
+				"killed": 444
 			},
 			{
 				"name": "Remove Element",
-				"violations": 72,
-				"live": 8,
-				"total": 24,
-				"killed": 51
+				"violations": 90,
+				"live": 10,
+				"total": 30,
+				"killed": 68
 			},
 			{
 				"name": "Reorder Element",
-				"violations": 108,
-				"live": 16,
-				"total": 24,
-				"killed": 69
+				"violations": 135,
+				"live": 20,
+				"total": 30,
+				"killed": 92
 			},
 			{
 				"name": "Change element tag",
-				"violations": 208,
-				"live": 44,
-				"total": 24,
-				"killed": 129
+				"violations": 260,
+				"live": 55,
+				"total": 30,
+				"killed": 172
 			},
 			{
 				"name": "Change Attribute",
-				"violations": 116,
+				"violations": 145,
 				"live": 0,
-				"total": 4,
-				"killed": 87
+				"total": 5,
+				"killed": 116
 			}
 		]
 	}
