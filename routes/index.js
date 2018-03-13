@@ -8,6 +8,7 @@ const mutationController = require('../controller/mutationController');
 const axeController = require('../controller/axeController');
 const mutationLibrary = require('../controller/mutationLibrary');
 
+const validator = require('html-validator')
 const jsdom = require("jsdom");
 const {
   JSDOM
@@ -125,7 +126,68 @@ function run() {
     })
 };
 
-/* GET home page. */
+router.get('/', (req, res, next) => {
+  return res.render('index', {})
+})
+
+router.get('/testbench', (req, res, next) => {
+  loadSource("TestBench.v.0.0.1.html");
+
+  Promise.all([mutantCheckSource("TestBench.v.0.0.1.html"), axeTestSource(), validityCheckSource("TestBench.v.0.0.1.html")])
+    .then(results => {
+      return res.json({
+        "sourceURL": "/v2/source",
+        "mutations": {
+          "mutantCount": mutationLibrary.length,
+          "viableCount": results[0].length,
+        },
+        "axe": {
+          "violationsCount": results[1].violations.length,
+          "raw": results[1],
+        },
+        "validity": {
+          "valid": results[2].messages.length == 0,
+          "raw": results[2],
+        },
+      })
+    })
+})
+
+function loadSource(location) {
+  router.get('/v2/source', (req, res, next) => {
+    res.render('main', {
+      template: location
+    });
+  });
+}
+
+function mutantCheckSource(location) {
+  return JSDOM.fromFile(path.resolve(__dirname, "../views/" + location))
+    .then(dom => {
+      return mutationLibrary.filter(mutation => mutation.check(dom));
+    })
+}
+
+function axeTestSource() {
+  return axeController.testURL("http://localhost:3000/v2/source").then(axeResult => {
+    return axeResult;
+  })
+}
+
+function validityCheckSource(location) {
+  return JSDOM.fromFile(path.resolve(__dirname, "../views/" + location))
+    .then(dom => {
+      return validator({
+          format: 'json',
+          data: dom.serialize(),
+        })
+        .then((data) => {
+          return data;
+        })
+    })
+}
+
+/* GET home page. 
 router.get('/', (req, res, next) => {
   if (ran) {
     fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
@@ -152,6 +214,7 @@ router.get('/', (req, res, next) => {
 
   }
 });
+*/
 
 /* GET run. */
 router.get('/run', (req, res, next) => {

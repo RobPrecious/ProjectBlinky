@@ -1,9 +1,102 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.c-container,
+.c-row,
+.c-col,
+.disabled,
+.section-title {
+  height: 100%
+}
+
+.c-col {
+  display: block;
+  float: left;
+}
+
+.right-col {
+  float: right
+}
+
+.c-container {
+  padding: 0px;
 }
 
 .source-row {
   font-weight: bolder;
   background: lightgrey
+}
+
+.section-title {
+  display: block;
+  width: 50px;
+}
+
+.section-title h1 {
+  white-space: nowrap;
+  transform: rotate(270deg) translateX(-750%);
+}
+
+.section-title i {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 18pt;
+  margin-top: 10px;
+}
+
+.section-title,
+.section-content {
+  float: left
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+.disabled .section-content {
+  display: none
+}
+
+.disabled i {
+  display: none
+}
+
+.section-content {
+  padding: 15px;
+}
+
+.section-content .card {
+  margin: 10px 0px;
+}
+
+.stat-card {
+  width: 200px;
+  height: 180px;
+  float: left;
+  margin: 10px 10px 10px 0 !important;
+  text-align: center
+}
+
+.stat-card .card-body {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.stat-card .card-body i {
+  font-size: 2.5em;
+}
+
+#source-valid .card-body {
+  padding: 1px;
+}
+
+#source-analysis-options {
+  padding-right: 10px;
 }
