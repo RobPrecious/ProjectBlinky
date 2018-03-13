@@ -17,6 +17,23 @@ const url = "http://localhost:3000";
 let ran = false;
 let running = false;
 
+function createRoutes(data) {
+  data.sources.map(source => {
+    router.get('/sources/' + source.id, (req, res, next) => {
+      res.render('main', {
+        template: source.file
+      });
+    });
+    source.mutants.map(mutant => {
+      router.get('/mutants/' + mutant.id, (req, res, next) => {
+        res.render('main', {
+          template: mutant.file
+        });
+      });
+    })
+  })
+  return data;
+}
 
 function run() {
   //Create mutants
@@ -31,23 +48,7 @@ function run() {
       };
     })
     // Create Routes for Mutants
-    .then((data) => {
-      data.sources.map(source => {
-        router.get('/sources/' + source.id, (req, res, next) => {
-          res.render('main', {
-            template: source.file
-          });
-        });
-        source.mutants.map(mutant => {
-          router.get('/mutants/' + mutant.id, (req, res, next) => {
-            res.render('main', {
-              template: mutant.file
-            });
-          });
-        })
-      })
-      return data;
-    })
+    .then(data => createRoutes(data))
     //Test Mutants with Axe
     .then(data => {
       return Promise.all(data.sources.map(source => {
@@ -134,10 +135,21 @@ router.get('/', (req, res, next) => {
       });
     });
   } else {
-    return res.render('index', {
-      title: 'Mutation Testing',
-      data: false,
-    });
+    fs.readJson(path.resolve(__dirname, '../resultData.json'), (err, data) => {
+      if (err) {
+        return res.render('index', {
+          title: 'Mutation Testing',
+          data: false,
+        });
+      } else {
+        createRoutes(data)
+        return res.render('index', {
+          title: 'Mutation Testing',
+          data
+        });
+      }
+    })
+
   }
 });
 

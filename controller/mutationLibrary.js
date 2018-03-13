@@ -178,7 +178,7 @@ module.exports = [{
     },
     "mutation": (mutant_dom) => {
       let $ = require('jquery')(mutant_dom.window);
-      $("a").html(null);
+      $("a").first().html(null);
       return mutant_dom.serialize();
     }
   },
@@ -1135,7 +1135,7 @@ module.exports = [{
     "id": "2.4.2-01",
     "name": "empty-title",
     "description": "Empty title",
-    "class": "Change Attribute",
+    "class": "Attribute Change",
     "successCriteria": "1.3.2",
     "check": (dom) => {
       const document = dom.window.document;
