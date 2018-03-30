@@ -49,6 +49,33 @@
     </div>
 
     <div class="container-fluid" style="margin-top:20px">
+      <h1 class="float-left">Non-Vaible Mutants</h1>
+         
+      <table class="table display" id="mutants">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Class</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in nonViableMutations){%>
+              <tr class="">
+                <td><%= nonViableMutations[i].id%></td>
+                <td><%= nonViableMutations[i].name%></td>
+                <td><%= nonViableMutations[i].description%></td>
+                <td><%= nonViableMutations[i].class%></td>
+              </tr> 
+            
+          <%}%>  
+          </tbody>
+          </table>
+        
+        </div>
+
+    <div class="container-fluid" style="margin-top:20px">
       <h1 class="float-left">All Mutants</h1>
          
       <table class="table display" id="mutants">

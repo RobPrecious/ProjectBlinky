@@ -1,5 +1,7 @@
 var AxeBuilder = require('axe-webdriverjs');
 var WebDriver = require('selenium-webdriver');
+const pa11y = require('pa11y');
+
 
 
 const axeController = {
@@ -14,6 +16,7 @@ const axeController = {
       .then(function () {
         return AxeBuilder(driver)
           .withTags(['best-practice', 'wcag2a', 'wcag2aa', 'section508', 'cat'])
+          .disableRules(['href-no-hash', 'skip-link'])
           .analyze(function (results) {
             return results;
           });
@@ -22,7 +25,15 @@ const axeController = {
         driver.close();
         return results;
       })
-  }
+  },
+
+  runPa11y: (source) => {
+
+    pa11y(source).then((results) => {
+      console.log(results)
+      return results;
+    });
+  },
 }
 
 module.exports = axeController;

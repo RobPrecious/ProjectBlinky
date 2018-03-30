@@ -25,16 +25,16 @@
        let html = '<div class="table-responsive">';
       html += '<table class="table table-hover">'
       html += '<thead><tr><th>id</th> <th>Name</th> <th>Description</th> <th>Class</th> <th>SC</th> <th>Valid</th> <th>View</th></tr></thead>';
-
+      console.log(source);
       let sourceButton = '<button type="button" class="mutant-button btn btn-warning btn-sm" ' +
-        'onClick="var win = window.open(\'' + mutatedSource.route + '\', \'_blank\');win.focus();">View</button>';
+        'onClick="var win = window.open(\'' + source.route + '\', \'_blank\');win.focus();">View</button>';
 
       html += '<tr><td></td> <td>Source</td> <td></td> <td></td> <td></td> <td></td> <td>' + sourceButton + '</td> ';
 
-      for (var i in mutatedSource.mutants) {
+      for (var i in source.mutants) {
         let mutantButton = '<button type="button" class="mutant-button btn btn-warning btn-sm" ' +
-          'onClick="var win = window.open(\'' + mutatedSource.mutants[i].route + '\', \'_blank\');win.focus();">View</button>';
-        html += '<tr><td>' + mutatedSource.mutants[i].mutation.id + '</td> <td>' + mutatedSource.mutants[i].mutation.name + '</td> <td>' + mutatedSource.mutants[i].mutation.description + '</td> <td>' + mutatedSource.mutants[i].mutation.class + '</td> <td>' + mutatedSource.mutants[i].mutation.successCriteria + '</td> <td>' + (mutatedSource.mutants[i].validity.messages.length == 0 ? "Yes" : "No") + '</td> <td>' + mutantButton + '</td> </tr>';
+          'onClick="var win = window.open(\'' + source.mutants[i].route + '\', \'_blank\');win.focus();">View</button>';
+        html += '<tr><td>' + source.mutants[i].mutation.id + '</td> <td>' + source.mutants[i].mutation.name + '</td> <td>' + source.mutants[i].mutation.description + '</td> <td>' + source.mutants[i].mutation.class + '</td> <td>' + source.mutants[i].mutation.successCriteria + '</td> <td>' + (source.mutants[i].validity.valid ? "Yes" : "No") + '</td> <td>' + mutantButton + '</td> </tr>';
       }
       html += '</div>'
       %>

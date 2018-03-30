@@ -15,6 +15,10 @@ body {
   height: 100%
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 .c-col {
   display: block;
   float: left;
@@ -100,4 +104,11 @@ body {
 #source-analysis-options,
 #mutant-analysis-options {
   padding-right: 10px;
+}
+
+#loading-spinner {
+  text-align: center;
+  font-size: 26pt;
+  width: 100%;
+  display: block;
 }

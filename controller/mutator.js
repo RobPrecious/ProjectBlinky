@@ -29,10 +29,14 @@ module.exports = (source, mutations) => {
               .then(data => {
                 return validityCheck(dom)
                   .then(validityResult => {
+                    data.valid = validityResult.messages ? false : true;
                     data.validity = validityResult;
                     return data;
                   })
-              });
+              })
+              .catch(err => {
+                console.log(err);
+              })
           });
       }));
     })
@@ -44,10 +48,12 @@ module.exports = (source, mutations) => {
 
 function validityCheck(dom) {
   return validator({
-      format: 'json',
       data: dom.serialize(),
     })
     .then((data) => {
-      return data;
+      output = JSON.parse(data);
+      output.messages = data.messages ? data.messages.filter(msg => msg.message != 'Attribute "href" not allowed on element "span" at this point.') : [];
+      return output;
+
     })
 }

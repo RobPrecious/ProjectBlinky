@@ -26,6 +26,8 @@ window.chartColors = {
 
 
 $(document).ready(function () {
+
+  // ----------------------- NAVIGATION -------------------------- //
   $('i[data-active]').on('click', function () {
     const active = $.parseJSON($(this).attr("data-active"));
     const col = $(this).attr("data-col-id");
@@ -69,38 +71,76 @@ $(document).ready(function () {
 
   })
 
+  $('#get-session').on('click', function () {
+    $.get("/get-session", function (data) {
+      console.log(data);
+      if (data.stage == 2) {
+        openStage2(data.stage2data);
+      }
+      if (data.stage == 3) {
+        openStage2(data.stage2data);
+        openStage3(data.stage3data);
+      }
+      if (data.stage == 4) {
+        openStage2(data.stage2data);
+        openStage3(data.stage3data);
+        openStage4(data.stage4data);
+      }
+
+    })
+  })
+
+  // ----------------------- STAGE 1 (SOURCE) -------------------------- //
+
+  $("#btnAnalyse").on('click', function () {
+    console.log("hit");
+    $.get("/analyse", function (data) {
+      console.log("output", data);
+    })
+  })
+  $("#load-saved-result").on('click', function () {
+    $.get("/analyse-saved", function (data) {
+      openStage4(data)
+    })
+  })
+
+
   $('.source-choice').on('click', function () {
     $('.source-choice').removeClass("text-white").removeClass("bg-primary").addClass("bg-light");
     $(this).addClass("text-white").addClass("bg-primary").removeClass("bg-light");
   })
 
-
   $('#run-source').on('click', function () {
-    $('<i id="loading-spinner" style="margin-left:10px" class="fas fa-spinner fa-spin text-primary"></i>').insertAfter($(this));
+    $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-primary"></i></span>').insertAfter($(this));
     switch (sourceChoice) {
       case 1:
         $.get("/testbench", function (data) {
-          $("i[data-col-id=mutate-section]").click();
-          $("#mutate-section").removeClass("disabled");
-          $("#mutate-section > .section-content").removeClass("hide");
-
-
-          //Fill data
-          $("#mutant-count .card-body").html(data.mutations.viableCount + "/" + data.mutations.mutantCount);
-
-          if (data.validity.valid) {
-            $("#source-valid .card-body").html(" <i class='fas fa-check text-white'></i>");
-          } else {
-            $("#source-valid .card-body").html(" <i class='fas fa-times-circle text-white'></i>");
-          }
-
-          sourceURL = data.source.route;
-
+          openStage2(data);
           $("#loading-spinner").remove();
         })
     }
-
   })
+
+  // ----------------------- STAGE 2 (ANALYSIS) -------------------------- //
+
+  function openStage2(data) {
+    console.log(data);
+    $("i[data-col-id=mutate-section]").click();
+    $("#mutate-section").removeClass("disabled");
+    $("#mutate-section > .section-content").removeClass("hide");
+
+    $("#mutant-count .card-body").html(data.mutations.viableCount + "/" + data.mutations.mutantCount);
+    $("#violation-count .card-body").html(data.axe.violationsCount);
+
+
+    if (data.validity.valid) {
+      $("#source-valid .card-body").html(" <i class='fas fa-check text-white'></i>");
+    } else {
+      $("#source-valid .card-body").html("<span style='font-size: 14pt' ><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i>" + (data.validity.raw ? data.validity.raw.messages.length : 0) + " errors found </span>");
+    }
+
+    sourceURL = data.source.route;
+  }
 
   $('#btnViewSource').on('click', function () {
     var win = window.open(sourceURL, '_blank');
@@ -122,71 +162,92 @@ $(document).ready(function () {
     win.focus();
   })
 
-
   $("#btnRunMutations").on('click', function () {
-    $('<i id="loading-spinner" style="margin-left:10px" class="fas fa-spinner fa-spin text-info"></i>').insertAfter($(this));
+    $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-info"></i></span>').insertAfter($(this));
     $.get("/mutate-source", function (data) {
-      $("i[data-col-id=mutation-results-section]").click();
-      $("#mutation-results-section").removeClass("disabled");
-      $("#mutation-results-section > .section-content").removeClass("hide");
-
-      $("#total-count .card-body").html(data.mutants.length);
-      $("#valid-mutant-count .card-body").html(data.mutants.filter(mut => mut.validity.messages.length == 0).length + "/" + data.mutants.length);
-
+      openStage3(data);
       $("#loading-spinner").remove();
 
     })
   })
+
+  // ----------------------- STAGE 3 (MUTATION RESULTS) -------------------------- //
+
+  function openStage3(data) {
+    $("i[data-col-id=mutation-results-section]").click();
+    $("#mutation-results-section").removeClass("disabled");
+    $("#mutation-results-section > .section-content").removeClass("hide");
+
+    $("#total-count .card-body").html(data.mutants.length);
+    $("#valid-mutant-count .card-body").html(data.mutants.filter(mut => mut.validity.valid).length + "/" + data.mutants.length);
+  }
+
+
 
   $('#btnViewMutants').on('click', function () {
     var win = window.open("/view-mutants-summary", '_blank');
     win.focus();
   })
+  $('#btnViewSource').on('click', function () {
+    console.log("source button pressed")
+    var win = window.open("/v2/source", '_blank');
+    win.focus();
+  })
 
   $("#btnRunAxe").on('click', function () {
-    $('<i id="loading-spinner" style="margin-left:10px" class="fas fa-spinner fa-spin text-warning"></i>').insertAfter($(this));
+    $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-warning"></i></span>').insertAfter($(this));
+    $(this).attr('disabled', true);
     $.get("/run-axe-agaist-axe", function (data) {
-      $("i[data-col-id=axe-results-section]").click();
-      $("#axe-results-section").removeClass("disabled");
-      $("#axe-results-section > .section-content").removeClass("hide");
-
-      console.log(data);
-      $("#loading-spinner").remove();
-
-      var categoriesbar = {
-        type: 'bar',
-        data: {
-          labels: data.analysis.categories.map(cat => cat.name),
-          datasets: [{
-            label: "Live",
-            backgroundColor: window.chartColors.green,
-            data: data.analysis.categories.map(cat => cat.live)
-          }, {
-            label: "Dead",
-            backgroundColor: window.chartColors.red,
-            data: data.analysis.categories.map(cat => cat.killed)
-          }]
-        },
-        options: {
-          legend: {
-            display: true
-          },
-          title: {
-            display: true,
-            text: 'Live/Dead by Mutation Class'
-          }
-        }
-      };
-
-      var categorieschart = document.getElementById('categories-area').getContext('2d');
-      window.categories = new Chart(categorieschart, categoriesbar);
-
-      $("#total-violations .card-body").html(data.analysis.all.violations);
-      $("#total-live .card-body").html(data.analysis.all.killed + "/" + data.analysis.all.violations);
-      $("#kill-score .card-body").html((data.analysis.all.killed / data.analysis.all.violations * 100) + "%");
-
-
+      if (data == "Axe is already running.") {
+        console.log(data);
+        $('<p class="text-warning">Axe test is already running</p>').insertAfter($("#btnRunAxe"));
+        $("#loading-spinner").remove();
+      } else {
+        openStage4(data);
+      }
     })
-  })
+  });
+
+  // ----------------------- STAGE 4 (AXE RESULTS) -------------------------- //
+
+  function openStage4(data) {
+    $("i[data-col-id=axe-results-section]").click();
+    $("#axe-results-section").removeClass("disabled");
+    $("#axe-results-section > .section-content").removeClass("hide");
+    $("#btnRunAxe").attr('disabled', false);
+    $("#loading-spinner").remove();
+
+    var categoriesbar = {
+      type: 'bar',
+      data: {
+        labels: data.analysis.categories.map(cat => cat.name),
+        datasets: [{
+          label: "Live",
+          backgroundColor: window.chartColors.green,
+          data: data.analysis.categories.map(cat => cat.live)
+        }, {
+          label: "Dead",
+          backgroundColor: window.chartColors.red,
+          data: data.analysis.categories.map(cat => cat.killed)
+        }]
+      },
+      options: {
+        legend: {
+          display: true
+        },
+        title: {
+          display: true,
+          text: 'Live/Dead by Mutation Class'
+        }
+      }
+    };
+
+    var categorieschart = document.getElementById('categories-area').getContext('2d');
+    window.categories = new Chart(categorieschart, categoriesbar);
+
+    $("#total-violations .card-body").html(data.analysis.all.violations);
+    $("#total-live .card-body").html(data.analysis.all.killed + "/" + data.analysis.all.total);
+    $("#kill-score .card-body").html((data.analysis.all.killed / data.analysis.all.total * 100).toFixed(1) + "%");
+  }
 
 });
