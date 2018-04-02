@@ -56,15 +56,3 @@ module.exports = (source, mutations) => {
       console.log(err)
     })
 };
-
-function validityCheck(dom) {
-  return validator({
-      data: dom.serialize(),
-    })
-    .then((data) => {
-      output = JSON.parse(data);
-      output.messages = data.messages ? data.messages.filter(msg => msg.message != 'Attribute "href" not allowed on element "span" at this point.') : [];
-      return output;
-
-    })
-}

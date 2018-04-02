@@ -26,19 +26,20 @@ window.chartColors = {
 
 
 $(document).ready(function () {
-
   // ----------------------- NAVIGATION -------------------------- //
-  $('i[data-active]').on('click', function () {
-    const active = $.parseJSON($(this).attr("data-active"));
-    const col = $(this).attr("data-col-id");
+  $('.section-title').on('click', function () {
+    let control = $(this).children("i").first();
+
+    const active = $.parseJSON($(control).attr("data-active"));
+    const col = $(control).attr("data-col-id");
 
     if (active) {
-      $(this).attr("data-active", false);
-      $(this).removeClass("fa-minus").addClass("fa-plus")
+      $(control).attr("data-active", false);
+      $(control).removeClass("fa-minus").addClass("fa-plus")
 
-      $(this).parent().next().hide();
+      $(this).next().hide();
 
-      $(".left-col").append($(this).parent().parent());
+      $(".left-col").append($(this).parent());
       for (i = sections_indices[col] + 1; i < 4; i++) {
         if (!$("#" + section_list[i]).hasClass("disabled")) {
 
@@ -50,9 +51,9 @@ $(document).ready(function () {
       $("i[data-active]").attr("data-active", false);
       $("i[data-active]").parent().next().hide();
 
-      $(this).attr("data-active", true);
-      $(this).removeClass("fa-plus").addClass("fa-minus")
-      $(this).parent().next().show();
+      $(control).attr("data-active", true);
+      $(control).removeClass("fa-plus").addClass("fa-minus")
+      $(this).next().show();
 
       //left
       for (i = sections_indices[col] - 1; i > -1; i--) {
@@ -66,9 +67,8 @@ $(document).ready(function () {
         $("i[data-col-id=" + section_list[i] + "]").removeClass("fa-minus").addClass("fa-plus");
 
       }
-      $(".active-col").append($(this).parent().parent());
+      $(".active-col").append($(this).parent());
     }
-
   })
 
   $('#get-session').on('click', function () {
@@ -86,7 +86,6 @@ $(document).ready(function () {
         openStage3(data.source);
         openStage4(data);
       }
-
     })
   })
 
@@ -94,10 +93,11 @@ $(document).ready(function () {
 
   $("#load-saved-result").on('click', function () {
     $.get("/analyse-saved", function (data) {
-      openStage4(data)
+      openStage2(data.source);
+      openStage3(data.source);
+      openStage4(data);
     })
   })
-
 
   $('.source-choice').on('click', function () {
     $('.source-choice').removeClass("text-white").removeClass("bg-primary").addClass("bg-light");
@@ -125,13 +125,12 @@ $(document).ready(function () {
 
     $("#mutant-count .card-body").html(source.mutations.viableCount + "/" + source.mutations.mutantCount);
     $("#axe-violation-count .card-body").html(source.ATTResults.axe.violationsCount);
-    $("#pa11y-violation-count .card-body").html(source.ATTResults.pa11y.violationsCount);
 
 
     if (source.validity.valid) {
       $("#source-valid .card-body").html(" <i class='fas fa-check text-white'></i>");
     } else {
-      $("#source-valid .card-body").html("<span style='font-size: 14pt' ><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i>" + (source.validity.raw ? source.validity.raw.messages.length : 0) + " errors found </span>");
+      $("#source-valid .card-body").html("<span style='font-size: 14pt' ><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i>" + (!source.validity.valid ? source.validity.validityCheckResult.messages.length : 0) + " errors found </span>");
     }
 
     sourceURL = source.route;
@@ -194,7 +193,7 @@ $(document).ready(function () {
   $("#btnRunAxe").on('click', function () {
     $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-warning"></i></span>').insertAfter($(this));
     $(this).attr('disabled', true);
-    $.get("/run-axe-agaist-axe", function (data) {
+    $.get("/run-att", function (data) {
       if (data == "Axe is already running.") {
         console.log(data);
         $('<p class="text-warning">Axe test is already running</p>').insertAfter($("#btnRunAxe"));
@@ -246,10 +245,6 @@ $(document).ready(function () {
     $("#axe-total-violations .card-body").html(data.analysis.all.axe.violations);
     $("#axe-total-live .card-body").html(data.analysis.all.axe.killed + "/" + data.analysis.all.axe.total);
     $("#axe-kill-score .card-body").html((data.analysis.all.axe.killed / data.analysis.all.axe.total * 100).toFixed(0) + "%");
-
-    $("#pa11y-total-violations .card-body").html(data.analysis.all.pa11y.violations);
-    $("#pa11y-total-live .card-body").html(data.analysis.all.pa11y.killed + "/" + data.analysis.all.pa11y.total);
-    $("#pa11y-kill-score .card-body").html((data.analysis.all.pa11y.killed / data.analysis.all.pa11y.total * 100).toFixed(0) + "%");
   }
 
 });

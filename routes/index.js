@@ -32,18 +32,22 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/testbench', (req, res, next) => {
-  req.session.data.stage = 2;
+  try {
+    req.session.data.stage = 2;
 
-  const source = "TestBench.v.0.0.2.html";
-  loadSource(source);
-  mainController.checkSource(source, "TestBench")
-    .then(output => {
-      req.session.data.source = output;
-      return res.json(output);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+    const source = "TestBench.v.0.0.2.html";
+    loadSource(source);
+    mainController.checkSource(source, "TestBench")
+      .then(output => {
+        req.session.data.source = output;
+        return res.json(output);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 // ---------------------- STAGE 2 --------------------------- //
@@ -95,20 +99,22 @@ router.get('/view-mutants-summary', (req, res, next) => {
   });
 })
 
-router.get('/run-axe-agaist-axe', (req, res, next) => {
+router.get('/run-att', (req, res, next) => {
   try {
     const source = req.session.data.source;
-    return toolController.pa11yTools.runSM(source)
-      .then(source => toolController.axeTools.runSM(source))
+    return toolController.axeTools.runSM(source)
+      .then(source => mainController.postToolAnalysis(source))
       .then(source => {
-        fs.writeFileSync('result.json', JSON.stringify(source));
+        fs.outputJsonSync('results.json', source, {
+          spaces: '\t'
+        }, err => {});
         return source;
       })
-      .then(source => mainController.postToolAnalysis(source))
       .then(result => {
         console.log("Complete")
         req.session.data.stage = 4;
-        req.session.data.analysis = result;
+        req.session.data.source = result.source;
+        req.session.data.analysis = result.analysis;
         return res.json(result);
       })
       .catch(console.error.bind(console))
@@ -118,15 +124,13 @@ router.get('/run-axe-agaist-axe', (req, res, next) => {
   }
 })
 
-router.get("/analyse", (req, res, next) => {
-  const data = req.session.data.results;
-  return res.json(mutationController.analyse(data.source, data.categories_obj));
-})
-
 
 router.get("/analyse-saved", (req, res, next) => {
-  req.session.data.savedResult = JSON.parse(fs.readFileSync('result.json'));
-  mainController.postToolAnalysis(req.session.data.savedResult)
+  req.session.data.savedResult = fs.readJSONSync('results.json');
+  req.session.data.source = req.session.data.savedResult;
+  req.session.data.stage = 4;
+
+  mainController.postToolAnalysis(req.session.data.savedResult.source)
     .then(data => {
       return res.json(data);
     })

@@ -43,6 +43,7 @@ body {
 }
 
 .section-title h1 {
+  pointer-events: inherit;
   white-space: nowrap;
   transform: rotate(270deg) translateX(-750%);
 }

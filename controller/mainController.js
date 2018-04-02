@@ -14,7 +14,6 @@ const mainController = {
         mutationController.mutantViabilityCheck(source),
         validityController.validityCheckFromFile(source),
         toolController.axeTools.testURL("http://127.0.0.1:3000/v2/source"),
-        toolController.pa11yTools.testURL("http://127.0.0.1:3000/v2/source"),
       ])
       .then(results => {
         return {
@@ -34,10 +33,6 @@ const mainController = {
               "violationsCount": results[2].violations.length,
               "raw": results[2].violations,
             },
-            "pa11y": {
-              "violationsCount": results[3].issues.length,
-              "raw": results[3].issues,
-            },
           },
           "validity": results[1],
         }
@@ -47,15 +42,14 @@ const mainController = {
       })
   },
   postToolAnalysis: (source) => {
-    const tools = ["axe", "pa11y"];
     return new Promise((resolve, reject) => {
         //Establish whether mutants killed, equiv or live
         source.mutants = source.mutants.map(mutant => {
-          for (t in tools) {
-            mutant.ATTResults[tools[t]].live = mutant.ATTResults[tools[t]].violationsCount == source.ATTResults[tools[t]].violationsCount ? true : false;
-            mutant.ATTResults[tools[t]].equiv = mutant.thisHTML == mutant.sourceHTML ? true : false;
-            mutant.ATTResults[tools[t]].killed = !mutant.ATTResults[tools[t]].live;
-          }
+          let current = mutant.ATTResults.axe;
+          current.live = current.violationsCount == source.ATTResults.axe.violationsCount ? true : false;
+          current.equiv = mutant.thisHTML == mutant.sourceHTML ? true : false;
+          current.killed = !current.live;
+
           return mutant;
         })
         resolve(source);
@@ -65,7 +59,7 @@ const mainController = {
         let categories_list = [];
         let categories_obj = [];
 
-        source.mutations = mutationLibrary.map(mutation => {
+        const mutationAnalysis = mutationLibrary.map(mutation => {
           if (categories_list.indexOf(mutation.class) == -1) {
             categories_list.push(mutation.class);
             categories_obj.push({
@@ -76,16 +70,9 @@ const mainController = {
                 live: 0,
                 killed: 0,
               },
-              "pa11y": {
-                total: 0,
-                violations: 0,
-                live: 0,
-                killed: 0,
-              }
             });
 
           }
-
 
           mutation.analysis = {
             "axe": {
@@ -94,22 +81,19 @@ const mainController = {
               live: 0,
               killed: 0,
             },
-            "pa11y": {
-              total: 0,
-              violations: 0,
-              live: 0,
-              killed: 0,
-            }
           }
 
           source.mutants.map(mutant => {
             if (mutant.mutation.id == mutation.id) {
-              for (t in tools) {
-                mutation.analysis[tools[t]].violations += mutant.ATTResults[tools[t]].violationsCount;
-                mutation.analysis[tools[t]].live += mutant.ATTResults[tools[t]].live ? 1 : 0;
-                mutation.analysis[tools[t]].killed += mutant.ATTResults[tools[t]].killed ? 1 : 0;
-                mutation.analysis[tools[t]].total++;
-              }
+
+              const currentMutation = mutation.analysis.axe;
+              const currentMutant = mutant.ATTResults.axe;
+
+              currentMutation.violations += currentMutant.violationsCount;
+              currentMutation.live += currentMutant.live ? 1 : 0;
+              currentMutation.killed += currentMutant.killed ? 1 : 0;
+              currentMutation.total++;
+
             }
           });
 
@@ -124,33 +108,31 @@ const mainController = {
             live: 0,
             killed: 0,
           },
-          "pa11y": {
-            total: 0,
-            violations: 0,
-            live: 0,
-            killed: 0,
-          }
         };
 
-        source.mutations.map(mut => {
+        mutationAnalysis.map(mut => {
           let mut_class = categories_obj.find(cat => cat.name == mut.class);
-          for (t in tools) {
-            all[tools[t]].violations += mut.analysis[tools[t]].violations;
-            all[tools[t]].live += mut.analysis[tools[t]].live;
-            all[tools[t]].killed += mut.analysis[tools[t]].killed;
-            all[tools[t]].total++;
+          const currentAll = all.axe;
+          const currentMutationClass = mut_class.axe;
+          const currentMutation = mut.analysis.axe
 
-            mut_class[tools[t]].violations += mut.analysis[tools[t]].violations;
-            mut_class[tools[t]].live += mut.analysis[tools[t]].live;
-            mut_class[tools[t]].killed += mut.analysis[tools[t]].killed;
-            mut_class[tools[t]].total++;
-          }
+          currentAll.violations += currentMutation.violations;
+          currentAll.live += currentMutation.live;
+          currentAll.killed += currentMutation.killed;
+          currentAll.total++;
+
+          currentMutationClass.violations += currentMutation.violations;
+          currentMutationClass.live += currentMutation.live;
+          currentMutationClass.killed += currentMutation.killed;
+          currentMutationClass.total++;
+
         })
 
         return {
           source,
           "analysis": {
             all,
+            mutationAnalysis,
             "categories": categories_obj,
           }
         }

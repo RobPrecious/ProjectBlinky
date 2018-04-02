@@ -43,34 +43,7 @@
             
           <%}%>  
           </tbody>  
-      </table>
-
-      <hr>
-      <h2>pa11y Violation count:<%= JSON.stringify(pa11y.violationsCount)%></h2>
-      <br>
-      <table class="table display" id="violations">
-         <thead>
-            <tr class="thead-dark">
-              <th scope="col">Code</th>
-              <th scope="col">Help</th>
-              <th scope="col">Context</th>
-              <th scope="col">Selector</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for(let i in pa11y.raw){%>
-              <tr class="">
-                <td><%= pa11y.raw[i].code%></td>
-                <td><%= pa11y.raw[i].message%></td>
-                <td><%= pa11y.raw[i].context%></td>
-                <td><%= pa11y.raw[i].selector%></td>
-              </tr> 
-            
-          <%}%>  
-          </tbody>
-          </table>
-
-    
+      </table>    
     </div>
 
   </body>
