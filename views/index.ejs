@@ -85,8 +85,13 @@
                     <div class="card-body"></div>
                   </div>
 
-                  <div id="violation-count" class="card text-white bg-info mb-3 stat-card" >
-                    <div class="card-header">Existing Violations</div>
+                  <div id="axe-violation-count" class="card text-white bg-info mb-3 stat-card" >
+                    <div class="card-header">Axe Violations</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                   <div id="pa11y-violation-count" class="card text-white bg-info mb-3 stat-card" >
+                    <div class="card-header">pa11y Violations</div>
                     <div class="card-body">0</div>
                   </div>
 
@@ -143,33 +148,51 @@
           <div class="c-col disabled" id="axe-results-section">
               <div class="section-title bg-danger text-white">
                 <i data-col-id="axe-results-section" data-active=false class="fas fa-plus"></i>        
-                <h1>Axe Results</h1>
+                <h1>ATT Results</h1>
               </div>
                         
               <div class="section-content hide">
                 <h2>Axe Results</h2>
                  <div class="stat-cards">
-                  <div id="total-violations" class="card bg-danger text-white mb-3 stat-card" >
-                    <div class="card-header">Total Violations</div>
+                  <div id="axe-total-violations" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Axe Violations</div>
                     <div class="card-body">0</div>
                   </div>
 
-                  <div id="total-live" class="card bg-danger text-white mb-3 stat-card" >
+                  <div id="axe-total-live" class="card bg-danger text-white mb-3 stat-card" >
                     <div class="card-header">Killed Mutants</div>
                     <div class="card-body">0</div>
                   </div>
 
-                  <div id="kill-score" class="card bg-danger text-white mb-3 stat-card" >
+                  <div id="axe-kill-score" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Killed</div>
+                    <div class="card-body">0</div>
+                  </div>
+                </div>
+                <div class="canvas-holder" style="position: relative; width:52vw;min-width: 600px;">
+                  <canvas id="categories-area"></canvas>
+                </div>
+
+                <h2>pa11y Results</h2>
+
+                <div class="stat-cards">
+                  <div id="pa11y-total-violations" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">pa11y Violations</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="pa11y-total-live" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Killed Mutants</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="pa11y-kill-score" class="card bg-danger text-white mb-3 stat-card" >
                     <div class="card-header">Killed</div>
                     <div class="card-body">0</div>
                   </div>
                 </div>
           
-                <div class="canvas-holder" style="position: relative; width:52vw">
-                  <canvas id="categories-area"></canvas>
-                </div>
-
-                <button type="button" class="btn btn-info btn-lg btn-block" id="btnAnalyse">Run analysis</button>
+                
 
               </div>
 

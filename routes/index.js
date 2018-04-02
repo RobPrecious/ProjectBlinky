@@ -4,8 +4,9 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs-extra');
 
+const mainController = require('../controller/mainController');
 const mutationController = require('../controller/mutationController');
-const axeController = require('../controller/axeController');
+const toolController = require('../controller/toolController');
 const mutationLibrary = require('../controller/mutationLibrary');
 const mutator = require('../controller/mutator');
 
@@ -16,11 +17,15 @@ const {
   JSDOM
 } = jsdom;
 
-const url = "http://localhost:3000";
 let running = false;
 
 // ---------------------- STAGE 1 --------------------------- //
 router.get('/', (req, res, next) => {
+  if (!req.session.data) {
+    req.session.data = {
+      "stage": 1
+    }
+  }
   return res.render('index', {
     "stage": req.session.data.stage,
     "savedResult": fs.existsSync('result.json'),
@@ -28,45 +33,45 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/testbench', (req, res, next) => {
+  req.session.data.stage = 2;
+
   const source = "TestBench.v.0.0.2.html";
-  req.session.stage = 2;
   loadSource(source);
-  mutationController.checkSource(source, "TestBench")
+  mainController.checkSource(source, "TestBench")
     .then(output => {
-      req.session.data.stage2data = output;
+      req.session.data.source = output;
       return res.json(output);
     })
     .catch(err => {
       console.log(err);
     })
-
 })
 
 // ---------------------- STAGE 2 --------------------------- //
 router.get('/view-mutation-summary', (req, res, next) => {
-  const data = req.session.data.stage2data;
+  const source = req.session.data.source;
   return res.render('mutation-summary', {
     "allMutations": mutationLibrary,
-    "viableMutations": data.mutations.viableRaw,
-    "nonViableMutations": data.mutations.nonViableRaw,
+    "viableMutations": source.mutations.viableRaw,
+    "nonViableMutations": source.mutations.nonViableRaw,
   })
-
 })
 
 router.get('/view-violation-summary', (req, res, next) => {
   return res.render('violations-summary', {
-    "axe": req.session.data.stage2data.axe
+    "axe": req.session.data.source.ATTResults.axe,
+    "pa11y": req.session.data.source.ATTResults.pa11y,
   });
 })
 
 router.get('/view-validation-summary', (req, res, next) => {
   return res.render('validation-summary', {
-    "validity": req.session.data.stage2data.validity
+    "validity": req.session.data.source.validity
   });
 })
 
 router.get('/mutate-source', (req, res, next) => {
-  return mutationController.mutateSource(req.session.data.stage2data.source, mutationLibrary)
+  return mutationController.mutateSource(req.session.data.source, mutationLibrary)
     .then(result => {
       result.mutants.map(mutant => {
         router.get('/mutants/' + mutant.id, (req, res, next) => {
@@ -79,7 +84,7 @@ router.get('/mutate-source', (req, res, next) => {
     })
     .then(result => {
       req.session.data.stage = 3
-      req.session.data.stage3data = result;
+      req.session.data.source = result;
       return res.json(result);
     })
 })
@@ -92,41 +97,26 @@ router.get('/view-mutants-summary', (req, res, next) => {
 })
 
 router.get('/run-axe-agaist-axe', (req, res, next) => {
-  const source = req.session.data.stage3data;
-  return axeController.testURL(url + source.route).then(result => {
-      source.axe = {
-        violations: result.violations
-      };
-      return source;
-    })
-    .then((source) => {
-      return Promise.all(source.mutants.map(mutant => {
-          return axeController.testURL(url + mutant.route).then(result => {
-            mutant.axe = {
-              violations: result.violations
-            };
-          })
-        }))
-        .then(() => {
-          return source;
-        })
-    })
-    .then(toolResult => {
-      // Export result to json
-      const dataToBeSaved = {
-        "toolResult": toolResult,
-        "currentState": req.session.data,
-      }
-      fs.writeFileSync('result.json', JSON.stringify(dataToBeSaved));
-      return toolResult;
-    })
-    .then(source => mutationController.postToolAnalysis(source))
-    .then(result => {
-      console.log("Complete")
-      req.session.data.stage = 4;
-      req.session.data.stage4data = result;
-      return res.json(result);
-    })
+  try {
+    const source = req.session.data.source;
+    return toolController.pa11yTools.runSM(source)
+      .then(source => toolController.axeTools.runSM(source))
+      .then(source => {
+        fs.writeFileSync('result.json', JSON.stringify(source));
+        return source;
+      })
+      .then(source => mainController.postToolAnalysis(source))
+      .then(result => {
+        console.log("Complete")
+        req.session.data.stage = 4;
+        req.session.data.stage4data = result;
+        return res.json(result);
+      })
+      .catch(console.error.bind(console))
+
+  } catch (err) {
+    console.log(err);
+  }
 })
 
 router.get("/analyse", (req, res, next) => {
@@ -137,7 +127,7 @@ router.get("/analyse", (req, res, next) => {
 
 router.get("/analyse-saved", (req, res, next) => {
   req.session.data.savedResult = JSON.parse(fs.readFileSync('result.json'));
-  mutationController.postToolAnalysis(req.session.data.savedResult)
+  mainController.postToolAnalysis(req.session.data.savedResult)
     .then(data => {
       return res.json(data);
     })

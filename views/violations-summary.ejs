@@ -21,7 +21,7 @@
   <body>
     <div class="container-fluid" style="margin-top:20px">
       <h1>Violation Summary</h1>
-      <h2>Violation count:<%= JSON.stringify(axe.violationsCount)%></h2>
+      <h2>Axe Violation count:<%= JSON.stringify(axe.violationsCount)%></h2>
       <br>
       <table class="table display" id="violations">
          <thead>
@@ -29,7 +29,7 @@
               <th scope="col">ID</th>
               <th scope="col">Help</th>
               <th scope="col">Description</th>
-              <th scope="col">Description</th>
+              <th scope="col">Help url</th>
             </tr>
             </thead>
             <tbody>
@@ -42,8 +42,35 @@
               </tr> 
             
           <%}%>  
+          </tbody>  
+      </table>
+
+      <hr>
+      <h2>pa11y Violation count:<%= JSON.stringify(pa11y.violationsCount)%></h2>
+      <br>
+      <table class="table display" id="violations">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">Code</th>
+              <th scope="col">Help</th>
+              <th scope="col">Context</th>
+              <th scope="col">Selector</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in pa11y.raw){%>
+              <tr class="">
+                <td><%= pa11y.raw[i].code%></td>
+                <td><%= pa11y.raw[i].message%></td>
+                <td><%= pa11y.raw[i].context%></td>
+                <td><%= pa11y.raw[i].selector%></td>
+              </tr> 
+            
+          <%}%>  
           </tbody>
           </table>
+
+    
     </div>
 
   </body>

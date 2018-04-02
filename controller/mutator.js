@@ -7,6 +7,8 @@ const {
   JSDOM
 } = jsdom;
 
+const validityController = require('./validityController');
+
 module.exports = (source, mutations) => {
   return new Promise((resolve, reject) => {
       resolve(mutations.map((mutation, index) => {
@@ -17,20 +19,29 @@ module.exports = (source, mutations) => {
             return pify(fs).writeFile(path.resolve(__dirname, '../views/mutants/' + source.id + '-m' + mutation.id + '.html'), mutation.mutation(dom))
               .then(data => {
                 return {
-                  id: source.id + '-m' + mutation.id,
-                  file: path.resolve(__dirname, '../views/mutants/' + source.id + '-m' + mutation.id + '.html'),
-                  route: '/mutants/' + source.id + '-m' + mutation.id,
-                  mutation: mutation,
-                  thisHTML: dom.serialize(),
+                  "id": source.id + '-m' + mutation.id,
+                  "file": path.resolve(__dirname, '../views/mutants/' + source.id + '-m' + mutation.id + '.html'),
+                  "route": '/mutants/' + source.id + '-m' + mutation.id,
+                  "mutation": mutation,
+                  "thisHTML": dom.serialize(),
                   sourceHTML,
+                  "ATTResults": {
+                    "axe": {
+                      "violationsCount": 0,
+                      "raw": [],
+                    },
+                    "pa11y": {
+                      "violationsCount": 0,
+                      "raw": [],
+                    },
+                  },
                 };
 
               })
               .then(data => {
-                return validityCheck(dom)
-                  .then(validityResult => {
-                    data.valid = validityResult.messages ? false : true;
-                    data.validity = validityResult;
+                return validityController.validityCheckFromDOM(dom)
+                  .then(result => {
+                    data.validity = result;
                     return data;
                   })
               })

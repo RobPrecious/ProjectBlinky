@@ -75,16 +75,16 @@ $(document).ready(function () {
     $.get("/get-session", function (data) {
       console.log(data);
       if (data.stage == 2) {
-        openStage2(data.stage2data);
+        openStage2(data.source);
       }
       if (data.stage == 3) {
-        openStage2(data.stage2data);
-        openStage3(data.stage3data);
+        openStage2(data.source);
+        openStage3(data.source);
       }
       if (data.stage == 4) {
-        openStage2(data.stage2data);
-        openStage3(data.stage3data);
-        openStage4(data.stage4data);
+        openStage2(data.source);
+        openStage3(data.source);
+        openStage4(data);
       }
 
     })
@@ -92,12 +92,6 @@ $(document).ready(function () {
 
   // ----------------------- STAGE 1 (SOURCE) -------------------------- //
 
-  $("#btnAnalyse").on('click', function () {
-    console.log("hit");
-    $.get("/analyse", function (data) {
-      console.log("output", data);
-    })
-  })
   $("#load-saved-result").on('click', function () {
     $.get("/analyse-saved", function (data) {
       openStage4(data)
@@ -123,23 +117,24 @@ $(document).ready(function () {
 
   // ----------------------- STAGE 2 (ANALYSIS) -------------------------- //
 
-  function openStage2(data) {
-    console.log(data);
+  function openStage2(source) {
+    console.log(source);
     $("i[data-col-id=mutate-section]").click();
     $("#mutate-section").removeClass("disabled");
     $("#mutate-section > .section-content").removeClass("hide");
 
-    $("#mutant-count .card-body").html(data.mutations.viableCount + "/" + data.mutations.mutantCount);
-    $("#violation-count .card-body").html(data.axe.violationsCount);
+    $("#mutant-count .card-body").html(source.mutations.viableCount + "/" + source.mutations.mutantCount);
+    $("#axe-violation-count .card-body").html(source.ATTResults.axe.violationsCount);
+    $("#pa11y-violation-count .card-body").html(source.ATTResults.pa11y.violationsCount);
 
 
-    if (data.validity.valid) {
+    if (source.validity.valid) {
       $("#source-valid .card-body").html(" <i class='fas fa-check text-white'></i>");
     } else {
       $("#source-valid .card-body").html("<span style='font-size: 14pt' ><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i>" + (data.validity.raw ? data.validity.raw.messages.length : 0) + " errors found </span>");
     }
 
-    sourceURL = data.source.route;
+    sourceURL = source.route;
   }
 
   $('#btnViewSource').on('click', function () {
@@ -174,6 +169,8 @@ $(document).ready(function () {
   // ----------------------- STAGE 3 (MUTATION RESULTS) -------------------------- //
 
   function openStage3(data) {
+    console.log("STAGE 3", data);
+
     $("i[data-col-id=mutation-results-section]").click();
     $("#mutation-results-section").removeClass("disabled");
     $("#mutation-results-section > .section-content").removeClass("hide");
@@ -211,6 +208,7 @@ $(document).ready(function () {
   // ----------------------- STAGE 4 (AXE RESULTS) -------------------------- //
 
   function openStage4(data) {
+    console.log(data);
     $("i[data-col-id=axe-results-section]").click();
     $("#axe-results-section").removeClass("disabled");
     $("#axe-results-section > .section-content").removeClass("hide");
@@ -224,11 +222,11 @@ $(document).ready(function () {
         datasets: [{
           label: "Live",
           backgroundColor: window.chartColors.green,
-          data: data.analysis.categories.map(cat => cat.live)
+          data: data.analysis.categories.map(cat => cat.axe.live)
         }, {
           label: "Dead",
           backgroundColor: window.chartColors.red,
-          data: data.analysis.categories.map(cat => cat.killed)
+          data: data.analysis.categories.map(cat => cat.axe.killed)
         }]
       },
       options: {
@@ -245,9 +243,13 @@ $(document).ready(function () {
     var categorieschart = document.getElementById('categories-area').getContext('2d');
     window.categories = new Chart(categorieschart, categoriesbar);
 
-    $("#total-violations .card-body").html(data.analysis.all.violations);
-    $("#total-live .card-body").html(data.analysis.all.killed + "/" + data.analysis.all.total);
-    $("#kill-score .card-body").html((data.analysis.all.killed / data.analysis.all.total * 100).toFixed(1) + "%");
+    $("#axe-total-violations .card-body").html(data.analysis.all.axe.violations);
+    $("#axe-total-live .card-body").html(data.analysis.all.axe.killed + "/" + data.analysis.all.axe.total);
+    $("#axe-kill-score .card-body").html((data.analysis.all.axe.killed / data.analysis.all.axe.total * 100).toFixed(0) + "%");
+
+    $("#pa11y-total-violations .card-body").html(data.analysis.all.pa11y.violations);
+    $("#pa11y-total-live .card-body").html(data.analysis.all.pa11y.killed + "/" + data.analysis.all.pa11y.total);
+    $("#pa11y-kill-score .card-body").html((data.analysis.all.pa11y.killed / data.analysis.all.pa11y.total * 100).toFixed(0) + "%");
   }
 
 });

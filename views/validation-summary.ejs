@@ -33,12 +33,12 @@
             </tr>
             </thead>
             <tbody>
-            <% for(let i in validity.raw.messages){%>
+            <% for(let i in validity.validityCheckResult.messages){%>
               <tr class="">
-                <td><%= validity.raw.messages[i].type%></td>
-                <td><%= validity.raw.messages[i].message%></td>
-                <td>Line:<%= validity.raw.messages[i].lastLine%>, Col: <%= validity.raw.messages[i].firstColumn%>,<%= validity.raw.messages[i].lastColumn%> </td>
-                <td><%= validity.raw.messages[i].extract%></td>
+                <td><%= validity.validityCheckResult.messages[i].type%></td>
+                <td><%= validity.validityCheckResult.messages[i].message%></td>
+                <td>Line:<%= validity.validityCheckResult.messages[i].lastLine%>, Col: <%= validity.validityCheckResult.messages[i].firstColumn%>,<%= validity.validityCheckResult.messages[i].lastColumn%> </td>
+                <td><%= validity.validityCheckResult.messages[i].extract%></td>
               </tr> 
             
           <%}%>  
