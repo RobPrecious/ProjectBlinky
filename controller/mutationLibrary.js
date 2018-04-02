@@ -871,19 +871,19 @@ module.exports = [{
   {
     "id": "1.3.1-21",
     "name": "change-table-role",
-    "description": "Change presentational tables to other roles",
+    "description": "Change table role to other roles",
     "class": "Attribute Change",
     "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
-      if ($("table[role='presentation']").length) {
+      if ($("table[role='table']").length) {
         return true
       }
       return false;
     },
     "mutation": (mutant_dom) => {
       let $ = require('jquery')(mutant_dom.window);
-      $("table[role='presentation']").attr("role", "grid");
+      $("table[role='table']").attr("role", "presentation");
       return mutant_dom.serialize();
     }
   },

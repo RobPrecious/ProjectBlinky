@@ -10,7 +10,6 @@ const toolController = require('../controller/toolController');
 const mutationLibrary = require('../controller/mutationLibrary');
 const mutator = require('../controller/mutator');
 
-
 const validator = require('html-validator');
 const jsdom = require("jsdom");
 const {
@@ -92,7 +91,7 @@ router.get('/mutate-source', (req, res, next) => {
 // ---------------------- STAGE 3 --------------------------- //
 router.get('/view-mutants-summary', (req, res, next) => {
   return res.render('mutants-summary', {
-    "source": req.session.data.stage3data
+    "source": req.session.data.source
   });
 })
 
@@ -109,7 +108,7 @@ router.get('/run-axe-agaist-axe', (req, res, next) => {
       .then(result => {
         console.log("Complete")
         req.session.data.stage = 4;
-        req.session.data.stage4data = result;
+        req.session.data.analysis = result;
         return res.json(result);
       })
       .catch(console.error.bind(console))

@@ -131,7 +131,7 @@ $(document).ready(function () {
     if (source.validity.valid) {
       $("#source-valid .card-body").html(" <i class='fas fa-check text-white'></i>");
     } else {
-      $("#source-valid .card-body").html("<span style='font-size: 14pt' ><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i>" + (data.validity.raw ? data.validity.raw.messages.length : 0) + " errors found </span>");
+      $("#source-valid .card-body").html("<span style='font-size: 14pt' ><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i>" + (source.validity.raw ? source.validity.raw.messages.length : 0) + " errors found </span>");
     }
 
     sourceURL = source.route;
