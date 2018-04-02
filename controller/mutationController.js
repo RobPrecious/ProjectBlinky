@@ -6,8 +6,31 @@ const {
 } = jsdom;
 
 const mutator = require('./mutator');
+const mutationLibrary = require('../controller/mutationLibrary');
+const validityController = require('../controller/validityController');
+
 
 const mutationController = {
+  mutantViabilityCheck: (location) => {
+    return JSDOM.fromFile(path.resolve(__dirname, "../views/" + location))
+      .then(dom => {
+        return [mutationLibrary.filter(mutation => mutation.check(dom)), mutationLibrary.filter(mutation => !mutation.check(dom))];
+      })
+  },
+
+  mutateSource: (source, mutationLibrary) => {
+    return new Promise((res, rej) => {
+      source.mutants = [];
+      mutationController.getMutations(source, mutationLibrary)
+        .then(mutations => {
+          return mutator(source, mutations)
+            .then(result => source.mutants = result);
+        }).then((result) => {
+          res(source);
+        });
+    });
+  },
+
   getSources: () => {
     const files = fs.readdirSync(path.resolve(__dirname, '../views/sources'));
     let output = [];
@@ -52,32 +75,19 @@ const mutationController = {
     });
   },
 
-  analyse: (data, categories) => {
-    let all = {
-      total: 0,
-      violations: 0,
-      live: 0,
-      killed: 0,
-    };
-    data.mutations.map(mut => {
-      all.violations += mut.violations;
-      all.live += mut.live;
-      all.killed += mut.violations - mut.live;
+  analyseSaved: (savedData) => {
+    try {
+      console.log("Count", savedData.mutants.length);
+      savedData.mutants.map(mutant => {
+        live
 
-      let mut_class = categories.find(cat => cat.name == mut.class);
-      mut_class.violations += mut.violations;
-      mut_class.live += mut.live;
-      mut_class.killed += mut.violations - mut.live > 0 ? mut.violations - mut.live : 0;
-      mut_class.total++;
-    })
-
-    return {
-      all,
-      categories,
-    };
-  }
+      })
+      return savedData
+    } catch (err) {
+      console.log(err);
+    }
+  },
 
 }
-
 
 module.exports = mutationController;

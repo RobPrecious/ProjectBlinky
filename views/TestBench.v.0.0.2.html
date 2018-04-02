@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TestBench.v.0.0.2</title>
+  <meta charset="UTF-8">
+
+</head>
+
+<body>
+
+  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+  <div role="main" id="content">
+    <!--Aria parent children-->
+    <div>
+      <div role="list" id="a">
+        <div role="listitem" id="a-child">Item a</div>
+      </div>
+
+      <div role="list" id="b" aria-owns="b-child">
+        <div role="listitem" id="b-child">Item b</div>
+      </div>
+    </div>
+
+    <div aria-live="polite">Correct</div>
+
+    <!-- audio-video -->
+    <div>
+      <h1>Media Tests </h1>
+      <h2>Video Test </h2>
+      <video width="600" height="400" controls>
+        <source src="/example_src/MIB2.mp4" type="video/mp4">
+        <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="subtitles" srclang="en" label="Spannish 1" />
+        <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="captions" srclang="en" label="Spannish 2" />
+        <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="descriptions" srclang="en" label="Spannish 3" />
+      </video>
+
+      <h2>Audio Test </h2>
+      <audio controls>
+        <source src="/example_src/sample.mp3" type="audio/mpeg">
+        <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="captions" srclang="en" label="TEST" /> Your browser does not support the audio tag.
+      </audio>
+    </div>
+
+    <!-- button-aria-label -->
+    <div>
+      <button aria-label="Close" onclick="myDialog.close()">X</button>
+    </div>
+
+    <!-- button -->
+    <div>
+      <button id="button">Test</button>
+    </div>
+
+    <!-- headings -->
+    <div>
+      <h1>Main Heading</h1>
+      <h2>Small Heading</h2>
+      <h3>Smaller Heading</h3>
+      <h4>Even Smaller Heading</h4>
+      <h5>Smallest Heading</h5>
+      <p>Text</p>
+    </div>
+
+
+    <!-- image-area -->
+    <div>
+      <map name="primary">
+        <area shape="circle" coords="75,75,75" href="left.html" alt="Click to go Left">
+        <area shape="circle" coords="275,75,75" href="right.html" alt="Click to go Right">
+      </map>
+      <img usemap="#primary" src="http://placehold.it/350x150" alt="350 x 150 pic">
+
+    </div>
+
+    <!-- image -->
+    <div>
+      <img src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York Logo">
+      <input type="image" src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York Logo">
+    </div>
+
+    <!-- labels -->
+    <div>
+      <form action="#">
+        <!-- aria label -->
+        <input type="text" aria-label="label" id="inputa">
+        <select aria-label="label" id="selecta"></select>
+        <textarea aria-label="label" id="textareaa"></textarea>
+
+        <!-- aria labelledby -->
+        <label id="labelbya">Label</label>
+        <input type="text" aria-labelledby="labelbya" id="labelledbya">
+
+        <label id="labelbyb">Label</label>
+        <select aria-labelledby="labelbyb" id="labelledbyb"></select>
+
+        <label id="labelbyc">Label</label>
+        <textarea aria-labelledby="labelbyc" id="labelledbyc"></textarea>
+
+        <!-- label for -->
+        <label id="labela" for="labelledfora">Label</label>
+        <input type="text" id="labelledfora">
+
+        <label id="labelb" for="labelledforb">Label</label>
+        <select id="labelledforb"></select>
+
+        <label id="labelc" for="labelledforc">Label</label>
+        <textarea id="labelledforc"></textarea>
+
+        <input type="submit" aria-label="submit">Submit</input>
+
+      </form>
+    </div>
+
+    <!-- links -->
+    <div>
+      <a href="#" id="link-a">This link has text</a>
+      <a href="#" id="link-b" aria-label="link text"></a>
+
+      <div id="linklabel">Text</div>
+      <a href="#" id="link-c" aria-labelledby="linklabel"></a>
+      <!-- -->
+
+      <span role="link" href="#" id="link-d">This link has text</span>
+      <span role="link" href="#" id="link-e" aria-label="link text"></span>
+      <span role="link" href="#" id="link-f" aria-labelledby="linklabel"></span>
+
+
+    </div>
+
+    <!-- lists -->
+    <div>
+      <dl>
+        <dt>Coffee</dt>
+        <dd>Black hot drink</dd>
+      </dl>
+
+      <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ul>
+
+      <ol>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ol>
+    </div>
+    <div>
+      <dl>
+        <dt>Coffee</dt>
+        <dd>Black hot drink</dd>
+      </dl>
+
+      <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ul>
+
+      <ol>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ol>
+    </div>
+    <!-- object -->
+    <div>
+      <object data="../example_src/eg.swf">car speaker banner ad</object>
+    </div>
+    <!-- tables -->
+    <div>
+      <table id="presentational-table" role="table">
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td colspan="2">AXE</td>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+      </table>
+
+      <table id="table-a" role="grid">
+        <tr>
+          <th colspan="2">AXE</th>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+      </table>
+
+      <table id="table-b" role="grid">
+        <tr>
+          <td colspan="2">AXE</td>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+      </table>
+
+
+      <table id="table-c">
+        <tr>
+          <th>AXE</th>
+          <th>AXE</th>
+          <th>AXE</th>
+          <td>aXe</td>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+      </table>
+
+      <table id="table-d">
+        <tr>
+          <th>AXE</th>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+        <tr>
+          <th>AXE</th>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+        <tr>
+          <th>AXE</th>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+        <tr>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+          <td>aXe</td>
+        </tr>
+      </table>
+
+
+      <table>
+        <tr>
+          <th id="hi"> </th>
+        </tr>
+        <tr>
+          <td headers="hi">goodbye</td>
+        </tr>
+      </table>
+    </div>
+    <!-- text -->
+    <div>
+      <p style="color:black">
+        paragraph of text
+        <a style="text-decoration:none; color:blue" href="#" id="fail1">
+          Link text</a>
+        <br>
+        <a href="#" id="ignore10">Link!</a>
+      </p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,70 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <%- include("partials/html-header") %>
+    <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/Chart.bundle.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-    <link rel='stylesheet' href='/stylesheets/style.css' />
- 
-    <link rel='stylesheet' href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" >
-    <script src="">"https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"</script>
-    
-    <script src="/javascripts/main.js"></script>
-
-    <title><%= title %></title>
+    <title>Blinky: Web Mutation Testing</title>
   </head>
 
   <body>
-  <%- include("navbar") %>
+    <div class="c-container">
+      <div class="c-row">
+         <div class="c-col left-col">
+         </div>
 
-    <div class="container-fluid" style="margin-top:20px">
-      <h1 class="float-left">Mutation Testing</h1>
-      <%if(data){%>
-              <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onClick="document.location='/run'; this.disabled=true; this.innerHTML='Running...';" >Run Test</button>
-         <table class="table">
-            <tr class="thead-dark">
-              <th scope="col">Page</th>
-              <th scope="col">Source</th>
-              <th scope="col">Mutation Applied</th>
-              <th scope="col">Number of Violations</th>
-              <th scope="col">Violation IDs </th>
-              <th scope="col">Mutant Status</th>
-            </tr>
-            <% for(let i in data.sources){%>
-              <tr class="source-row">
-                <td><a target="_blank" href='<%= data.sources[i].route%>'> <%= data.sources[i].id%> </a></td>
-                <td></td>
-                <td></td>
-                <td><%= data.sources[i].axe.violations.length%></td>
-                <td><%for(k in data.sources[i].axe.violations){%> <%=data.sources[i].axe.violations[k].id%> <br> <%}%></td>
-                <td></td>
-              </tr>
-              <% for(let j in data.sources[i].mutants){
-                let mutant = data.sources[i].mutants[j];
-                %>
-                 <tr>
-                  <td style="padding-left:2em"><a target="_blank" href='<%= mutant.route%>'> <%= mutant.id%></a></td>
-                  <td><a target="_blank" href='<%= data.sources[i].route%>'> <%= data.sources[i].id%> </a></td>
-                  <td><%= mutant.mutation.name%></td>
-                  <td><%= mutant.axe.violations.length%></td>
-                  <td><%for(k in mutant.axe.violations){%> <%=mutant.axe.violations[k].id%> <br> <%}%></td>
-                  <td class="<%= mutant.live  ? (mutant.equiv ? 'table-warning' : 'table-danger') : 'table-success'%>"><%= mutant.live ? (mutant.equiv ? "Equiv" :"Live") : "Dead"%></td> 
-                </tr>
-              <%}%>
-            
-          <%}%>  
-          </table>
-        <%}else{%>
-              <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onClick="document.location='/run'; this.disabled=true; this.innerHTML='Running...';" >Run Test</button>
-        <%}%>
+         <div class="c-col active-col">
+          <div class="c-col" id="source-section">
+            <div class="section-title bg-primary text-white">
+              <i data-col-id="source-section" data-active=true class="fas fa-minus"></i>
+              <h1>Source</h1>
+            </div>
+
+            <div class="section-content">
+              <h2>Choose Source</h2>
+                <div data-source-choice=1 class="card source-choice text-white bg-primary mb-3">
+                  <div class="card-body">
+                    <h3 class="card-title">Testbench Source</h3>
+                    <p class="card-text">This is the designed testbench which has viable elements to trigger every mutation.</p>
+                  </div>
+                </div>
+
+                
+                <div data-source-choice=2 class="card source-choice bg-light mb-3 disabled" disabled>
+                  <div class="card-body">
+                    <h3 class="card-title">HTML File Upload</h3>
+                    <form>
+                      <div class="form-group">
+                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        <small id="fileHelp" class="form-text">Only .html files are excepted</small>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div data-source-choice=3 class="card source-choice bg-light mb-3 disabled" disabled>
+                  <div class="card-body">
+                    <h3 class="card-title">URL Source Download</h3>
+                    <form>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="url-download" aria-describedby="urlHelp" placeholder="Enter url">
+                        <small id="urlHelp" class="form-text">Use this URL to pull html source down for testing</small>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <button id="run-source" type="button" class="btn btn-primary btn-lg btn-block">Run Selected Source</button>
+                <%if(stage>1){%>
+                <button id="get-session" data-stage="<%=stage%>" type="button" 
+                class="btn btn-lg btn-block btn-<%if(stage==2){%>info<%} else{ if(stage==3){%>warning<%}else{%>danger<%}}%>">Continue</button>
+                <%}%>
+
+                 <%if(savedResult){%>
+                <button id="load-saved-result" type="button" 
+                class="btn btn-lg btn-block btn-danger">Load Saved</button>
+                <%}%>
+
+            </div>
+          </div>
         </div>
-          
-    </div>
+
+        <div class="c-col right-col">
+          <div class="c-col disabled" id="mutate-section">
+              <div class="section-title bg-info text-white">
+                <i data-col-id="mutate-section" data-active=false class="fas fa-plus"></i>
+                <h1>Analysis</h1>
+              </div>
+              
+              <div class="section-content hide">
+                <h2>Source Analysis</h2>
+                  <div class="stat-cards">
+                  <div id="mutant-count" class="card text-white bg-info mb-3 stat-card" >
+                    <div class="card-header">Mutations Available</div>
+                    <div class="card-body"></div>
+                  </div>
+
+                  <div id="axe-violation-count" class="card text-white bg-info mb-3 stat-card" >
+                    <div class="card-header">Axe Violations</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="source-valid" class="card text-white bg-info mb-3 stat-card float-left">
+                    <div class="card-header">Source Valid HTML?</div>
+                    <div class="card-body"></div>
+                  </div>
+
+                </div>
+                <div id="source-analysis-options">
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnViewSource">View Source</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnMutationSummary">View Mutation Summary</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnViolationSummary">View Violations Summary</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnValidationSummary">View Validation Summary</button>
+                  <hr>
+                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnRunMutations">Run Mutations</button>
+                </div>
+
+            </div>
+          </div>
+
+          <div class="c-col disabled" id="mutation-results-section">
+            <div class="section-title bg-warning text-white">
+              <i data-col-id="mutation-results-section" data-active=false class="fas fa-plus"></i>        
+              <h1>Mutation Results</h1>
+            </div>
+            <div class="section-content hide">
+              <h2>Mutation Results</h2>
+              <div id="stat-cards">
+                <div id="total-count" class="card bg-warning mb-3 stat-card" >
+                  <div class="card-header">Total Mutations</div>
+                  <div class="card-body"></div>
+                </div>
+
+                <div id="valid-mutant-count" class="card bg-warning mb-3 stat-card" >
+                  <div class="card-header">Valid Mutations</div>
+                  <div class="card-body"></div>
+                </div>
+
+                <div id="something-count" class="card bg-warning mb-3 stat-card" >
+                  <div class="card-header">Something else</div>
+                  <div class="card-body">:)</div>
+                </div>
+              </div>
+              <div id="mutant-analysis-options">
+                <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewSource">View Source</button>
+                <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewMutants">View Mutants</button>
+                 <hr>
+                  <button type="button" class="btn btn-warning btn-lg btn-block" id="btnRunAxe">Run Axe</button>
+              </div>
+            </div>
+          </div>   
+
+          <div class="c-col disabled" id="axe-results-section">
+              <div class="section-title bg-danger text-white">
+                <i data-col-id="axe-results-section" data-active=false class="fas fa-plus"></i>        
+                <h1>Axe Results</h1>
+              </div>
+                        
+              <div class="section-content hide">
+                <h2>Axe Results</h2>
+                 <div class="stat-cards">
+                  <div id="axe-total-violations" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Axe Violations</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="axe-total-live" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Killed Mutants</div>
+                    <div class="card-body">0</div>
+                  </div>
+
+                  <div id="axe-kill-score" class="card bg-danger text-white mb-3 stat-card" >
+                    <div class="card-header">Killed</div>
+                    <div class="card-body">0</div>
+                  </div>
+                </div>
+                <div class="canvas-holder" style="position: relative; width:52vw;min-width: 600px;">
+                  <canvas id="categories-area"></canvas>
+                </div>
+
+              </div>
+
+          </div>
+        </div>
+      
+      
+      </div>   
+    </div>    
+   
   </body>
 </html>
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script src="/javascripts/Chart.bundle.min.js"></script>
+    <title>Mutation Summary</title>
+  </head>
+
+  <body>
+    <div class="container-fluid" style="margin-top:20px">
+      <h1 class="float-left">Viable Mutants</h1>
+         
+      <table class="table display" id="viable-mutants">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Class</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in viableMutations){%>
+              <tr class="">
+                <td><%= viableMutations[i].id%></td>
+                <td><%= viableMutations[i].name%></td>
+                <td><%= viableMutations[i].description%></td>
+                <td><%= viableMutations[i].class%></td>
+              </tr> 
+            
+          <%}%>  
+          </tbody>
+          </table>
+        
+        </div>
+          
+    </div>
+
+    <div class="container-fluid" style="margin-top:20px">
+      <h1 class="float-left">Non-Vaible Mutants</h1>
+         
+      <table class="table display" id="mutants">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Class</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in nonViableMutations){%>
+              <tr class="">
+                <td><%= nonViableMutations[i].id%></td>
+                <td><%= nonViableMutations[i].name%></td>
+                <td><%= nonViableMutations[i].description%></td>
+                <td><%= nonViableMutations[i].class%></td>
+              </tr> 
+            
+          <%}%>  
+          </tbody>
+          </table>
+        
+        </div>
+
+    <div class="container-fluid" style="margin-top:20px">
+      <h1 class="float-left">All Mutants</h1>
+         
+      <table class="table display" id="mutants">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Class</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in allMutations){%>
+              <tr class="">
+                <td><%= allMutations[i].id%></td>
+                <td><%= allMutations[i].name%></td>
+                <td><%= allMutations[i].description%></td>
+                <td><%= allMutations[i].class%></td>
+              </tr> 
+            
+          <%}%>  
+          </tbody>
+          </table>
+        
+        </div>
+  </body>
+  <script>
+  $(document).ready(function () {
+  $('#viable-mutants').DataTable({
+    paging: true,
+  });
+  $('#mutants').DataTable({
+    paging: true,
+  });
+});
+  </script>
+</html>
