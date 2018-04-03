@@ -15,6 +15,8 @@ const jsdom = require("jsdom");
 const {
   JSDOM
 } = jsdom;
+var csv = require('csv');
+
 
 let running = false;
 
@@ -163,7 +165,8 @@ router.get('/get-session', (req, res, next) => {
 router.get('/export-csv', (req, res, next) => {
   try {
     if (req.session.data && req.session.data.stage == 4) {
-      let output = `ID, Class, Description, # Killed, # Live, # Total, WCAG SC \n`
+      let output = `${req.session.data.source.id} \n`
+      output += `ID, Class, Description, # Killed, # Live, # Total, WCAG SC \n`
       req.session.data.analysis.mutationAnalysis.map(mutation => {
         output += `${mutation.id}, ${mutation.class},` +
           `${mutation.description}, ${mutation.analysis.axe.killed},` +
@@ -176,9 +179,12 @@ router.get('/export-csv', (req, res, next) => {
           console.log('Some error occured - file either not saved or corrupted file saved.');
         } else {
           console.log('It\'s saved!');
+          res.setHeader('Content-Disposition', `attachment; filename=${req.session.data.source.id}-results.csv`);
+
+          return res.sendFile(path.resolve(__dirname, '../output.csv'));
+
         }
       });
-      return res.json("done");
     }
   } catch (err) {
     console.log(err)

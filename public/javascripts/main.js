@@ -261,9 +261,7 @@ $(document).ready(function () {
   }
 
   $('#btnExportCSV').on('click', function () {
-    $.get("/export-csv", function (data) {
-      console.log(data);
-    })
+    window.location = "/export-csv";
   })
 
 });

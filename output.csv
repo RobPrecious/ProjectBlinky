@@ -1,57 +1,58 @@
+TestBench 
 ID, Class, Description, # Killed, # Live, # Total, WCAG SC 
-1.1.1-01, Attribute Change,Image must have alt text,0,1,1,1.1.1
-1.1.1-02, Attribute Change,Image must have alt text,1,0,1,1.1.1
-1.1.1-03, Attribute Change,Empty alternative text from <input type='image'> element,1,0,1,1.1.1
-1.1.1-04, Attribute Change,Remove alternative text from <input type='image'> element,1,0,1,1.1.1
-1.1.1-05, Attribute Change,Buttons should be labeled,0,1,1,1.1.1
-1.1.1-06, Attribute Change,Buttons should be labeled,0,1,1,1.1.1
-1.1.1-07, Attribute Change,Ensures <area> elements of image maps have alternate text,1,0,1,1.1.1
-1.1.1-08, Attribute Change,Ensures <area> elements of image maps have alternate text,1,0,1,1.1.1
-1.1.1-09, Attribute Change,Remove text from link,1,0,1,1.1.1
-1.1.1-10, Attribute Change,Empty aria label of link without inner text,1,0,1,1.1.1
-1.1.1-11, Attribute Change,Change the aria labelled by to a non existant element,1,0,1,1.1.1
-1.1.1-12, Attribute Change,Change the aria labelled by element to a invalid element,1,0,1,1.1.1
-1.1.1-13, Attribute Change,Remove text from element with role='link',1,0,1,1.1.1
-1.1.1-14, Attribute Change,Empty aria label of element with role='link' without inner text,1,0,1,1.1.1
-1.1.1-15, Attribute Change,Change the aria labelledby of element with role='link' to a non existant element,1,0,1,1.1.1
-1.1.1-16, Attribute Change,Change the aria labelledby of element with role='link' to a invalid element,1,0,1,1.1.1
-1.1.1-17, Attribute Change,Remove alt text from object element,1,0,1,1.1.1
-1.2.2-01, Remove Element,Remove caption track from audio element,0,1,1,1.2.2
-1.2.2-02, Attribute Change,Change track source to incorrect source on audio element,0,1,1,1.2.2
-1.2.3-01, Remove Element,Remove caption track from video element,1,0,1,1.2.3
-1.2.3-02, Attribute Change,Remove caption track from video element,0,1,1,1.2.3
-1.2.5-01, Remove Element,Remove description track from video element,1,0,1,1.2.5
-1.2.5-02, Attribute Change,Remove description track from video element,0,1,1,1.2.5
-1.3.1-01, Attribute Change,aria-required-children - parent role does not match expected children,1,0,1,1.3.1
-1.3.1-02, Attribute Change,aria-required-children - parent role does not match expected children,1,0,1,1.3.1
-1.3.1-03, Remove Element,aria-required-children - parent role does not match expected children,1,0,1,1.3.1
-1.3.1-04, Attribute Change,aria-required-children - parent role does not match expected children,1,0,1,1.3.1
-1.3.1-05, Remove Element,aria-required-parent - certain ARIA roles must be contained by particular parents,0,1,1,1.3.1
-1.3.1-06, Attribute Change,aria-roles - ARIA roles used must conform to valid values,1,0,1,1.3.1
-1.3.1-07, Attribute Change,aria-required-parent - child role does not have expected parent,1,0,1,1.3.1
-1.3.1-08, Reorder Element,definition-list - must be structured correctly,1,0,1,1.3.1
-1.3.1-09, Reorder Element,Ordered-list - must be structured correctly,1,0,1,1.3.1
-1.3.1-10, Reorder Element,Unordered-list - must be structured correctly,1,0,1,1.3.1
-1.3.1-11, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-12, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-13, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-14, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-15, Remove Element,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-16, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-17, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-18, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-19, Attribute Change,Labels - must be structured correctly,1,0,1,1.3.1
-1.3.1-20, Attribute Change,Paragraph elements should not be styled as headers,0,1,1,1.3.1
-1.3.1-21, Attribute Change,Change table role to other roles,0,1,1,1.3.1
-1.3.1-22, Attribute Change,Empty td header,0,1,1,1.3.1
-1.3.1-23, Attribute Change,Change td header,1,0,1,1.3.1
-1.3.2-01, Reorder Element,Change heading order,0,1,1,1.3.2
-1.3.2-02, Reorder Element,Change heading order,0,1,1,1.3.2
-1.3.2-03, Reorder Element,Change heading order,1,0,1,1.3.2
-1.3.2-04, Change element tag,Change heading tag -  h1 -> h2,0,1,1,1.3.2
-1.3.2-05, Change element tag,Change heading tag -  h2 -> h3,0,1,1,1.3.2
-1.3.2-06, Change element tag,Change heading tag -  h3 -> h4,1,0,1,1.3.2
-1.3.2-07, Change element tag,Change heading tag -  h2 -> h1,0,1,1,1.3.2
-1.3.2-08, Change element tag,Change heading tag -  h3 -> h2,1,0,1,1.3.2
-1.3.2-09, Change element tag,Change heading tag -  h4 -> h3,1,0,1,1.3.2
-2.4.2-01, Attribute Change,Empty title,1,0,1,1.3.2
+1.1.1-01, Attribute Change,Image must have alt text, 0,1, 1,1.1.1
+1.1.1-02, Attribute Change,Image must have alt text, 1,0, 1,1.1.1
+1.1.1-03, Attribute Change,Empty alternative text from <input type='image'> element, 1,0, 1,1.1.1
+1.1.1-04, Attribute Change,Remove alternative text from <input type='image'> element, 1,0, 1,1.1.1
+1.1.1-05, Attribute Change,Buttons should be labeled, 0,1, 1,1.1.1
+1.1.1-06, Attribute Change,Buttons should be labeled, 0,1, 1,1.1.1
+1.1.1-07, Attribute Change,Ensures <area> elements of image maps have alternate text, 1,0, 1,1.1.1
+1.1.1-08, Attribute Change,Ensures <area> elements of image maps have alternate text, 1,0, 1,1.1.1
+1.1.1-09, Attribute Change,Remove text from link, 1,0, 1,1.1.1
+1.1.1-10, Attribute Change,Empty aria label of link without inner text, 1,0, 1,1.1.1
+1.1.1-11, Attribute Change,Change the aria labelled by to a non existant element, 1,0, 1,1.1.1
+1.1.1-12, Attribute Change,Change the aria labelled by element to a invalid element, 1,0, 1,1.1.1
+1.1.1-13, Attribute Change,Remove text from element with role='link', 1,0, 1,1.1.1
+1.1.1-14, Attribute Change,Empty aria label of element with role='link' without inner text, 1,0, 1,1.1.1
+1.1.1-15, Attribute Change,Change the aria labelledby of element with role='link' to a non existant element, 1,0, 1,1.1.1
+1.1.1-16, Attribute Change,Change the aria labelledby of element with role='link' to a invalid element, 1,0, 1,1.1.1
+1.1.1-17, Attribute Change,Remove alt text from object element, 1,0, 1,1.1.1
+1.2.2-01, Remove Element,Remove caption track from audio element, 0,1, 1,1.2.2
+1.2.2-02, Attribute Change,Change track source to incorrect source on audio element, 0,1, 1,1.2.2
+1.2.3-01, Remove Element,Remove caption track from video element, 1,0, 1,1.2.3
+1.2.3-02, Attribute Change,Remove caption track from video element, 0,1, 1,1.2.3
+1.2.5-01, Remove Element,Remove description track from video element, 1,0, 1,1.2.5
+1.2.5-02, Attribute Change,Remove description track from video element, 0,1, 1,1.2.5
+1.3.1-01, Attribute Change,aria-required-children - parent role does not match expected children, 1,0, 1,1.3.1
+1.3.1-02, Attribute Change,aria-required-children - parent role does not match expected children, 1,0, 1,1.3.1
+1.3.1-03, Remove Element,aria-required-children - parent role does not match expected children, 1,0, 1,1.3.1
+1.3.1-04, Attribute Change,aria-required-children - parent role does not match expected children, 1,0, 1,1.3.1
+1.3.1-05, Remove Element,aria-required-parent - certain ARIA roles must be contained by particular parents, 0,1, 1,1.3.1
+1.3.1-06, Attribute Change,aria-roles - ARIA roles used must conform to valid values, 1,0, 1,1.3.1
+1.3.1-07, Attribute Change,aria-required-parent - child role does not have expected parent, 1,0, 1,1.3.1
+1.3.1-08, Reorder Element,definition-list - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-09, Reorder Element,Ordered-list - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-10, Reorder Element,Unordered-list - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-11, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-12, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-13, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-14, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-15, Remove Element,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-16, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-17, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-18, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-19, Attribute Change,Labels - must be structured correctly, 1,0, 1,1.3.1
+1.3.1-20, Attribute Change,Paragraph elements should not be styled as headers, 0,1, 1,1.3.1
+1.3.1-21, Attribute Change,Change table role to other roles, 0,1, 1,1.3.1
+1.3.1-22, Attribute Change,Empty td header, 0,1, 1,1.3.1
+1.3.1-23, Attribute Change,Change td header, 1,0, 1,1.3.1
+1.3.2-01, Reorder Element,Change heading order, 0,1, 1,1.3.2
+1.3.2-02, Reorder Element,Change heading order, 0,1, 1,1.3.2
+1.3.2-03, Reorder Element,Change heading order, 1,0, 1,1.3.2
+1.3.2-04, Change element tag,Change heading tag -  h1 -> h2, 0,1, 1,1.3.2
+1.3.2-05, Change element tag,Change heading tag -  h2 -> h3, 0,1, 1,1.3.2
+1.3.2-06, Change element tag,Change heading tag -  h3 -> h4, 1,0, 1,1.3.2
+1.3.2-07, Change element tag,Change heading tag -  h2 -> h1, 0,1, 1,1.3.2
+1.3.2-08, Change element tag,Change heading tag -  h3 -> h2, 1,0, 1,1.3.2
+1.3.2-09, Change element tag,Change heading tag -  h4 -> h3, 1,0, 1,1.3.2
+2.4.2-01, Attribute Change,Empty title, 1,0, 1,1.3.2
