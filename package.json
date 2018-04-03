@@ -21,7 +21,6 @@
     "jquery": "^3.3.1",
     "jsdom": "^11.6.2",
     "morgan": "~1.9.0",
-    "pa11y": "^5.0.3",
     "pify": "^3.0.0",
     "selenium-webdriver": "^3.6.0",
     "serve-favicon": "~2.4.5"

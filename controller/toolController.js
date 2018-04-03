@@ -1,6 +1,5 @@
 var AxeBuilder = require('axe-webdriverjs');
 var WebDriver = require('selenium-webdriver');
-const pa11y = require('pa11y');
 const baseURL = "http://localhost:3000";
 
 const axeTools = {

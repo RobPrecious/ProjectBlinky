@@ -11,7 +11,7 @@ const section_list = [
   "axe-results-section",
 ]
 
-let sourceChoice = 1;
+let sourceChoice = "1";
 let sourceURL = null;
 
 window.chartColors = {
@@ -71,47 +71,59 @@ $(document).ready(function () {
     }
   })
 
-  $('#get-session').on('click', function () {
-    $.get("/get-session", function (data) {
-      console.log(data);
-      if (data.stage == 2) {
-        openStage2(data.source);
-      }
-      if (data.stage == 3) {
-        openStage2(data.source);
-        openStage3(data.source);
-      }
-      if (data.stage == 4) {
-        openStage2(data.source);
-        openStage3(data.source);
-        openStage4(data);
-      }
-    })
-  })
-
   // ----------------------- STAGE 1 (SOURCE) -------------------------- //
-
-  $("#load-saved-result").on('click', function () {
-    $.get("/analyse-saved", function (data) {
-      openStage2(data.source);
-      openStage3(data.source);
-      openStage4(data);
-    })
-  })
 
   $('.source-choice').on('click', function () {
     $('.source-choice').removeClass("text-white").removeClass("bg-primary").addClass("bg-light");
     $(this).addClass("text-white").addClass("bg-primary").removeClass("bg-light");
+    sourceChoice = $(this).attr('data-source-choice');
+
   })
 
   $('#run-source').on('click', function () {
     $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-primary"></i></span>').insertAfter($(this));
     switch (sourceChoice) {
-      case 1:
-        $.get("/testbench", function (data) {
-          openStage2(data);
-          $("#loading-spinner").remove();
-        })
+      case "1":
+        {
+          console.log("hit")
+          $.get("/testbench", function (data) {
+            $("#loading-spinner").remove();
+            openStage2(data);
+          })
+          break;
+        }
+      case "4":
+        {
+          $.get("/analyse-saved", function (data) {
+            $("#loading-spinner").remove();
+            openStage2(data.source);
+            openStage3(data.source);
+            openStage4(data);
+          })
+          break;
+        }
+      case "5":
+        {
+          $.get("/get-session", function (data) {
+            $("#loading-spinner").remove();
+            console.log(data);
+            if (data.stage == 2) {
+              openStage2(data.source);
+            }
+            if (data.stage == 3) {
+              openStage2(data.source);
+              openStage3(data.source);
+            }
+            if (data.stage == 4) {
+              openStage2(data.source);
+              openStage3(data.source);
+              openStage4(data);
+            }
+          })
+          break;
+        }
+      default:
+        break;
     }
   })
 
@@ -136,7 +148,7 @@ $(document).ready(function () {
     sourceURL = source.route;
   }
 
-  $('#btnViewSource').on('click', function () {
+  $('.btnViewSource').on('click', function () {
     var win = window.open(sourceURL, '_blank');
     win.focus();
   })
@@ -189,6 +201,7 @@ $(document).ready(function () {
     var win = window.open("/v2/source", '_blank');
     win.focus();
   })
+
 
   $("#btnRunAxe").on('click', function () {
     $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-warning"></i></span>').insertAfter($(this));
@@ -246,5 +259,11 @@ $(document).ready(function () {
     $("#axe-total-live .card-body").html(data.analysis.all.axe.killed + "/" + data.analysis.all.axe.total);
     $("#axe-kill-score .card-body").html((data.analysis.all.axe.killed / data.analysis.all.axe.total * 100).toFixed(0) + "%");
   }
+
+  $('#btnExportCSV').on('click', function () {
+    $.get("/export-csv", function (data) {
+      console.log(data);
+    })
+  })
 
 });

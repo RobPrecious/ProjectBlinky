@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/html-header") %>
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <%- include("navbar") %>
+
+    <div class="container-fluid" style="margin-top:20px">
+      <h1 class="float-left"><%= title %></h1>
+
+      <button style="margin: 9px 0px 0px 25px" type="button" class="btn btn-primary" onclick="document.location='/run'">Rerun test</button>
+         
+      <table class="table display" id="mutants">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Class</th>
+              <th scope="col">Violation Triggered</th>
+              <th scope="col">Live Mutants Found</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in mutations){%>
+              <tr class="">
+                <td><%= mutations[i].id%></td>
+                <td><%= mutations[i].name%></td>
+                <td><%= mutations[i].description%></td>
+                <td><%= mutations[i].class%></td>
+                <td><%= mutations[i].violations%></td>
+                <td><%= mutations[i].live%></td>
+              </tr> 
+            
+          <%}%>  
+          </tbody>
+          </table>
+        
+        </div>
+          
+    </div>
+  </body>
+</html>

@@ -876,7 +876,7 @@ module.exports = [{
     "successCriteria": "1.3.1",
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
-      if ($("table[role='table']").length) {
+      if ($("table[role='grid']").length) {
         return true
       }
       return false;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/html-header") %>
+    <title>Violation Summary</title>
+  </head>
+
+  <body>
+    <div class="container-fluid" style="margin-top:20px">
+      <h1>Violation Summary</h1>
+      <h2>Axe Violation count:<%= JSON.stringify(axe.violationsCount)%></h2>
+      <br>
+      <table class="table display" id="violations">
+         <thead>
+            <tr class="thead-dark">
+              <th scope="col">ID</th>
+              <th scope="col">Help</th>
+              <th scope="col">Description</th>
+              <th scope="col">Help url</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let i in axe.raw){%>
+              <tr class="">
+                <td><%= axe.raw[i].id%></td>
+                <td><%= axe.raw[i].help%></td>
+                <td><%= axe.raw[i].description%></td>
+                <td><%= axe.raw[i].helpUrl%></td>
+              </tr> 
+            
+          <%}%>  
+          </tbody>  
+      </table>    
+    </div>
+
+  </body>
+  </html>

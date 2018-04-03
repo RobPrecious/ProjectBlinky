@@ -20,15 +20,28 @@ let running = false;
 
 // ---------------------- STAGE 1 --------------------------- //
 router.get('/', (req, res, next) => {
-  if (!req.session.data) {
-    req.session.data = {
-      "stage": 1
+  try {
+    let saved = false;
+
+    if (!req.session.data) {
+      req.session.data = {
+        "stage": 1
+      }
     }
+    if (fs.existsSync('results.json')) {
+      try {
+        saved = fs.readJSONSync('results.json')
+      } catch (err) {
+        console.log("cannot parse json file")
+      }
+    }
+    return res.render('index', {
+      "stage": req.session.data.stage,
+      "savedResult": saved,
+    })
+  } catch (err) {
+    console.log(err);
   }
-  return res.render('index', {
-    "stage": req.session.data.stage,
-    "savedResult": fs.existsSync('result.json'),
-  })
 })
 
 router.get('/testbench', (req, res, next) => {
@@ -53,7 +66,8 @@ router.get('/testbench', (req, res, next) => {
 // ---------------------- STAGE 2 --------------------------- //
 router.get('/view-mutation-summary', (req, res, next) => {
   const source = req.session.data.source;
-  return res.render('mutation-summary', {
+  return res.render('templates/page-template', {
+    "template": "../summary-partials/mutation-summary",
     "allMutations": mutationLibrary,
     "viableMutations": source.mutations.viableRaw,
     "nonViableMutations": source.mutations.nonViableRaw,
@@ -61,14 +75,16 @@ router.get('/view-mutation-summary', (req, res, next) => {
 })
 
 router.get('/view-violation-summary', (req, res, next) => {
-  return res.render('violations-summary', {
+  return res.render('templates/page-template', {
+    "template": "../summary-partials/violations-summary",
     "axe": req.session.data.source.ATTResults.axe,
     "pa11y": req.session.data.source.ATTResults.pa11y,
   });
 })
 
 router.get('/view-validation-summary', (req, res, next) => {
-  return res.render('validation-summary', {
+  return res.render('templates/page-template', {
+    "template": "../summary-partials/validation-summary",
     "validity": req.session.data.source.validity
   });
 })
@@ -78,7 +94,7 @@ router.get('/mutate-source', (req, res, next) => {
     .then(result => {
       result.mutants.map(mutant => {
         router.get('/mutants/' + mutant.id, (req, res, next) => {
-          res.render('main', {
+          res.render('templates/mutant-template', {
             template: mutant.file
           });
         });
@@ -94,7 +110,8 @@ router.get('/mutate-source', (req, res, next) => {
 
 // ---------------------- STAGE 3 --------------------------- //
 router.get('/view-mutants-summary', (req, res, next) => {
-  return res.render('mutants-summary', {
+  return res.render('templates/page-template', {
+    "template": "../summary-partials/mutants-summary",
     "source": req.session.data.source
   });
 })
@@ -126,11 +143,10 @@ router.get('/run-att', (req, res, next) => {
 
 
 router.get("/analyse-saved", (req, res, next) => {
-  req.session.data.savedResult = fs.readJSONSync('results.json');
-  req.session.data.source = req.session.data.savedResult;
+  req.session.data = fs.readJSONSync('results.json');
   req.session.data.stage = 4;
 
-  mainController.postToolAnalysis(req.session.data.savedResult.source)
+  mainController.postToolAnalysis(req.session.data.source)
     .then(data => {
       return res.json(data);
     })
@@ -144,10 +160,35 @@ router.get('/get-session', (req, res, next) => {
   return res.json(req.session.data);
 })
 
+router.get('/export-csv', (req, res, next) => {
+  try {
+    if (req.session.data && req.session.data.stage == 4) {
+      let output = `ID, Class, Description, # Killed, # Live, # Total, WCAG SC \n`
+      req.session.data.analysis.mutationAnalysis.map(mutation => {
+        output += `${mutation.id}, ${mutation.class},` +
+          `${mutation.description}, ${mutation.analysis.axe.killed},` +
+          `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
+          `${mutation.successCriteria}\n`;
+      })
+      fs.writeFile('output.csv', output, 'utf8', function (err) {
+        if (err) {
+          console.log(err);
+          console.log('Some error occured - file either not saved or corrupted file saved.');
+        } else {
+          console.log('It\'s saved!');
+        }
+      });
+      return res.json("done");
+    }
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 function loadSource(location) {
   router.get('/v2/source', (req, res, next) => {
-    res.render('main', {
-      template: location
+    res.render('templates/mutant-template', {
+      template: "../" + location
     });
   });
 }

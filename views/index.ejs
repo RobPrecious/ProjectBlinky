@@ -30,41 +30,26 @@
                   </div>
                 </div>
 
-                
-                <div data-source-choice=2 class="card source-choice bg-light mb-3 disabled" disabled>
-                  <div class="card-body">
-                    <h3 class="card-title">HTML File Upload</h3>
-                    <form>
-                      <div class="form-group">
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text">Only .html files are excepted</small>
-                      </div>
-                    </form>
+                <%if(savedResult){%>
+                <div data-source-choice=4 class="card source-choice bg-light mb-3">
+                   <div class="card-body">
+                    <h3 class="card-title">Load Last Analysis</h3>
+                    <p class="card-text"><%= savedResult.source.id%><br><%= savedResult.source.mutations.mutantCount%> Mutants</p>
                   </div>
                 </div>
+                <%}%>
 
-                <div data-source-choice=3 class="card source-choice bg-light mb-3 disabled" disabled>
-                  <div class="card-body">
-                    <h3 class="card-title">URL Source Download</h3>
-                    <form>
-                      <div class="form-group">
-                        <input type="text" class="form-control" id="url-download" aria-describedby="urlHelp" placeholder="Enter url">
-                        <small id="urlHelp" class="form-text">Use this URL to pull html source down for testing</small>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-                <button id="run-source" type="button" class="btn btn-primary btn-lg btn-block">Run Selected Source</button>
                 <%if(stage>1){%>
-                <button id="get-session" data-stage="<%=stage%>" type="button" 
-                class="btn btn-lg btn-block btn-<%if(stage==2){%>info<%} else{ if(stage==3){%>warning<%}else{%>danger<%}}%>">Continue</button>
+                <div data-source-choice=5 class="card source-choice bg-light mb-3">
+                  <div class="card-body">
+                    <h3 class="card-title">Load Current Session</h3>
+                    <p class="card-text">Load to stage: <%=stage%></p>
+                  </div>
+                </div>
                 <%}%>
 
-                 <%if(savedResult){%>
-                <button id="load-saved-result" type="button" 
-                class="btn btn-lg btn-block btn-danger">Load Saved</button>
-                <%}%>
+                <button id="run-source" type="button" class="btn btn-primary btn-lg btn-block">Go</button>
+            
 
             </div>
           </div>
@@ -97,7 +82,7 @@
 
                 </div>
                 <div id="source-analysis-options">
-                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnViewSource">View Source</button>
+                  <button type="button" class="btn btn-info btn-lg btn-block btnViewSource">View Source</button>
                   <button type="button" class="btn btn-info btn-lg btn-block" id="btnMutationSummary">View Mutation Summary</button>
                   <button type="button" class="btn btn-info btn-lg btn-block" id="btnViolationSummary">View Violations Summary</button>
                   <button type="button" class="btn btn-info btn-lg btn-block" id="btnValidationSummary">View Validation Summary</button>
@@ -132,7 +117,7 @@
                 </div>
               </div>
               <div id="mutant-analysis-options">
-                <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewSource">View Source</button>
+                <button type="button" class="btn btn-warning btn-lg btn-block btnViewSource">View Source</button>
                 <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewMutants">View Mutants</button>
                  <hr>
                   <button type="button" class="btn btn-warning btn-lg btn-block" id="btnRunAxe">Run Axe</button>
@@ -167,6 +152,9 @@
                 <div class="canvas-holder" style="position: relative; width:52vw;min-width: 600px;">
                   <canvas id="categories-area"></canvas>
                 </div>
+
+                <button type="button" class="btn btn-danger btn-lg btn-block" id="btnExportCSV">Export to csv</button>
+
 
               </div>
 
