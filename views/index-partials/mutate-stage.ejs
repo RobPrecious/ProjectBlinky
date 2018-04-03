@@ -1,0 +1,36 @@
+<div class="c-col disabled" id="mutate-section">
+  <div class="section-title bg-info text-white">
+    <i data-col-id="mutate-section" data-active=false class="fas fa-plus"></i>
+    <h1>Analysis</h1>
+  </div>
+  
+  <div class="section-content hide">
+    <h2>Source Analysis</h2>
+      <div class="stat-cards">
+      <div id="mutant-count" class="card text-white bg-info mb-3 stat-card" >
+        <div class="card-header">Mutations Available</div>
+        <div class="card-body"></div>
+      </div>
+
+      <div id="axe-violation-count" class="card text-white bg-info mb-3 stat-card" >
+        <div class="card-header">Axe Violations</div>
+        <div class="card-body">0</div>
+      </div>
+
+      <div id="source-valid" class="card text-white bg-info mb-3 stat-card float-left">
+        <div class="card-header">Source Valid HTML?</div>
+        <div class="card-body"></div>
+      </div>
+
+    </div>
+    <div id="source-analysis-options">
+      <button type="button" class="btn btn-info btn-lg btn-block btnViewSource">View Source</button>
+      <button type="button" class="btn btn-info btn-lg btn-block" id="btnMutationSummary">View Mutation Summary</button>
+      <button type="button" class="btn btn-info btn-lg btn-block" id="btnViolationSummary">View Violations Summary</button>
+      <button type="button" class="btn btn-info btn-lg btn-block" id="btnValidationSummary">View Validation Summary</button>
+      <hr>
+      <button type="button" class="btn btn-info btn-lg btn-block" id="btnRunMutations">Run Mutations</button>
+    </div>
+
+</div>
+</div>

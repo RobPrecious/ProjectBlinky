@@ -1,0 +1,38 @@
+<div class="c-col" id="source-section">
+<div class="section-title bg-primary text-white">
+  <i data-col-id="source-section" data-active=true class="fas fa-minus"></i>
+  <h1>Source</h1>
+</div>
+
+<div class="section-content">
+  <h2>Choose Source</h2>
+    <div data-source-choice=1 class="card source-choice text-white bg-primary mb-3">
+      <div class="card-body">
+        <h3 class="card-title">Testbench Source</h3>
+        <p class="card-text">This is the designed testbench which has viable elements to trigger every mutation.</p>
+      </div>
+    </div>
+
+    <%if(savedResult){%>
+    <div data-source-choice=4 class="card source-choice bg-light mb-3">
+        <div class="card-body">
+        <h3 class="card-title">Load Last Analysis</h3>
+        <p class="card-text"><%= savedResult.source.id%><br><%= savedResult.source.mutations.mutantCount%> Mutants</p>
+      </div>
+    </div>
+    <%}%>
+
+    <%if(stage>1){%>
+    <div data-source-choice=5 class="card source-choice bg-light mb-3">
+      <div class="card-body">
+        <h3 class="card-title">Load Current Session</h3>
+        <p class="card-text">Load to stage: <%=stage%></p>
+      </div>
+    </div>
+    <%}%>
+
+    <button id="run-source" type="button" class="btn btn-primary btn-lg btn-block">Go</button>
+
+
+</div>
+</div>

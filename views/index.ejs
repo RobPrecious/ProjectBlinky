@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include("partials/html-header") %>
-    <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/main.js"></script>
     <script src="/javascripts/Chart.bundle.min.js"></script>
 
     <title>Blinky: Web Mutation Testing</title>
@@ -13,154 +13,16 @@
       <div class="c-row">
          <div class="c-col left-col">
          </div>
-
-         <div class="c-col active-col">
-          <div class="c-col" id="source-section">
-            <div class="section-title bg-primary text-white">
-              <i data-col-id="source-section" data-active=true class="fas fa-minus"></i>
-              <h1>Source</h1>
-            </div>
-
-            <div class="section-content">
-              <h2>Choose Source</h2>
-                <div data-source-choice=1 class="card source-choice text-white bg-primary mb-3">
-                  <div class="card-body">
-                    <h3 class="card-title">Testbench Source</h3>
-                    <p class="card-text">This is the designed testbench which has viable elements to trigger every mutation.</p>
-                  </div>
-                </div>
-
-                <%if(savedResult){%>
-                <div data-source-choice=4 class="card source-choice bg-light mb-3">
-                   <div class="card-body">
-                    <h3 class="card-title">Load Last Analysis</h3>
-                    <p class="card-text"><%= savedResult.source.id%><br><%= savedResult.source.mutations.mutantCount%> Mutants</p>
-                  </div>
-                </div>
-                <%}%>
-
-                <%if(stage>1){%>
-                <div data-source-choice=5 class="card source-choice bg-light mb-3">
-                  <div class="card-body">
-                    <h3 class="card-title">Load Current Session</h3>
-                    <p class="card-text">Load to stage: <%=stage%></p>
-                  </div>
-                </div>
-                <%}%>
-
-                <button id="run-source" type="button" class="btn btn-primary btn-lg btn-block">Go</button>
-            
-
-            </div>
-          </div>
+         
+        <div class="c-col active-col">
+          <%- include("index-partials/source-stage") %>
         </div>
 
         <div class="c-col right-col">
-          <div class="c-col disabled" id="mutate-section">
-              <div class="section-title bg-info text-white">
-                <i data-col-id="mutate-section" data-active=false class="fas fa-plus"></i>
-                <h1>Analysis</h1>
-              </div>
-              
-              <div class="section-content hide">
-                <h2>Source Analysis</h2>
-                  <div class="stat-cards">
-                  <div id="mutant-count" class="card text-white bg-info mb-3 stat-card" >
-                    <div class="card-header">Mutations Available</div>
-                    <div class="card-body"></div>
-                  </div>
-
-                  <div id="axe-violation-count" class="card text-white bg-info mb-3 stat-card" >
-                    <div class="card-header">Axe Violations</div>
-                    <div class="card-body">0</div>
-                  </div>
-
-                  <div id="source-valid" class="card text-white bg-info mb-3 stat-card float-left">
-                    <div class="card-header">Source Valid HTML?</div>
-                    <div class="card-body"></div>
-                  </div>
-
-                </div>
-                <div id="source-analysis-options">
-                  <button type="button" class="btn btn-info btn-lg btn-block btnViewSource">View Source</button>
-                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnMutationSummary">View Mutation Summary</button>
-                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnViolationSummary">View Violations Summary</button>
-                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnValidationSummary">View Validation Summary</button>
-                  <hr>
-                  <button type="button" class="btn btn-info btn-lg btn-block" id="btnRunMutations">Run Mutations</button>
-                </div>
-
-            </div>
-          </div>
-
-          <div class="c-col disabled" id="mutation-results-section">
-            <div class="section-title bg-warning text-white">
-              <i data-col-id="mutation-results-section" data-active=false class="fas fa-plus"></i>        
-              <h1>Mutation Results</h1>
-            </div>
-            <div class="section-content hide">
-              <h2>Mutation Results</h2>
-              <div id="stat-cards">
-                <div id="total-count" class="card bg-warning mb-3 stat-card" >
-                  <div class="card-header">Total Mutations</div>
-                  <div class="card-body"></div>
-                </div>
-
-                <div id="valid-mutant-count" class="card bg-warning mb-3 stat-card" >
-                  <div class="card-header">Valid Mutations</div>
-                  <div class="card-body"></div>
-                </div>
-
-                <div id="something-count" class="card bg-warning mb-3 stat-card" >
-                  <div class="card-header">Something else</div>
-                  <div class="card-body">:)</div>
-                </div>
-              </div>
-              <div id="mutant-analysis-options">
-                <button type="button" class="btn btn-warning btn-lg btn-block btnViewSource">View Source</button>
-                <button type="button" class="btn btn-warning btn-lg btn-block" id="btnViewMutants">View Mutants</button>
-                 <hr>
-                  <button type="button" class="btn btn-warning btn-lg btn-block" id="btnRunAxe">Run Axe</button>
-              </div>
-            </div>
-          </div>   
-
-          <div class="c-col disabled" id="axe-results-section">
-              <div class="section-title bg-danger text-white">
-                <i data-col-id="axe-results-section" data-active=false class="fas fa-plus"></i>        
-                <h1>Axe Results</h1>
-              </div>
-                        
-              <div class="section-content hide">
-                <h2>Axe Results</h2>
-                 <div class="stat-cards">
-                  <div id="axe-total-violations" class="card bg-danger text-white mb-3 stat-card" >
-                    <div class="card-header">Axe Violations</div>
-                    <div class="card-body">0</div>
-                  </div>
-
-                  <div id="axe-total-live" class="card bg-danger text-white mb-3 stat-card" >
-                    <div class="card-header">Killed Mutants</div>
-                    <div class="card-body">0</div>
-                  </div>
-
-                  <div id="axe-kill-score" class="card bg-danger text-white mb-3 stat-card" >
-                    <div class="card-header">Killed</div>
-                    <div class="card-body">0</div>
-                  </div>
-                </div>
-                <div class="canvas-holder" style="position: relative; width:52vw;min-width: 600px;">
-                  <canvas id="categories-area"></canvas>
-                </div>
-
-                <button type="button" class="btn btn-danger btn-lg btn-block" id="btnExportCSV">Export to csv</button>
-
-
-              </div>
-
-          </div>
+          <%- include("index-partials/mutate-stage") %>
+          <%- include("index-partials/mutation-results-stage") %>
+          <%- include("index-partials/axe-results-stage") %>
         </div>
-      
       
       </div>   
     </div>    

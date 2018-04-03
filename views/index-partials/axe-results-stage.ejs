@@ -1,0 +1,33 @@
+<div class="c-col disabled" id="axe-results-section">
+    <div class="section-title bg-danger text-white">
+      <i data-col-id="axe-results-section" data-active=false class="fas fa-plus"></i>        
+      <h1>Axe Results</h1>
+    </div>
+              
+    <div class="section-content hide">
+      <h2>Axe Results</h2>
+        <div class="stat-cards">
+        <div id="axe-total-violations" class="card bg-danger text-white mb-3 stat-card" >
+          <div class="card-header">Axe Violations</div>
+          <div class="card-body">0</div>
+        </div>
+
+        <div id="axe-total-live" class="card bg-danger text-white mb-3 stat-card" >
+          <div class="card-header">Killed Mutants</div>
+          <div class="card-body">0</div>
+        </div>
+
+        <div id="axe-kill-score" class="card bg-danger text-white mb-3 stat-card" >
+          <div class="card-header">Killed</div>
+          <div class="card-body">0</div>
+        </div>
+      </div>
+      <div class="canvas-holder" style="position: relative; width:52vw;min-width: 600px;">
+        <canvas id="categories-area"></canvas>
+      </div>
+
+      <button type="button" class="btn btn-danger btn-lg btn-block" id="btnExportCSV">Export to csv</button>
+
+
+    </div>
+</div>
