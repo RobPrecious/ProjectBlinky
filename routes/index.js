@@ -154,6 +154,9 @@ router.get("/load-saved", (req, res, next) => {
   req.session.data = fs.readJSONSync('results.json');
   req.session.data.stage = 4;
 
+  //Will need re-implementing in the case where other input html methods are used
+  const source = "TestBench.v.0.0.2.html";
+  loadSource(source);
   req.session.data.source.mutants.map(mutant => {
     router.get('/mutants/' + mutant.id, (req, res, next) => {
       res.render('templates/mutant-template', {
