@@ -4,7 +4,6 @@ const baseURL = "http://localhost:3000";
 
 const axeTools = {
   testURL: url => {
-    console.log("aXe Testing: " + url);
     let driver = new WebDriver.Builder()
       .forBrowser('chrome')
       .build();
@@ -16,7 +15,7 @@ const axeTools = {
           .withTags(['best-practice', 'wcag2a', 'wcag2aa', 'section508', 'cat'])
           .disableRules(['href-no-hash', 'skip-link'])
           .analyze(function (results) {
-
+            console.log("aXe Tested: " + url);
             return results;
           });
       })
@@ -27,6 +26,38 @@ const axeTools = {
   },
   // Run Source and its mutants
   runSM: (source) => {
+    console.log("---------- Axe Starting ----------");
+    return axeTools.testURL(baseURL + source.route)
+      .then(result => {
+        source.ATTResults.axe = {
+          "violationsCount": result.violations.length,
+          "raw": result.violations
+        };
+        return source;
+      })
+      .then(source => {
+        return Promise.all(source.mutants.map(mutant => {
+            return axeTools.testURL(baseURL + mutant.route)
+              .then(result => {
+                mutant.ATTResults.axe = {
+                  "violationsCount": result.violations.length,
+                  "raw": result.violations
+                };
+              })
+              .catch(console.error.bind(console))
+          }))
+          .then(() => source)
+          .catch(console.error.bind(console))
+      })
+      .then(source => {
+        console.log("---------- Axe Complete ----------");
+        return source;
+      })
+      .catch(console.error.bind(console))
+
+  },
+  // Run Source and its mutants
+  runSMSerial: (source) => {
     console.log("---------- Axe Starting ----------");
     return axeTools.testURL(baseURL + source.route)
       .then(result => {

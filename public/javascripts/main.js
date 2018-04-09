@@ -94,7 +94,7 @@ $(document).ready(function () {
         }
       case "4":
         {
-          $.get("/analyse-saved", function (data) {
+          $.get("/load-saved", function (data) {
             $("#loading-spinner").remove();
             openStage2(data.source);
             openStage3(data.source);
@@ -206,6 +206,9 @@ $(document).ready(function () {
   $("#btnRunAxe").on('click', function () {
     $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-warning"></i></span>').insertAfter($(this));
     $(this).attr('disabled', true);
+    $.ajaxSetup({
+      timeout: 1000 * 60 * 3
+    })
     $.get("/run-att", function (data) {
       if (data == "Axe is already running.") {
         console.log(data);

@@ -122,6 +122,12 @@ router.get('/run-att', (req, res, next) => {
   try {
     const source = req.session.data.source;
     return toolController.axeTools.runSM(source)
+      .then(source => {
+        fs.outputJsonSync('pre-analysis.json', source, {
+          spaces: '\t'
+        }, err => {});
+        return source;
+      })
       .then(source => mainController.postToolAnalysis(source))
       .then(source => {
         fs.outputJsonSync('results.json', source, {
@@ -144,9 +150,17 @@ router.get('/run-att', (req, res, next) => {
 })
 
 
-router.get("/analyse-saved", (req, res, next) => {
+router.get("/load-saved", (req, res, next) => {
   req.session.data = fs.readJSONSync('results.json');
   req.session.data.stage = 4;
+
+  req.session.data.source.mutants.map(mutant => {
+    router.get('/mutants/' + mutant.id, (req, res, next) => {
+      res.render('templates/mutant-template', {
+        template: mutant.file
+      });
+    });
+  })
 
   mainController.postToolAnalysis(req.session.data.source)
     .then(data => {
@@ -176,13 +190,9 @@ router.get('/export-csv', (req, res, next) => {
       fs.writeFile('output.csv', output, 'utf8', function (err) {
         if (err) {
           console.log(err);
-          console.log('Some error occured - file either not saved or corrupted file saved.');
         } else {
-          console.log('It\'s saved!');
           res.setHeader('Content-Disposition', `attachment; filename=${req.session.data.source.id}-results.csv`);
-
           return res.sendFile(path.resolve(__dirname, '../output.csv'));
-
         }
       });
     }

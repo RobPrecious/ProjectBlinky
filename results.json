@@ -616,9 +616,9 @@
 					"analysis": {
 						"axe": {
 							"total": 1,
-							"violations": 1,
-							"live": 0,
-							"killed": 1
+							"violations": 0,
+							"live": 1,
+							"killed": 0
 						}
 					}
 				},
@@ -5286,9 +5286,9 @@
 					"analysis": {
 						"axe": {
 							"total": 1,
-							"violations": 1,
-							"live": 0,
-							"killed": 1
+							"violations": 0,
+							"live": 1,
+							"killed": 0
 						}
 					}
 				},
