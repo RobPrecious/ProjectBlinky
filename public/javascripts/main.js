@@ -85,7 +85,6 @@ $(document).ready(function () {
     switch (sourceChoice) {
       case "1":
         {
-          console.log("hit")
           $.get("/testbench", function (data) {
             $("#loading-spinner").remove();
             openStage2(data);
@@ -230,38 +229,37 @@ $(document).ready(function () {
     $("#btnRunAxe").attr('disabled', false);
     $("#loading-spinner").remove();
 
-    var categoriesbar = {
-      type: 'bar',
-      data: {
-        labels: data.analysis.categories.map(cat => cat.name),
-        datasets: [{
-          label: "Live",
-          backgroundColor: window.chartColors.green,
-          data: data.analysis.categories.map(cat => cat.axe.live)
-        }, {
-          label: "Dead",
-          backgroundColor: window.chartColors.red,
-          data: data.analysis.categories.map(cat => cat.axe.killed)
-        }]
-      },
-      options: {
-        legend: {
-          display: true
-        },
-        title: {
-          display: true,
-          text: 'Live/Dead by Mutation Class'
-        }
-      }
-    };
+    createBarChart("classes",
+      "classes-bar-chart",
+      data.analysis.classes.map(cat => cat.name), [{
+        label: "Live",
+        backgroundColor: window.chartColors.green,
+        data: data.analysis.classes.map(cat => cat.axe.live)
+      }, {
+        label: "Dead",
+        backgroundColor: window.chartColors.red,
+        data: data.analysis.classes.map(cat => cat.axe.killed)
+      }],
+      "Live/Dead by Mutation Class");
 
-    var categorieschart = document.getElementById('categories-area').getContext('2d');
-    window.categories = new Chart(categorieschart, categoriesbar);
+    createBarChart("subclasses",
+      "sub-classes-bar-chart",
+      data.analysis.subClasses.map(cat => cat.name), [{
+        label: "Live",
+        backgroundColor: window.chartColors.green,
+        data: data.analysis.subClasses.map(cat => cat.axe.live)
+      }, {
+        label: "Dead",
+        backgroundColor: window.chartColors.red,
+        data: data.analysis.subClasses.map(cat => cat.axe.killed)
+      }],
+      "Live/Dead by Mutation SubClass");
 
     $("#axe-total-violations .card-body").html(data.analysis.all.axe.violations);
     $("#axe-total-live .card-body").html(data.analysis.all.axe.killed + "/" + data.analysis.all.axe.total);
     $("#axe-kill-score .card-body").html((data.analysis.all.axe.killed / data.analysis.all.axe.total * 100).toFixed(0) + "%");
   }
+
 
   $('#btnViewAxeResults').on('click', function () {
     var win = window.open("/view-axe-results", '_blank');
@@ -271,5 +269,27 @@ $(document).ready(function () {
   $('#btnExportCSV').on('click', function () {
     window.location = "/export-csv";
   })
+
+  function createBarChart(name, dom_location, labels, datasets, title) {
+    var barchart_data = {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: datasets
+      },
+      options: {
+        legend: {
+          display: true
+        },
+        title: {
+          display: true,
+          text: title
+        }
+      }
+    };
+
+    var barChart = document.getElementById(dom_location).getContext('2d');
+    window["bar-" + name] = new Chart(barChart, barchart_data);
+  }
 
 });

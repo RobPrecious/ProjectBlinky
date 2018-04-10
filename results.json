@@ -4,8 +4,8 @@
 		"file": "/Users/robert/OneDrive/University/Project/Test/server/views/TestBench.v.0.0.2.html",
 		"route": "/v2/source",
 		"mutations": {
-			"mutantCount": 1,
-			"viableCount": 1,
+			"mutantCount": 3,
+			"viableCount": 3,
 			"viableRaw": [
 				{
 					"id": "1.1.1-01",
@@ -22,6 +22,62 @@
 							{
 								"name": "H37",
 								"link": "https://www.w3.org/TR/WCAG20-TECHS/H37.html"
+							}
+						],
+						"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
+					},
+					"analysis": {
+						"axe": {
+							"total": 1,
+							"violations": 1,
+							"live": 0,
+							"killed": 1
+						}
+					}
+				},
+				{
+					"id": "1.1.1-02",
+					"name": "empty-input-image-alt-text",
+					"description": "Empty alternative text from <input type='image'> element",
+					"class": "Change Attribute",
+					"subclass": "Empty Attribute",
+					"WCAG": {
+						"principle": "1. Percievable",
+						"guideline": "1.1 Text Alternatives",
+						"successCriteria": "1.1.1. Non-text Content",
+						"level": "A",
+						"techniques": [
+							{
+								"name": "H36",
+								"link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html"
+							}
+						],
+						"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
+					},
+					"analysis": {
+						"axe": {
+							"total": 1,
+							"violations": 1,
+							"live": 0,
+							"killed": 1
+						}
+					}
+				},
+				{
+					"id": "1.1.1-03",
+					"name": "remove-input-image-alt-text",
+					"description": "Remove alternative text from <input type='image'> element",
+					"class": "Change Attribute",
+					"subclass": "Remove Attribute",
+					"WCAG": {
+						"principle": "1. Percievable",
+						"guideline": "1.1 Text Alternatives",
+						"successCriteria": "1.1.1. Non-text Content",
+						"level": "A",
+						"techniques": [
+							{
+								"name": "H36",
+								"link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html"
 							}
 						],
 						"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
@@ -183,16 +239,252 @@
 						]
 					}
 				}
+			},
+			{
+				"id": "TestBench-m1.1.1-02",
+				"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/TestBench-m1.1.1-02.html",
+				"route": "/mutants/TestBench-m1.1.1-02",
+				"mutation": {
+					"id": "1.1.1-02",
+					"name": "empty-input-image-alt-text",
+					"description": "Empty alternative text from <input type='image'> element",
+					"class": "Change Attribute",
+					"subclass": "Empty Attribute",
+					"WCAG": {
+						"principle": "1. Percievable",
+						"guideline": "1.1 Text Alternatives",
+						"successCriteria": "1.1.1. Non-text Content",
+						"level": "A",
+						"techniques": [
+							{
+								"name": "H36",
+								"link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html"
+							}
+						],
+						"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
+					},
+					"analysis": {
+						"axe": {
+							"total": 1,
+							"violations": 1,
+							"live": 0,
+							"killed": 1
+						}
+					}
+				},
+				"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>TestBench.v.0.0.2</title>\n  <meta charset=\"UTF-8\">\n\n</head>\n\n<body>\n\n  <a href=\"#content\" class=\"sr-only sr-only-focusable\">Skip to main content</a>\n\n  <div role=\"main\" id=\"content\">\n    <!--Aria parent children-->\n    <div>\n      <div role=\"list\" id=\"a\">\n        <div role=\"listitem\" id=\"a-child\">Item a</div>\n      </div>\n\n      <div role=\"list\" id=\"b\" aria-owns=\"b-child\">\n        <div role=\"listitem\" id=\"b-child\">Item b</div>\n      </div>\n    </div>\n\n    <div aria-live=\"polite\">Correct</div>\n\n    <!-- audio-video -->\n    <div>\n      <h1>Media Tests </h1>\n      <h2>Video Test </h2>\n      <video width=\"600\" height=\"400\" controls=\"\">\n        <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n      </video>\n\n      <h2>Audio Test </h2>\n      <audio controls=\"\">\n        <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n      </audio>\n    </div>\n\n    <!-- button-aria-label -->\n    <div>\n      <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n    </div>\n\n    <!-- button -->\n    <div>\n      <button id=\"button\">Test</button>\n    </div>\n\n    <!-- headings -->\n    <div>\n      <h1>Main Heading</h1>\n      <h2>Small Heading</h2>\n      <h3>Smaller Heading</h3>\n      <h4>Even Smaller Heading</h4>\n      <h5>Smallest Heading</h5>\n      <p>Text</p>\n    </div>\n\n\n    <!-- image-area -->\n    <div>\n      <map name=\"primary\">\n        <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n        <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n      </map>\n      <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n    </div>\n\n    <!-- image -->\n    <div>\n      <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n      <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n    </div>\n\n    <!-- labels -->\n    <div>\n      <form action=\"#\">\n        <!-- aria label -->\n        <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n        <select aria-label=\"label\" id=\"selecta\"></select>\n        <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n        <!-- aria labelledby -->\n        <label id=\"labelbya\">Label</label>\n        <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n        <label id=\"labelbyb\">Label</label>\n        <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n        <label id=\"labelbyc\">Label</label>\n        <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n        <!-- label for -->\n        <label id=\"labela\" for=\"labelledfora\">Label</label>\n        <input type=\"text\" id=\"labelledfora\">\n\n        <label id=\"labelb\" for=\"labelledforb\">Label</label>\n        <select id=\"labelledforb\"></select>\n\n        <label id=\"labelc\" for=\"labelledforc\">Label</label>\n        <textarea id=\"labelledforc\"></textarea>\n\n        <input type=\"submit\" aria-label=\"submit\">Submit\n\n      </form>\n    </div>\n\n    <!-- links -->\n    <div>\n      <a href=\"#\" id=\"link-a\">This link has text</a>\n      <a href=\"#\" id=\"link-b\" aria-label=\"link text\"></a>\n\n      <div id=\"linklabel\">Text</div>\n      <a href=\"#\" id=\"link-c\" aria-labelledby=\"linklabel\"></a>\n      <!-- -->\n\n      <span role=\"link\" href=\"#\" id=\"link-d\">This link has text</span>\n      <span role=\"link\" href=\"#\" id=\"link-e\" aria-label=\"link text\"></span>\n      <span role=\"link\" href=\"#\" id=\"link-f\" aria-labelledby=\"linklabel\"></span>\n\n\n    </div>\n\n    <!-- lists -->\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <!-- object -->\n    <div>\n      <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n    </div>\n    <!-- tables -->\n    <div>\n      <table id=\"presentational-table\" role=\"grid\">\n        <tbody><tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n      <table>\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-a\" role=\"grid\">\n        <tbody><tr>\n          <th colspan=\"2\">AXE</th>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-b\" role=\"grid\">\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table id=\"table-c\">\n        <tbody><tr>\n          <th>AXE</th>\n          <th>AXE</th>\n          <th>AXE</th>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-d\">\n        <tbody><tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table>\n        <tbody><tr>\n          <th id=\"hi\"> </th>\n        </tr>\n        <tr>\n          <td headers=\"hi\">goodbye</td>\n        </tr>\n      </tbody></table>\n    </div>\n    <!-- text -->\n    <div>\n      <p style=\"color:black\">\n        paragraph of text\n        <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n          Link text</a>\n        <br>\n        <a href=\"#\" id=\"ignore10\">Link!</a>\n      </p>\n    </div>\n\n  </div>\n\n\n\n</body></html>",
+				"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>TestBench.v.0.0.2</title>\n  <meta charset=\"UTF-8\">\n\n</head>\n\n<body>\n\n  <a href=\"#content\" class=\"sr-only sr-only-focusable\">Skip to main content</a>\n\n  <div role=\"main\" id=\"content\">\n    <!--Aria parent children-->\n    <div>\n      <div role=\"list\" id=\"a\">\n        <div role=\"listitem\" id=\"a-child\">Item a</div>\n      </div>\n\n      <div role=\"list\" id=\"b\" aria-owns=\"b-child\">\n        <div role=\"listitem\" id=\"b-child\">Item b</div>\n      </div>\n    </div>\n\n    <div aria-live=\"polite\">Correct</div>\n\n    <!-- audio-video -->\n    <div>\n      <h1>Media Tests </h1>\n      <h2>Video Test </h2>\n      <video width=\"600\" height=\"400\" controls=\"\">\n        <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n      </video>\n\n      <h2>Audio Test </h2>\n      <audio controls=\"\">\n        <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n      </audio>\n    </div>\n\n    <!-- button-aria-label -->\n    <div>\n      <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n    </div>\n\n    <!-- button -->\n    <div>\n      <button id=\"button\">Test</button>\n    </div>\n\n    <!-- headings -->\n    <div>\n      <h1>Main Heading</h1>\n      <h2>Small Heading</h2>\n      <h3>Smaller Heading</h3>\n      <h4>Even Smaller Heading</h4>\n      <h5>Smallest Heading</h5>\n      <p>Text</p>\n    </div>\n\n\n    <!-- image-area -->\n    <div>\n      <map name=\"primary\">\n        <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n        <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n      </map>\n      <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n    </div>\n\n    <!-- image -->\n    <div>\n      <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n      <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    </div>\n\n    <!-- labels -->\n    <div>\n      <form action=\"#\">\n        <!-- aria label -->\n        <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n        <select aria-label=\"label\" id=\"selecta\"></select>\n        <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n        <!-- aria labelledby -->\n        <label id=\"labelbya\">Label</label>\n        <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n        <label id=\"labelbyb\">Label</label>\n        <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n        <label id=\"labelbyc\">Label</label>\n        <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n        <!-- label for -->\n        <label id=\"labela\" for=\"labelledfora\">Label</label>\n        <input type=\"text\" id=\"labelledfora\">\n\n        <label id=\"labelb\" for=\"labelledforb\">Label</label>\n        <select id=\"labelledforb\"></select>\n\n        <label id=\"labelc\" for=\"labelledforc\">Label</label>\n        <textarea id=\"labelledforc\"></textarea>\n\n        <input type=\"submit\" aria-label=\"submit\">Submit\n\n      </form>\n    </div>\n\n    <!-- links -->\n    <div>\n      <a href=\"#\" id=\"link-a\">This link has text</a>\n      <a href=\"#\" id=\"link-b\" aria-label=\"link text\"></a>\n\n      <div id=\"linklabel\">Text</div>\n      <a href=\"#\" id=\"link-c\" aria-labelledby=\"linklabel\"></a>\n      <!-- -->\n\n      <span role=\"link\" href=\"#\" id=\"link-d\">This link has text</span>\n      <span role=\"link\" href=\"#\" id=\"link-e\" aria-label=\"link text\"></span>\n      <span role=\"link\" href=\"#\" id=\"link-f\" aria-labelledby=\"linklabel\"></span>\n\n\n    </div>\n\n    <!-- lists -->\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <!-- object -->\n    <div>\n      <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n    </div>\n    <!-- tables -->\n    <div>\n      <table id=\"presentational-table\" role=\"grid\">\n        <tbody><tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n      <table>\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-a\" role=\"grid\">\n        <tbody><tr>\n          <th colspan=\"2\">AXE</th>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-b\" role=\"grid\">\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table id=\"table-c\">\n        <tbody><tr>\n          <th>AXE</th>\n          <th>AXE</th>\n          <th>AXE</th>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-d\">\n        <tbody><tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table>\n        <tbody><tr>\n          <th id=\"hi\"> </th>\n        </tr>\n        <tr>\n          <td headers=\"hi\">goodbye</td>\n        </tr>\n      </tbody></table>\n    </div>\n    <!-- text -->\n    <div>\n      <p style=\"color:black\">\n        paragraph of text\n        <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n          Link text</a>\n        <br>\n        <a href=\"#\" id=\"ignore10\">Link!</a>\n      </p>\n    </div>\n\n  </div>\n\n\n\n</body></html>",
+				"ATTResults": {
+					"axe": {
+						"violationsCount": 1,
+						"raw": [
+							{
+								"description": "Ensures <input type=\"image\"> elements have alternate text",
+								"help": "Image buttons must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/input-image-alt?application=webdriverjs",
+								"id": "input-image-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty",
+										"html": "<input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"div:nth-child(8) > input[type=\"image\"][src$=\"logo.svg\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						],
+						"live": false,
+						"equiv": false,
+						"killed": true
+					}
+				},
+				"validity": {
+					"valid": false,
+					"validityCheckResult": {
+						"messages": [
+							{
+								"type": "error",
+								"lastLine": 77,
+								"lastColumn": 86,
+								"firstColumn": 7,
+								"message": "Bad value “” for attribute “alt” on element “input”: Must not be empty.",
+								"extract": "o\">\n      <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"\">\n    <",
+								"hiliteStart": 10,
+								"hiliteLength": 80
+							}
+						]
+					}
+				}
+			},
+			{
+				"id": "TestBench-m1.1.1-03",
+				"file": "/Users/robert/OneDrive/University/Project/Test/server/views/mutants/TestBench-m1.1.1-03.html",
+				"route": "/mutants/TestBench-m1.1.1-03",
+				"mutation": {
+					"id": "1.1.1-03",
+					"name": "remove-input-image-alt-text",
+					"description": "Remove alternative text from <input type='image'> element",
+					"class": "Change Attribute",
+					"subclass": "Remove Attribute",
+					"WCAG": {
+						"principle": "1. Percievable",
+						"guideline": "1.1 Text Alternatives",
+						"successCriteria": "1.1.1. Non-text Content",
+						"level": "A",
+						"techniques": [
+							{
+								"name": "H36",
+								"link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html"
+							}
+						],
+						"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
+					},
+					"analysis": {
+						"axe": {
+							"total": 1,
+							"violations": 1,
+							"live": 0,
+							"killed": 1
+						}
+					}
+				},
+				"thisHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>TestBench.v.0.0.2</title>\n  <meta charset=\"UTF-8\">\n\n</head>\n\n<body>\n\n  <a href=\"#content\" class=\"sr-only sr-only-focusable\">Skip to main content</a>\n\n  <div role=\"main\" id=\"content\">\n    <!--Aria parent children-->\n    <div>\n      <div role=\"list\" id=\"a\">\n        <div role=\"listitem\" id=\"a-child\">Item a</div>\n      </div>\n\n      <div role=\"list\" id=\"b\" aria-owns=\"b-child\">\n        <div role=\"listitem\" id=\"b-child\">Item b</div>\n      </div>\n    </div>\n\n    <div aria-live=\"polite\">Correct</div>\n\n    <!-- audio-video -->\n    <div>\n      <h1>Media Tests </h1>\n      <h2>Video Test </h2>\n      <video width=\"600\" height=\"400\" controls=\"\">\n        <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n      </video>\n\n      <h2>Audio Test </h2>\n      <audio controls=\"\">\n        <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n      </audio>\n    </div>\n\n    <!-- button-aria-label -->\n    <div>\n      <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n    </div>\n\n    <!-- button -->\n    <div>\n      <button id=\"button\">Test</button>\n    </div>\n\n    <!-- headings -->\n    <div>\n      <h1>Main Heading</h1>\n      <h2>Small Heading</h2>\n      <h3>Smaller Heading</h3>\n      <h4>Even Smaller Heading</h4>\n      <h5>Smallest Heading</h5>\n      <p>Text</p>\n    </div>\n\n\n    <!-- image-area -->\n    <div>\n      <map name=\"primary\">\n        <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n        <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n      </map>\n      <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n    </div>\n\n    <!-- image -->\n    <div>\n      <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n      <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n    </div>\n\n    <!-- labels -->\n    <div>\n      <form action=\"#\">\n        <!-- aria label -->\n        <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n        <select aria-label=\"label\" id=\"selecta\"></select>\n        <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n        <!-- aria labelledby -->\n        <label id=\"labelbya\">Label</label>\n        <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n        <label id=\"labelbyb\">Label</label>\n        <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n        <label id=\"labelbyc\">Label</label>\n        <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n        <!-- label for -->\n        <label id=\"labela\" for=\"labelledfora\">Label</label>\n        <input type=\"text\" id=\"labelledfora\">\n\n        <label id=\"labelb\" for=\"labelledforb\">Label</label>\n        <select id=\"labelledforb\"></select>\n\n        <label id=\"labelc\" for=\"labelledforc\">Label</label>\n        <textarea id=\"labelledforc\"></textarea>\n\n        <input type=\"submit\" aria-label=\"submit\">Submit\n\n      </form>\n    </div>\n\n    <!-- links -->\n    <div>\n      <a href=\"#\" id=\"link-a\">This link has text</a>\n      <a href=\"#\" id=\"link-b\" aria-label=\"link text\"></a>\n\n      <div id=\"linklabel\">Text</div>\n      <a href=\"#\" id=\"link-c\" aria-labelledby=\"linklabel\"></a>\n      <!-- -->\n\n      <span role=\"link\" href=\"#\" id=\"link-d\">This link has text</span>\n      <span role=\"link\" href=\"#\" id=\"link-e\" aria-label=\"link text\"></span>\n      <span role=\"link\" href=\"#\" id=\"link-f\" aria-labelledby=\"linklabel\"></span>\n\n\n    </div>\n\n    <!-- lists -->\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <!-- object -->\n    <div>\n      <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n    </div>\n    <!-- tables -->\n    <div>\n      <table id=\"presentational-table\" role=\"grid\">\n        <tbody><tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n      <table>\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-a\" role=\"grid\">\n        <tbody><tr>\n          <th colspan=\"2\">AXE</th>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-b\" role=\"grid\">\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table id=\"table-c\">\n        <tbody><tr>\n          <th>AXE</th>\n          <th>AXE</th>\n          <th>AXE</th>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-d\">\n        <tbody><tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table>\n        <tbody><tr>\n          <th id=\"hi\"> </th>\n        </tr>\n        <tr>\n          <td headers=\"hi\">goodbye</td>\n        </tr>\n      </tbody></table>\n    </div>\n    <!-- text -->\n    <div>\n      <p style=\"color:black\">\n        paragraph of text\n        <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n          Link text</a>\n        <br>\n        <a href=\"#\" id=\"ignore10\">Link!</a>\n      </p>\n    </div>\n\n  </div>\n\n\n\n</body></html>",
+				"sourceHTML": "<!DOCTYPE html><html lang=\"en\"><head>\n  <title>TestBench.v.0.0.2</title>\n  <meta charset=\"UTF-8\">\n\n</head>\n\n<body>\n\n  <a href=\"#content\" class=\"sr-only sr-only-focusable\">Skip to main content</a>\n\n  <div role=\"main\" id=\"content\">\n    <!--Aria parent children-->\n    <div>\n      <div role=\"list\" id=\"a\">\n        <div role=\"listitem\" id=\"a-child\">Item a</div>\n      </div>\n\n      <div role=\"list\" id=\"b\" aria-owns=\"b-child\">\n        <div role=\"listitem\" id=\"b-child\">Item b</div>\n      </div>\n    </div>\n\n    <div aria-live=\"polite\">Correct</div>\n\n    <!-- audio-video -->\n    <div>\n      <h1>Media Tests </h1>\n      <h2>Video Test </h2>\n      <video width=\"600\" height=\"400\" controls=\"\">\n        <source src=\"/example_src/MIB2.mp4\" type=\"video/mp4\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"subtitles\" srclang=\"en\" label=\"Spannish 1\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"Spannish 2\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"descriptions\" srclang=\"en\" label=\"Spannish 3\">\n      </video>\n\n      <h2>Audio Test </h2>\n      <audio controls=\"\">\n        <source src=\"/example_src/sample.mp3\" type=\"audio/mpeg\">\n        <track src=\"/example_src/MIB2-subtitles-pt-BR.vtt\" kind=\"captions\" srclang=\"en\" label=\"TEST\"> Your browser does not support the audio tag.\n      </audio>\n    </div>\n\n    <!-- button-aria-label -->\n    <div>\n      <button aria-label=\"Close\" onclick=\"myDialog.close()\">X</button>\n    </div>\n\n    <!-- button -->\n    <div>\n      <button id=\"button\">Test</button>\n    </div>\n\n    <!-- headings -->\n    <div>\n      <h1>Main Heading</h1>\n      <h2>Small Heading</h2>\n      <h3>Smaller Heading</h3>\n      <h4>Even Smaller Heading</h4>\n      <h5>Smallest Heading</h5>\n      <p>Text</p>\n    </div>\n\n\n    <!-- image-area -->\n    <div>\n      <map name=\"primary\">\n        <area shape=\"circle\" coords=\"75,75,75\" href=\"left.html\" alt=\"Click to go Left\">\n        <area shape=\"circle\" coords=\"275,75,75\" href=\"right.html\" alt=\"Click to go Right\">\n      </map>\n      <img usemap=\"#primary\" src=\"http://placehold.it/350x150\" alt=\"350 x 150 pic\">\n\n    </div>\n\n    <!-- image -->\n    <div>\n      <img src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n      <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\" alt=\"University of York Logo\">\n    </div>\n\n    <!-- labels -->\n    <div>\n      <form action=\"#\">\n        <!-- aria label -->\n        <input type=\"text\" aria-label=\"label\" id=\"inputa\">\n        <select aria-label=\"label\" id=\"selecta\"></select>\n        <textarea aria-label=\"label\" id=\"textareaa\"></textarea>\n\n        <!-- aria labelledby -->\n        <label id=\"labelbya\">Label</label>\n        <input type=\"text\" aria-labelledby=\"labelbya\" id=\"labelledbya\">\n\n        <label id=\"labelbyb\">Label</label>\n        <select aria-labelledby=\"labelbyb\" id=\"labelledbyb\"></select>\n\n        <label id=\"labelbyc\">Label</label>\n        <textarea aria-labelledby=\"labelbyc\" id=\"labelledbyc\"></textarea>\n\n        <!-- label for -->\n        <label id=\"labela\" for=\"labelledfora\">Label</label>\n        <input type=\"text\" id=\"labelledfora\">\n\n        <label id=\"labelb\" for=\"labelledforb\">Label</label>\n        <select id=\"labelledforb\"></select>\n\n        <label id=\"labelc\" for=\"labelledforc\">Label</label>\n        <textarea id=\"labelledforc\"></textarea>\n\n        <input type=\"submit\" aria-label=\"submit\">Submit\n\n      </form>\n    </div>\n\n    <!-- links -->\n    <div>\n      <a href=\"#\" id=\"link-a\">This link has text</a>\n      <a href=\"#\" id=\"link-b\" aria-label=\"link text\"></a>\n\n      <div id=\"linklabel\">Text</div>\n      <a href=\"#\" id=\"link-c\" aria-labelledby=\"linklabel\"></a>\n      <!-- -->\n\n      <span role=\"link\" href=\"#\" id=\"link-d\">This link has text</span>\n      <span role=\"link\" href=\"#\" id=\"link-e\" aria-label=\"link text\"></span>\n      <span role=\"link\" href=\"#\" id=\"link-f\" aria-labelledby=\"linklabel\"></span>\n\n\n    </div>\n\n    <!-- lists -->\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <div>\n      <dl>\n        <dt>Coffee</dt>\n        <dd>Black hot drink</dd>\n      </dl>\n\n      <ul>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ul>\n\n      <ol>\n        <li>a</li>\n        <li>b</li>\n        <li>c</li>\n      </ol>\n    </div>\n    <!-- object -->\n    <div>\n      <object data=\"../example_src/eg.swf\">car speaker banner ad</object>\n    </div>\n    <!-- tables -->\n    <div>\n      <table id=\"presentational-table\" role=\"grid\">\n        <tbody><tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n      <table>\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-a\" role=\"grid\">\n        <tbody><tr>\n          <th colspan=\"2\">AXE</th>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-b\" role=\"grid\">\n        <tbody><tr>\n          <td colspan=\"2\">AXE</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table id=\"table-c\">\n        <tbody><tr>\n          <th>AXE</th>\n          <th>AXE</th>\n          <th>AXE</th>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n      <table id=\"table-d\">\n        <tbody><tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <th>AXE</th>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n        <tr>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n          <td>aXe</td>\n        </tr>\n      </tbody></table>\n\n\n      <table>\n        <tbody><tr>\n          <th id=\"hi\"> </th>\n        </tr>\n        <tr>\n          <td headers=\"hi\">goodbye</td>\n        </tr>\n      </tbody></table>\n    </div>\n    <!-- text -->\n    <div>\n      <p style=\"color:black\">\n        paragraph of text\n        <a style=\"text-decoration:none; color:blue\" href=\"#\" id=\"fail1\">\n          Link text</a>\n        <br>\n        <a href=\"#\" id=\"ignore10\">Link!</a>\n      </p>\n    </div>\n\n  </div>\n\n\n\n</body></html>",
+				"ATTResults": {
+					"axe": {
+						"violationsCount": 1,
+						"raw": [
+							{
+								"description": "Ensures <input type=\"image\"> elements have alternate text",
+								"help": "Image buttons must have alternate text",
+								"helpUrl": "https://dequeuniversity.com/rules/axe/2.6/input-image-alt?application=webdriverjs",
+								"id": "input-image-alt",
+								"impact": "critical",
+								"nodes": [
+									{
+										"all": [],
+										"any": [
+											{
+												"data": null,
+												"id": "non-empty-alt",
+												"impact": "critical",
+												"message": "Element has no alt attribute or the alt attribute is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-label",
+												"impact": "serious",
+												"message": "aria-label attribute does not exist or is empty",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "aria-labelledby",
+												"impact": "serious",
+												"message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
+												"relatedNodes": []
+											},
+											{
+												"data": null,
+												"id": "non-empty-title",
+												"impact": "serious",
+												"message": "Element has no title attribute or the title attribute is empty",
+												"relatedNodes": []
+											}
+										],
+										"failureSummary": "Fix any of the following:\n  Element has no alt attribute or the alt attribute is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty",
+										"html": "<input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">",
+										"impact": "critical",
+										"none": [],
+										"target": [
+											"div:nth-child(8) > input[type=\"image\"][src$=\"logo.svg\"]"
+										]
+									}
+								],
+								"tags": [
+									"cat.text-alternatives",
+									"wcag2a",
+									"wcag111",
+									"section508",
+									"section508.22.a"
+								]
+							}
+						],
+						"live": false,
+						"equiv": false,
+						"killed": true
+					}
+				},
+				"validity": {
+					"valid": false,
+					"validityCheckResult": {
+						"messages": [
+							{
+								"type": "error",
+								"lastLine": 77,
+								"lastColumn": 79,
+								"firstColumn": 7,
+								"message": "Element “input” is missing required attribute “alt”.",
+								"extract": "o\">\n      <input type=\"image\" src=\"https://www.york.ac.uk/static/1.5/img/logo.svg\">\n    <",
+								"hiliteStart": 10,
+								"hiliteLength": 73
+							}
+						]
+					}
+				}
 			}
 		]
 	},
 	"analysis": {
 		"all": {
 			"axe": {
-				"total": 1,
-				"violations": 1,
+				"total": 3,
+				"violations": 3,
 				"live": 0,
-				"killed": 1
+				"killed": 3
 			}
 		},
 		"mutationAnalysis": [
@@ -223,11 +515,89 @@
 						"killed": 1
 					}
 				}
+			},
+			{
+				"id": "1.1.1-02",
+				"name": "empty-input-image-alt-text",
+				"description": "Empty alternative text from <input type='image'> element",
+				"class": "Change Attribute",
+				"subclass": "Empty Attribute",
+				"WCAG": {
+					"principle": "1. Percievable",
+					"guideline": "1.1 Text Alternatives",
+					"successCriteria": "1.1.1. Non-text Content",
+					"level": "A",
+					"techniques": [
+						{
+							"name": "H36",
+							"link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html"
+						}
+					],
+					"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
+				},
+				"analysis": {
+					"axe": {
+						"total": 1,
+						"violations": 1,
+						"live": 0,
+						"killed": 1
+					}
+				}
+			},
+			{
+				"id": "1.1.1-03",
+				"name": "remove-input-image-alt-text",
+				"description": "Remove alternative text from <input type='image'> element",
+				"class": "Change Attribute",
+				"subclass": "Remove Attribute",
+				"WCAG": {
+					"principle": "1. Percievable",
+					"guideline": "1.1 Text Alternatives",
+					"successCriteria": "1.1.1. Non-text Content",
+					"level": "A",
+					"techniques": [
+						{
+							"name": "H36",
+							"link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html"
+						}
+					],
+					"link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all"
+				},
+				"analysis": {
+					"axe": {
+						"total": 1,
+						"violations": 1,
+						"live": 0,
+						"killed": 1
+					}
+				}
 			}
 		],
-		"categories": [
+		"classes": [
 			{
 				"name": "Change Attribute",
+				"axe": {
+					"total": 3,
+					"violations": 3,
+					"live": 0,
+					"killed": 3
+				}
+			}
+		],
+		"subClasses": [
+			{
+				"name": "Remove Attribute",
+				"parent": "Change Attribute",
+				"axe": {
+					"total": 2,
+					"violations": 2,
+					"live": 0,
+					"killed": 2
+				}
+			},
+			{
+				"name": "Empty Attribute",
+				"parent": "Change Attribute",
 				"axe": {
 					"total": 1,
 					"violations": 1,

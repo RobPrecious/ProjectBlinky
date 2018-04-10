@@ -13,44 +13,9 @@ module.exports = [
 ];
 
 
-existing = [{
+existing = [
 
-    "id": "1.1.1-02",
-    "name": "remove-img-alt-text",
-    "description": "Image must have alt text",
-    "class": "Attribute Change",
-    "successCriteria": "1.1.1",
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      return $("img").length;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("img").attr('alt', null);
-      return mutant_dom.serialize();
-    }
-  },
 
-  {
-    "id": "1.1.1-03",
-    "name": "empty-input-image-alt-text",
-    "description": "Empty alternative text from <input type='image'> element",
-    "class": "Attribute Change",
-    "successCriteria": "1.1.1",
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-
-      if ($("input[type=image]").length) {
-        return true;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("input[type=image]").attr('alt', "");
-      return mutant_dom.serialize();
-    }
-  },
 
   {
     "id": "1.1.1-04",

@@ -56,14 +56,30 @@ const mainController = {
       })
       .then(source => {
         // Compile Mutation Data
-        let categories_list = [];
-        let categories_obj = [];
+        let classes_list = [];
+        let sub_classes_list = [];
+        let classes_obj = [];
+        let sub_classes_obj = [];
 
         const mutationAnalysis = mutationLibrary.map(mutation => {
-          if (categories_list.indexOf(mutation.class) == -1) {
-            categories_list.push(mutation.class);
-            categories_obj.push({
+          if (classes_list.indexOf(mutation.class) == -1) {
+            classes_list.push(mutation.class);
+            classes_obj.push({
               name: mutation.class,
+              "axe": {
+                total: 0,
+                violations: 0,
+                live: 0,
+                killed: 0,
+              },
+            });
+
+          }
+          if (sub_classes_list.indexOf(mutation.subclass) == -1) {
+            sub_classes_list.push(mutation.subclass);
+            sub_classes_obj.push({
+              name: mutation.subclass,
+              parent: mutation.class,
               "axe": {
                 total: 0,
                 violations: 0,
@@ -111,9 +127,11 @@ const mainController = {
         };
 
         mutationAnalysis.map(mut => {
-          let mut_class = categories_obj.find(cat => cat.name == mut.class);
+          let mut_class = classes_obj.find(cat => cat.name == mut.class);
+          let mut_subclass = sub_classes_obj.find(sub => sub.name == mut.subclass);
           const currentAll = all.axe;
           const currentMutationClass = mut_class.axe;
+          const currentMutationSubClass = mut_subclass.axe;
           const currentMutation = mut.analysis.axe
 
           currentAll.violations += currentMutation.violations;
@@ -126,6 +144,11 @@ const mainController = {
           currentMutationClass.killed += currentMutation.killed;
           currentMutationClass.total++;
 
+          currentMutationSubClass.violations += currentMutation.violations;
+          currentMutationSubClass.live += currentMutation.live;
+          currentMutationSubClass.killed += currentMutation.killed;
+          currentMutationSubClass.total++;
+
         })
 
         return {
@@ -133,7 +156,8 @@ const mainController = {
           "analysis": {
             all,
             mutationAnalysis,
-            "categories": categories_obj,
+            "classes": classes_obj,
+            "subClasses": sub_classes_obj,
           }
         }
 
