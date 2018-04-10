@@ -5,7 +5,7 @@ const mutationController = require('../controller/mutationController');
 const validityController = require('../controller/validityController');
 const toolController = require('../controller/toolController');
 
-const mutationLibrary = require('../controller/mutationLibrary');
+const mutationLibrary = require('../mutantOperators/mutationLibrary');
 
 
 const mainController = {

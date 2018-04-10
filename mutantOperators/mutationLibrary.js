@@ -3,24 +3,18 @@ const {
   JSDOM
 } = jsdom;
 
-module.exports = [{
-    "id": "1.1.1-01",
-    "name": "empty-img-alt-text",
-    "description": "Image must have alt text",
-    "class": "Attribute Change",
-    "successCriteria": "1.1.1",
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      return $("img").length;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("img").attr('alt', '');
-      return mutant_dom.serialize();
-    }
-  },
+const changeAttribute = require('./changeAttribute');
+const reorderElement = require('./reorderElement');
 
-  {
+
+module.exports = [
+  ...changeAttribute,
+  //...reorderElement,
+];
+
+
+existing = [{
+
     "id": "1.1.1-02",
     "name": "remove-img-alt-text",
     "description": "Image must have alt text",
@@ -98,8 +92,7 @@ module.exports = [{
       $("button").attr('aria-label', "");
       return mutant_dom.serialize();
     }
-  },
-  {
+  }, {
     "id": "1.1.1-06",
     "name": "remove-aria-label",
     "description": "Buttons should be labeled",
@@ -687,8 +680,7 @@ module.exports = [{
       $("input[aria-label]").attr("aria-label", "");
       return mutant_dom.serialize();
     }
-  },
-  {
+  }, {
     "id": "1.3.1-12",
     "name": "remove-input-aria-label",
     "description": "Labels - must be structured correctly",
@@ -1196,5 +1188,4 @@ module.exports = [{
       }
     },
     */
-
 ];

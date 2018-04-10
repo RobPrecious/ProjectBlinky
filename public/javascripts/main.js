@@ -263,6 +263,11 @@ $(document).ready(function () {
     $("#axe-kill-score .card-body").html((data.analysis.all.axe.killed / data.analysis.all.axe.total * 100).toFixed(0) + "%");
   }
 
+  $('#btnViewAxeResults').on('click', function () {
+    var win = window.open("/view-axe-results", '_blank');
+    win.focus();
+  })
+
   $('#btnExportCSV').on('click', function () {
     window.location = "/export-csv";
   })

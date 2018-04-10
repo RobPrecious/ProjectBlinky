@@ -7,7 +7,7 @@ const fs = require('fs-extra');
 const mainController = require('../controller/mainController');
 const mutationController = require('../controller/mutationController');
 const toolController = require('../controller/toolController');
-const mutationLibrary = require('../controller/mutationLibrary');
+const mutationLibrary = require('../mutantOperators/mutationLibrary');
 const mutator = require('../controller/mutator');
 
 const validator = require('html-validator');
@@ -148,6 +148,17 @@ router.get('/run-att', (req, res, next) => {
     console.log(err);
   }
 })
+
+// ---------------------- STAGE 4 --------------------------- //
+
+router.get('/view-axe-results', (req, res, next) => {
+  return res.render('templates/page-template', {
+    "template": "../summary-partials/axe-summary",
+    "source": req.session.data.source
+  });
+})
+
+
 
 
 router.get("/load-saved", (req, res, next) => {

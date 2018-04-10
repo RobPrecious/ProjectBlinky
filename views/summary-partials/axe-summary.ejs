@@ -5,16 +5,16 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"> 
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
    
-    <title>Mutants Summary</title>
+    <title>Axe Result Summary</title>
   </head>
 
   <body>
     <div class="container-fluid" style="margin-top:20px">
-      <h1>Mutants Summary</h1>
+      <h1>Axe Result Summary</h1>
       <%
        let html = '<div class="table-responsive">';
       html += '<table class="table table-hover" id="mutants"s>'
-      html += '<thead><tr><th>id</th> <th>Name</th> <th>Description</th> <th>Class</th> <th>SC</th> <th>Valid</th> <th>View</th></tr></thead>';
+      html += '<thead><tr><th>id</th> <th>Name</th> <th>Live?</th> <th>#Violations</th> <th>Violations</th> <th>Valid</th> <th>View</th></tr></thead>';
       let sourceButton = '<button type="button" class="mutant-button btn btn-warning btn-sm" ' +
         'onClick="var win = window.open(\'' + source.route + '\', \'_blank\');win.focus();">View</button>';
 
@@ -24,12 +24,12 @@
         let mutantButton = '<button type="button" class="mutant-button btn btn-warning btn-sm" ' +
           'onClick="var win = window.open(\'' + source.mutants[i].route + '\', \'_blank\');win.focus();">View</button>';
         html += '<tr><td>' + source.mutants[i].mutation.id + '</td>'+
-        '<td>' + source.mutants[i].mutation.name + '</td>'+
-        '<td>' + source.mutants[i].mutation.description + '</td>'+
-        '<td>' + source.mutants[i].mutation.class + '</td>'+
-        '<td>' + source.mutants[i].mutation.WCAG.successCriteria + '</td>'+
-        '<td>' + (source.mutants[i].validity.valid ? "Yes" : "No") + '</td>'+
-        '<td>' + mutantButton + '</td> </tr>';
+          '<td>' + source.mutants[i].mutation.name + '</td>'+
+          '<td>' + (source.mutants[i].ATTResults.axe.live ? "Yes": "No") + '</td> '+
+          '<td>' + source.mutants[i].ATTResults.axe.violationsCount + '</td> '+
+          '<td>' + source.mutants[i].ATTResults.axe.raw.map((violation) =>  violation.id) + '</td>'+ 
+          '<td>' + (source.mutants[i].validity.valid ? "Yes" : "No") + '</td>'+
+          '<td>' + mutantButton + '</td> </tr>';
       }
       html += '</div>'
       %>
