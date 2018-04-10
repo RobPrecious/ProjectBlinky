@@ -96,4 +96,70 @@ module.exports = [
       return mutant_dom.serialize();
     }
   },
+
+  {
+    "id": "1.1.1-04",
+    "name": "empty-aria-label",
+    "description": "Buttons should be labeled",
+    "class": "Change Attribute",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "principle": "1. Percievable",
+      "guideline": "1.1 Text Alternatives",
+      "successCriteria": "1.1.1. Non-text Content",
+      "level": "A",
+      "techniques": [{
+        "name": "H36",
+        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html", // need to update
+      }],
+      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+
+      if ($("button").length && typeof $("button").attr('aria-label') != "undefined") {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("button").attr('aria-label', "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "1.1.1-05",
+    "name": "empty-area-alt",
+    "description": "Ensures <area> elements of image maps have alternate text",
+    "class": "Change Attribute",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "principle": "1. Percievable",
+      "guideline": "1.1 Text Alternatives",
+      "successCriteria": "1.1.1. Non-text Content",
+      "level": "A",
+      "techniques": [{
+        "name": "H36",
+        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html", // need to update
+      }],
+      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+
+      if ($("area").length) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("area").attr('alt', "");
+      return mutant_dom.serialize();
+    }
+  },
+
+
 ]

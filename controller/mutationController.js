@@ -18,31 +18,17 @@ const mutationController = {
       })
   },
 
-  mutateSource: (source, mutationLibrary) => {
+  mutateSource: (source, mutationOperators, prefix) => {
     return new Promise((res, rej) => {
       source.mutants = [];
-      mutationController.getMutations(source, mutationLibrary)
+      mutationController.getMutations(source, mutationOperators)
         .then(mutations => {
-          return mutator(source, mutations)
+          return mutator(source, mutations, prefix)
             .then(result => source.mutants = result);
         }).then((result) => {
           res(source);
         });
     });
-  },
-
-  getSources: () => {
-    const files = fs.readdirSync(path.resolve(__dirname, '../views/sources'));
-    let output = [];
-    for (let i in files) {
-      output.push({
-        id: files[i].split('.')[0],
-        route: 'sources/' + files[i].split('.')[0],
-        file: path.resolve(__dirname, '../views/sources/' + files[i])
-      })
-    }
-
-    return output;
   },
 
   getMutations: (source, availableMutants) => {
@@ -73,19 +59,6 @@ const mutationController = {
           });
       });
     });
-  },
-
-  analyseSaved: (savedData) => {
-    try {
-      console.log("Count", savedData.mutants.length);
-      savedData.mutants.map(mutant => {
-        live
-
-      })
-      return savedData
-    } catch (err) {
-      console.log(err);
-    }
   },
 
 }

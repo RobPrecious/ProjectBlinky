@@ -18,46 +18,6 @@ existing = [
 
 
   {
-    "id": "1.1.1-04",
-    "name": "remove-input-image-alt-text",
-    "description": "Remove alternative text from <input type='image'> element",
-    "class": "Attribute Change",
-    "successCriteria": "1.1.1",
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-
-      if ($("input[type=image]").length) {
-        return true;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("input[type=image]").attr('alt', null);
-      return mutant_dom.serialize();
-    }
-  },
-
-  {
-    "id": "1.1.1-05",
-    "name": "empty-aria-label",
-    "description": "Buttons should be labeled",
-    "class": "Attribute Change",
-    "successCriteria": "1.1.1",
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-
-      if ($("button").length && typeof $("button").attr('aria-label') != "undefined") {
-        return true;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("button").attr('aria-label', "");
-      return mutant_dom.serialize();
-    }
-  }, {
     "id": "1.1.1-06",
     "name": "remove-aria-label",
     "description": "Buttons should be labeled",
@@ -78,26 +38,7 @@ existing = [
     }
   },
 
-  {
-    "id": "1.1.1-07",
-    "name": "empty-area-alt",
-    "description": "Ensures <area> elements of image maps have alternate text",
-    "class": "Attribute Change",
-    "successCriteria": "1.1.1",
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
 
-      if ($("area").length) {
-        return true;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("area").attr('alt', "");
-      return mutant_dom.serialize();
-    }
-  },
 
   {
     "id": "1.1.1-08",

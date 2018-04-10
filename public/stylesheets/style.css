@@ -102,6 +102,24 @@ body {
   font-size: 2.5em;
 }
 
+.stat-card-small {
+  width: 100px;
+  height: 90px;
+  float: left;
+  margin: 0 5px 0 0 !important;
+  text-align: center
+}
+
+.stat-card-small .card-header,
+.stat-card-small .card-body {
+  padding: 1px;
+}
+
+.stat-card-small .card-body {
+  font-size: 2em;
+  font-weight: bold;
+}
+
 #source-valid .card-body {
   padding: 1px;
 }
@@ -116,4 +134,21 @@ body {
   font-size: 26pt;
   width: 100%;
   display: block;
+}
+
+.canvas-holder {
+  position: relative;
+  width: 52vw;
+  min-width: 500px;
+}
+
+.canvas-holder-small {
+  position: relative;
+  width: 26vw;
+  min-width: 250px;
+  float: left;
+}
+
+.tab-pane>table>tbody>tr>th {
+  width: 100px;
 }

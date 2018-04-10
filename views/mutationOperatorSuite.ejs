@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/html-header") %>
+    <script src="/javascripts/Chart.bundle.min.js"></script>
+    <script src="/javascripts/suite.js"></script>
+    
+    <title>Blinky: <%=title%></title>
+  </head>
+  <body>
+    <div class="container">
+    <h1>Mutation Operator Suite</h1>
+    <hr>
+     <div class="row">
+  <div class="col-4">
+    <h2>Mutation Operators</h2>
+    <div class="list-group" id="list-tab" role="tablist">
+     <a class="list-group-item list-group-item-action active%>" 
+            id="op" data-toggle="list" href="#contents" role="tab" aria-controls="con">Results Summary</a>
+
+      <% for(var i=0; i<operators.length; i++){%>
+          <a class="list-group-item list-group-item-action" 
+            id="op-<%= i%>" data-toggle="list" href="#contents-<%= i%>" role="tab" aria-controls="con-<%=i%>">
+            <%= operators[i].id + " " + operators[i].name %> 
+            <span class="mutop-pill-section" data-mutant="<%= operators[i].id%>">
+              <%if(saved && operators[i].analysis && operators[i].analysis.axe.total){
+                if(operators[i].analysis.axe.live){%>
+                <span class="badge badge-pill badge-success">LIVE</span>
+              <%}%>
+              <%}else{%><span class="badge badge-pill badge-warning not-run-pill" data-mutant="<%= operators[i].id%>">Not run</span><%}%>
+            </span>
+            </a> 
+      <%}%>
+    </div>
+  </div>
+  <div class="col-8">
+  <h2>Mutation Overview</h2>
+    <div class="tab-content mut-overview" id="nav-tabContent">
+
+     <div class="tab-pane fade show active" id="contents" role="tabpanel" aria-labelledby="con">
+      <%- include("mutop-partials/overallResults") %>
+     </div>
+
+      <% for(var i=0; i<operators.length; i++){%>
+          <div class="tab-pane fade show" id="contents-<%= i%>" role="tabpanel" aria-labelledby="con-<%=i%>">
+          <table class="table table-bordered">
+            <tr>
+              <th scope="row">ID</th>
+                <td><%= operators[i].id%></td>
+           
+              <th scope="row">Name</th>
+                <td><%= operators[i].name%></td>
+            </tr>
+              <tr>
+              <th scope="row">Description</th>
+              <td colspan=3><%= operators[i].description%></td>
+            </tr>
+              <tr>
+              <th scope="row">Class</th>
+              <td><%= operators[i].class%></td>
+           
+              <th scope="row">SubClass</th>
+              <td><%= operators[i].subclass%></td>
+            </tr>
+            <tr>
+              <th scope="row">WCAG</th>
+              <td colspan=3>
+                Principle: <%= operators[i].WCAG.principle%> <br>
+                Guideline: <%= operators[i].WCAG.guideline%> <br>
+                Success Criteria: <a href="<%= operators[i].WCAG.link%>" target="_blank"><%= operators[i].WCAG.successCriteria%></a><br>
+                Level: <%= operators[i].WCAG.level%> <br>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Results</th>
+              <td colspan=3>
+              <%if(saved && operators[i].analysis && operators[i].analysis.axe.total){%>
+              <span class="live-or-dead-card-container" data-mutant="<%= operators[i].id%>">
+                <div class="card bg-dark text-white mb-3 stat-card-small" >
+                  <div class="card-header"># Violations</div>
+                  <div class="card-body"><%= operators[i].analysis.axe.violations%></div>
+                </div>
+
+                <%if(operators[i].analysis.axe.live){%>
+                <div class="card bg-success text-white mb-3 stat-card-small" >
+                  <div class="card-header">Live</div>
+                  <div class="card-body"><i class='fas fa-check text-white'></i></div>
+                </div>
+                <%}else{%>
+                <div class="card bg-danger text-white mb-3 stat-card-small" >
+                  <div class="card-header">Killed</div>
+                  <div class="card-body"><i class='fas fa-times-circle text-white' style='margin: 15px 0px -15px 0px;display: block;'></i></div>
+                </div>
+                <%}%>
+                </span>
+                <%}else{%>
+                 <span class="live-or-dead-card-container" data-mutant="<%= operators[i].id%>">No Saved results</span>
+                 <%}%>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Run Axe</th>
+              <td colspan=3>
+<button type="button" class="btn btn-primary btn-md btn-block btnRunAxe" data-mutant="<%= operators[i].id%>">Run</button></td>
+            </tr>
+          </table>
+          </div>            
+      <%}%>
+    </div>
+  </div>
+</div>
+     
+    </div>
+  </body>
+</html>
+
+

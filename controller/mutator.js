@@ -9,7 +9,7 @@ const {
 
 const validityController = require('./validityController');
 
-module.exports = (source, mutations) => {
+module.exports = (source, mutations, prefix) => {
   return new Promise((resolve, reject) => {
       resolve(mutations.map((mutation, index) => {
         return JSDOM.fromFile(path.resolve(__dirname, source.file))
@@ -21,7 +21,7 @@ module.exports = (source, mutations) => {
                 return {
                   "id": source.id + '-m' + mutation.id,
                   "file": path.resolve(__dirname, '../views/mutants/' + source.id + '-m' + mutation.id + '.html'),
-                  "route": '/mutants/' + source.id + '-m' + mutation.id,
+                  "route": prefix + '/mutants/' + source.id + '-m' + mutation.id,
                   "mutation": mutation,
                   "thisHTML": dom.serialize(),
                   sourceHTML,

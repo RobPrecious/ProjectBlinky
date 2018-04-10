@@ -51,8 +51,12 @@ router.get('/testbench', (req, res, next) => {
     req.session.data.stage = 2;
 
     const source = "TestBench.v.0.0.2.html";
-    loadSource(source);
-    mainController.checkSource(source, "TestBench")
+    router.get('/source', (req, res, next) => {
+      res.render('templates/mutant-template', {
+        template: "../" + source
+      });
+    });
+    mainController.checkSource(source, "TestBench", "/source")
       .then(output => {
         req.session.data.source = output;
         return res.json(output);
@@ -92,7 +96,7 @@ router.get('/view-validation-summary', (req, res, next) => {
 })
 
 router.get('/mutate-source', (req, res, next) => {
-  return mutationController.mutateSource(req.session.data.source, mutationLibrary)
+  return mutationController.mutateSource(req.session.data.source, mutationLibrary, "")
     .then(result => {
       result.mutants.map(mutant => {
         router.get('/mutants/' + mutant.id, (req, res, next) => {
@@ -121,7 +125,7 @@ router.get('/view-mutants-summary', (req, res, next) => {
 router.get('/run-att', (req, res, next) => {
   try {
     const source = req.session.data.source;
-    return toolController.axeTools.runSM(source)
+    return toolController.axeTools.runSM(source, "")
       .then(source => {
         fs.outputJsonSync('pre-analysis.json', source, {
           spaces: '\t'
@@ -215,13 +219,6 @@ router.get('/export-csv', (req, res, next) => {
   }
 })
 
-function loadSource(location) {
-  router.get('/v2/source', (req, res, next) => {
-    res.render('templates/mutant-template', {
-      template: "../" + location
-    });
-  });
-}
 
 
 

@@ -9,17 +9,17 @@ const mutationLibrary = require('../mutantOperators/mutationLibrary');
 
 
 const mainController = {
-  checkSource: (source, source_id) => {
+  checkSource: (source, source_id, url) => {
     return Promise.all([
         mutationController.mutantViabilityCheck(source),
         validityController.validityCheckFromFile(source),
-        toolController.axeTools.testURL("http://127.0.0.1:3000/v2/source"),
+        toolController.axeTools.testURL("http://127.0.0.1:3000" + url),
       ])
       .then(results => {
         return {
           "id": source_id,
           "file": path.resolve(__dirname, '../views/' + source),
-          "route": "/v2/source",
+          "route": url,
 
           "mutations": {
             "mutantCount": mutationLibrary.length,
@@ -41,6 +41,7 @@ const mainController = {
         console.log(err);
       })
   },
+
   postToolAnalysis: (source) => {
     return new Promise((resolve, reject) => {
         //Establish whether mutants killed, equiv or live

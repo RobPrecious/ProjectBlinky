@@ -79,6 +79,10 @@ $(document).ready(function () {
     sourceChoice = $(this).attr('data-source-choice');
 
   })
+  $('#btnMutOp').on('click', function () {
+    var win = window.open("/mut-op/suite", '_blank');
+    win.focus();
+  })
 
   $('#run-source').on('click', function () {
     $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-primary"></i></span>').insertAfter($(this));
@@ -129,7 +133,6 @@ $(document).ready(function () {
   // ----------------------- STAGE 2 (ANALYSIS) -------------------------- //
 
   function openStage2(source) {
-    console.log(source);
     $("i[data-col-id=mutate-section]").click();
     $("#mutate-section").removeClass("disabled");
     $("#mutate-section > .section-content").removeClass("hide");

@@ -1,0 +1,28 @@
+<% if(saved){%>
+<div style="display:flex">
+    <div class="card bg-success text-white mb-3 stat-card-small" >
+      <div class="card-header">Live</div>
+      <div class="card-body"><%=saved.analysis.all.axe.live%></div>
+    </div>
+    <div class="card bg-danger text-white mb-3 stat-card-small" >
+      <div class="card-header">Killed</div>
+      <div class="card-body"><%=saved.analysis.all.axe.killed%></div>
+    </div>
+    <div class="card bg-dark text-white mb-3 stat-card-small" >
+      <div class="card-header">Total</div>
+      <div class="card-body"><%=saved.analysis.all.axe.total%></div>
+    </div>
+</div>
+<br>
+    <span id="loading-spinner" data-find-me="true"> <i class="fas fa-spinner fa-spin text-primary"></i></span>
+    <div class="canvas-holder-small">
+        <canvas id="classes-bar-chart"></canvas>
+      </div>
+
+       <div class="canvas-holder-small">
+        <canvas id="sub-classes-bar-chart"></canvas>
+      </div>
+
+<%}else{%>
+    <h3>No data yet</h3>
+<%}%>

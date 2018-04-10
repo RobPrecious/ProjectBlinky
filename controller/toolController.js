@@ -25,7 +25,7 @@ const axeTools = {
       })
   },
   // Run Source and its mutants
-  runSM: (source) => {
+  runSM: (source, prefix) => {
     console.log("---------- Axe Starting ----------");
     return axeTools.testURL(baseURL + source.route)
       .then(result => {
