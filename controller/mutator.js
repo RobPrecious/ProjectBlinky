@@ -30,10 +30,6 @@ module.exports = (source, mutations) => {
                       "violationsCount": 0,
                       "raw": [],
                     },
-                    "pa11y": {
-                      "violationsCount": 0,
-                      "raw": [],
-                    },
                   },
                 };
 
