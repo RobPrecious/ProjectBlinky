@@ -55,6 +55,11 @@ $(document).ready(function () {
     })
   })
 
+  $('#btnRunAll').on('click', function () {
+    var win = window.open("/mut-op/test-all-operations", '_blank');
+    win.focus();
+  })
+
   function getData() {
     $.get("/mut-op/get-saved-analysis", function (data) {
       /* createBarChart("classes",
@@ -88,6 +93,10 @@ $(document).ready(function () {
 
     });
   }
+
+  $('#btnExportCSV').on('click', function () {
+    window.location = "/mut-op/export-csv";
+  })
 
   function createBarChart(name, dom_location, labels, datasets, title) {
     var barchart_data = {
