@@ -6,7 +6,7 @@ const {
 } = jsdom;
 
 const mutator = require('./mutator');
-const mutationLibrary = require('../mutantOperators/mutationLibrary');
+const mutationLibrary = require('../mutantOperators/mutationLibrary')();
 const validityController = require('../controller/validityController');
 
 

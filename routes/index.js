@@ -7,7 +7,7 @@ const fs = require('fs-extra');
 const mainController = require('../controller/mainController');
 const mutationController = require('../controller/mutationController');
 const toolController = require('../controller/toolController');
-const mutationLibrary = require('../mutantOperators/mutationLibrary');
+const mutationLibrary = require('../mutantOperators/mutationLibrary')();
 const mutator = require('../controller/mutator');
 
 const validator = require('html-validator');

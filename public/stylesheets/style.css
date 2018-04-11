@@ -144,8 +144,8 @@ body {
 
 .canvas-holder-small {
   position: relative;
-  width: 26vw;
-  min-width: 250px;
+  width: 40vw;
+  min-width: 400px;
   float: left;
 }
 

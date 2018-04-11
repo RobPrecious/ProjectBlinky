@@ -44,7 +44,7 @@ $(document).ready(function () {
     }, function (data) {
       const current = data.find(mut => mut.id == mutant_id);
       let html = violationCard(current.analysis.axe.violations) + (current.analysis.axe.live ? liveCard : killedCard);
-      html += `<a href="/mut-op/mutants/TestBench-m` + mutant_id + `" target="_blank">View Mutant </a>`
+      html += `<a href="/mut-op/mutants/TestBench-m` + mutant_id + `" target="_blank">View Mutant </a>`;
       $(".live-or-dead-card-container[data-mutant='" + mutant_id + "']").html(html);
       $(".not-run-pill[data-mutant='" + mutant_id + "']").remove();
       if (current.analysis.axe.live) {
@@ -57,18 +57,18 @@ $(document).ready(function () {
 
   function getData() {
     $.get("/mut-op/get-saved-analysis", function (data) {
-      createBarChart("classes",
-        "classes-bar-chart",
-        data.analysis.classes.map(cat => cat.name), [{
-          label: "Live",
-          backgroundColor: window.chartColors.green,
-          data: data.analysis.classes.map(cat => cat.axe.live)
-        }, {
-          label: "Dead",
-          backgroundColor: window.chartColors.red,
-          data: data.analysis.classes.map(cat => cat.axe.killed)
-        }],
-        "Live/Dead by Mutation Class");
+      /* createBarChart("classes",
+         "classes-bar-chart",
+         data.analysis.classes.map(cat => cat.name), [{
+           label: "Live",
+           backgroundColor: window.chartColors.green,
+           data: data.analysis.classes.map(cat => cat.axe.live)
+         }, {
+           label: "Dead",
+           backgroundColor: window.chartColors.red,
+           data: data.analysis.classes.map(cat => cat.axe.killed)
+         }],
+         "Live/Dead by Mutation Class");*/
 
       createBarChart("subclasses",
         "sub-classes-bar-chart",

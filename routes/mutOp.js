@@ -4,7 +4,7 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs-extra');
 
-const mutationLibrary = require('../mutantOperators/mutationLibrary');
+const mutationLibrary = require('../mutantOperators/mutationLibrary')();
 
 const mainController = require('../controller/mainController');
 const mutationController = require('../controller/mutationController');
@@ -12,6 +12,7 @@ const toolController = require('../controller/toolController');
 
 
 router.get('/suite', (req, res, next) => {
+  console.log(mutationLibrary.length, mutationLibrary.map(mut => mut.id));
   let saved = false;
 
   if (fs.existsSync('mutopResults.json')) {
