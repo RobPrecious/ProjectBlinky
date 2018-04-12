@@ -11,8 +11,8 @@ module.exports = [{
     "subclass": "Change CSS",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -39,9 +39,9 @@ module.exports = [{
     "class": "Other",
     "subclass": "Change Page Value",
     "WCAG": {
-      "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "principle": "2. Operable",
+      "guideline": "2.4. Navigable",
+      "successCriteria": "2.4.2. Page Titled",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",

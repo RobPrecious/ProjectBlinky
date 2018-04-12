@@ -13,7 +13,7 @@ const axeTools = {
       .then(function () {
         return AxeBuilder(driver)
           .withTags(['best-practice', 'wcag2a', 'wcag2aa', 'section508', 'cat'])
-          .disableRules(['href-no-hash', 'skip-link'])
+          .disableRules(['href-no-hash', 'skip-link', 'color-contrast'])
           .analyze(function (results) {
             console.log("aXe Tested: " + url);
             return results;

@@ -4,14 +4,46 @@
 <head>
   <title>TestBench.v.0.0.2</title>
   <meta charset="UTF-8">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    crossorigin="anonymous">
 </head>
 
 <body>
 
   <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-  <div role="main" id="content">
+  <div role="main" id="content" class="container">
+
+    <h1>TestBench</h1>
+
+    <h2>Images</h2>
+    <!-- image -->
+    <div>
+      <img src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York Logo" class="float-left" style="width:48%">
+      <input type="image" src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York Logo" class="float-right"
+        style="width:48%">
+    </div>
+    <hr>
+
+
+    <h3>Links</h3>
+    <!-- links -->
+    <div>
+      <a href="#" id="link-a">This link has text</a>
+      <a href="#" id="link-b" aria-label="link text"></a>
+
+      <div id="linklabel">Text</div>
+      <a href="#" id="link-c" aria-labelledby="linklabel"></a>
+      <!-- -->
+
+      <span role="link" href="#" id="link-d">This link has text</span>
+      <span role="link" href="#" id="link-e" aria-label="link text"></span>
+      <span role="link" href="#" id="link-f" aria-labelledby="linklabel"></span>
+    </div>
+    <hr>
+
+
+    <h4>Aria Parent Children</h4>
     <!--Aria parent children-->
     <div>
       <div role="list" id="a">
@@ -25,11 +57,16 @@
 
     <div aria-live="polite">Correct</div>
 
+    <hr>
+
+    <h5>Smallest Heading</h5>
+    <p>Text</p>
+    <hr>
     <!-- audio-video -->
+    <h1>Media Tests </h1>
     <div>
-      <h1>Media Tests </h1>
       <h2>Video Test </h2>
-      <video width="600" height="400" controls>
+      <video width="400" height="300" controls>
         <source src="/example_src/MIB2.mp4" type="video/mp4">
         <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="subtitles" srclang="en" label="Spannish 1" />
         <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="captions" srclang="en" label="Spannish 2" />
@@ -42,28 +79,27 @@
         <track src="/example_src/MIB2-subtitles-pt-BR.vtt" kind="captions" srclang="en" label="TEST" /> Your browser does not support the audio tag.
       </audio>
     </div>
+    <hr>
 
+
+    <h1>buttons</h1>
     <!-- button-aria-label -->
+    <h2>button-aria-label</h2>
+
     <div>
       <button aria-label="Close" onclick="myDialog.close()">X</button>
     </div>
 
+    <h2>button</h2>
     <!-- button -->
     <div>
       <button id="button">Test</button>
     </div>
 
-    <!-- headings -->
-    <div>
-      <h1>Main Heading</h1>
-      <h2>Small Heading</h2>
-      <h3>Smaller Heading</h3>
-      <h4>Even Smaller Heading</h4>
-      <h5>Smallest Heading</h5>
-      <p>Text</p>
-    </div>
+    <hr>
 
 
+    <h1>Image Area</h1>
     <!-- image-area -->
     <div>
       <map name="primary">
@@ -74,13 +110,11 @@
 
     </div>
 
-    <!-- image -->
-    <div>
-      <img src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York Logo">
-      <input type="image" src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York Logo">
-    </div>
+    <hr>
+
 
     <!-- labels -->
+    <h1>Labels</h1>
     <div>
       <form action="#">
         <!-- aria label -->
@@ -113,23 +147,11 @@
       </form>
     </div>
 
-    <!-- links -->
-    <div>
-      <a href="#" id="link-a">This link has text</a>
-      <a href="#" id="link-b" aria-label="link text"></a>
+    <hr>
 
-      <div id="linklabel">Text</div>
-      <a href="#" id="link-c" aria-labelledby="linklabel"></a>
-      <!-- -->
-
-      <span role="link" href="#" id="link-d">This link has text</span>
-      <span role="link" href="#" id="link-e" aria-label="link text"></span>
-      <span role="link" href="#" id="link-f" aria-labelledby="linklabel"></span>
-
-
-    </div>
 
     <!-- lists -->
+    <h1>Lists</h1>
     <div>
       <dl>
         <dt>Coffee</dt>
@@ -166,19 +188,28 @@
         <li>c</li>
       </ol>
     </div>
+
+    <hr>
+
     <!-- object -->
+    <h1>Object</h1>
     <div>
       <object data="public/example_src/eg.swf">car speaker banner ad</object>
     </div>
+
+    <hr>
+
     <!-- tables -->
+    <h1>Tables</h1>
     <div>
-      <table id="presentational-table" role="grid">
+      <table id="presentational-table" role="grid" class="table table-bordered">
         <tr>
           <td>aXe</td>
           <td>aXe</td>
         </tr>
       </table>
-      <table>
+      <hr>
+      <table class="table table-bordered">
         <tr>
           <td colspan="2">AXE</td>
         </tr>
@@ -188,7 +219,9 @@
         </tr>
       </table>
 
-      <table id="table-a" role="grid">
+      <hr>
+
+      <table id="table-a" role="grid" class="table table-bordered">
         <tr>
           <th colspan="2">AXE</th>
         </tr>
@@ -198,7 +231,9 @@
         </tr>
       </table>
 
-      <table id="table-b" role="grid">
+      <hr>
+
+      <table id="table-b" role="grid" class="table table-bordered">
         <tr>
           <td colspan="2">AXE</td>
         </tr>
@@ -208,8 +243,9 @@
         </tr>
       </table>
 
+      <hr>
 
-      <table id="table-c">
+      <table id="table-c" class="table table-bordered">
         <tr>
           <th>AXE</th>
           <th>AXE</th>
@@ -236,7 +272,7 @@
         </tr>
       </table>
 
-      <table id="table-d">
+      <table id="table-d" class="table table-bordered">
         <tr>
           <th>AXE</th>
           <td>aXe</td>
@@ -263,8 +299,9 @@
         </tr>
       </table>
 
+      <hr>
 
-      <table>
+      <table class="table table-bordered">
         <tr>
           <th id="hi"> </th>
         </tr>
@@ -273,7 +310,12 @@
         </tr>
       </table>
     </div>
+
+    <hr>
+
+
     <!-- text -->
+    <h1>Text</h1>
     <div>
       <p style="color:black">
         paragraph of text

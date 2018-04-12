@@ -4,7 +4,7 @@ const {
 } = jsdom;
 
 module.exports = [
-  // ------------------  1.1 Text Alternatives ------------------ //
+  // ------------------  1.1. Text Alternatives ------------------ //
   {
     "id": "1.1.1-01",
     "name": "remove-img-alt-text",
@@ -13,7 +13,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [{
@@ -41,7 +41,7 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [{
@@ -73,7 +73,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [{
@@ -105,7 +105,7 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -134,7 +134,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -163,7 +163,7 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [{
@@ -195,7 +195,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [{
@@ -227,7 +227,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -256,7 +256,7 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -284,7 +284,7 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -312,7 +312,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -341,7 +341,7 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -369,7 +369,7 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -397,7 +397,7 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
+      "guideline": "1.1. Text Alternatives",
       "successCriteria": "1.1.1. Non-text Content",
       "level": "A",
       "techniques": [],
@@ -425,11 +425,11 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.2. Time-based Media",
+      "successCriteria": "1.2.2. Captions (Prerecorded)",
       "level": "A",
       "techniques": [],
-      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
+      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-captions",
     },
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
@@ -453,11 +453,11 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.2. Time-based Media",
+      "successCriteria": "1.2.3 Audio Description or Media Alternative (Prerecorded)",
       "level": "A",
       "techniques": [],
-      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
+      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-audio-desc",
     },
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
@@ -481,11 +481,11 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
-      "level": "A",
+      "guideline": "1.2. Time-based Media",
+      "successCriteria": "1.2.5. Audio Description (Prerecorded)",
+      "level": "AA",
       "techniques": [],
-      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
+      "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-audio-desc-only",
     },
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
@@ -505,19 +505,14 @@ module.exports = [
     "id": "1.3.1-01",
     "name": "empty-arc-children",
     "description": "aria-required-children - parent role does not match expected children",
-    "name": "empty-input-image-alt-text",
-    "description": "Empty alternative text from <input type='image'> element",
     "class": "Change Attribute",
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
-      "techniques": [{
-        "name": "H36",
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html",
-      }],
+      "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
     },
     "check": (dom) => {
@@ -542,8 +537,8 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -570,8 +565,8 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -598,8 +593,8 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -627,8 +622,8 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -656,13 +651,10 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
-      "techniques": [{
-        "name": "H36",
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html",
-      }],
+      "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
     },
     "check": (dom) => {
@@ -688,8 +680,8 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -717,13 +709,10 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
-      "techniques": [{
-        "name": "H36",
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html",
-      }],
+      "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
     },
     "check": (dom) => {
@@ -748,8 +737,8 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -777,13 +766,10 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
-      "techniques": [{
-        "name": "H36",
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html",
-      }],
+      "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
     },
     "check": (dom) => {
@@ -808,13 +794,10 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
-      "techniques": [{
-        "name": "H36",
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html",
-      }],
+      "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
     },
     "check": (dom) => {
@@ -839,8 +822,8 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -867,8 +850,8 @@ module.exports = [
     "subclass": "Remove Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -895,8 +878,8 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
@@ -923,13 +906,10 @@ module.exports = [
     "subclass": "Empty Attribute",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
-      "techniques": [{
-        "name": "H36",
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H36.html",
-      }],
+      "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
     },
     "check": (dom) => {
@@ -954,8 +934,8 @@ module.exports = [
     "subclass": "Change Attribute Value",
     "WCAG": {
       "principle": "1. Percievable",
-      "guideline": "1.1 Text Alternatives",
-      "successCriteria": "1.1.1. Non-text Content",
+      "guideline": "1.3. Adaptable",
+      "successCriteria": "1.3.1. Info and Relationships",
       "level": "A",
       "techniques": [],
       "link": "http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all",
