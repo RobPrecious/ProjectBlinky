@@ -18,6 +18,13 @@ const mutationController = {
       })
   },
 
+  singleMutationViabilityCheck: (location, mutation) => {
+    return JSDOM.fromFile(path.resolve(__dirname, "../views/" + location))
+      .then(dom => {
+        return mutation.check(dom);
+      })
+  },
+
   mutateSource: (source, mutationOperators, prefix) => {
     return new Promise((res, rej) => {
       source.mutants = [];

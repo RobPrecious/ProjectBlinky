@@ -42,13 +42,17 @@ $(document).ready(function () {
     $.post("/mut-op/test-mutant-operation", {
       mutant_id
     }, function (data) {
-      const current = data.find(mut => mut.id == mutant_id);
-      let html = violationCard(current.analysis.axe.violations) + (current.analysis.axe.live ? liveCard : killedCard);
-      html += `<a href="/mut-op/mutants/TestBench-m` + mutant_id + `" target="_blank">View Mutant </a>`;
-      $(".live-or-dead-card-container[data-mutant='" + mutant_id + "']").html(html);
-      $(".not-run-pill[data-mutant='" + mutant_id + "']").remove();
-      if (current.analysis.axe.live) {
-        $(".mutop-pill-section[data-mutant='" + mutant_id + "']").html(livePill);
+      if (data) {
+        const current = data.find(mut => mut.id == mutant_id);
+        let html = violationCard(current.analysis.axe.violations) + (current.analysis.axe.live ? liveCard : killedCard);
+        html += `<a href="/mut-op/mutants/TestBench-m` + mutant_id + `" target="_blank">View Mutant </a>`;
+        $(".live-or-dead-card-container[data-mutant='" + mutant_id + "']").html(html);
+        $(".not-run-pill[data-mutant='" + mutant_id + "']").remove();
+        if (current.analysis.axe.live) {
+          $(".mutop-pill-section[data-mutant='" + mutant_id + "']").html(livePill);
+        }
+      } else {
+        $(".live-or-dead-card-container[data-mutant='" + mutant_id + "']").html("Failed");
       }
       $("#loading-spinner").remove();
       console.log("...Complete")
@@ -66,6 +70,9 @@ $(document).ready(function () {
 
       $('#btnRunAll').html("Run All" + (data.error == "RunAllLocked" ? " - Currently running" : ""));
 
+      if (!data.error) {
+        window.location = "http://localhost:3000/mut-op/suite";
+      }
 
     });
   })

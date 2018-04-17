@@ -50,7 +50,7 @@ router.get('/testbench', (req, res, next) => {
   try {
     req.session.data.stage = 2;
 
-    const source = "TestBench.v.0.0.2.html";
+    const source = "TestBench.v.0.0.3.html";
     router.get('/source', (req, res, next) => {
       res.render('templates/mutant-template', {
         template: "../" + source
@@ -218,6 +218,12 @@ router.get('/export-csv', (req, res, next) => {
     console.log(err)
   }
 })
+
+router.get('/source', (req, res, next) => {
+  res.render('templates/mutant-template', {
+    template: '../TestBench.v.0.0.3.html'
+  });
+});
 
 
 

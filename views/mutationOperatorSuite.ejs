@@ -22,7 +22,7 @@
       <% for(var i=0; i<operators.length; i++){%>
           <a class="list-group-item list-group-item-action" 
             id="op-<%= i%>" data-toggle="list" href="#contents-<%= i%>" role="tab" aria-controls="con-<%=i%>">
-            <%= operators[i].id + " " + operators[i].name %> 
+            <strong><%= operators[i].id%></strong><%= " " + operators[i].name %> 
             <span class="mutop-pill-section" data-mutant="<%= operators[i].id%>">
               <%if(saved && operators[i].analysis && operators[i].analysis.axe.total){
                 if(operators[i].analysis.axe.live){%>
@@ -66,10 +66,8 @@
             <tr>
               <th scope="row">WCAG</th>
               <td colspan=3>
-                Principle: <%= operators[i].WCAG.principle%> <br>
-                Guideline: <%= operators[i].WCAG.guideline%> <br>
-                Success Criteria: <a href="<%= operators[i].WCAG.link%>" target="_blank"><%= operators[i].WCAG.successCriteria%></a><br>
-                Level: <%= operators[i].WCAG.level%> <br>
+                Technique: <a href="<%= operators[i].WCAG.link%>" target="_blank"><%= operators[i].WCAG.technique%></a><br>
+                Success Criterion: <%= operators[i].WCAG.successCriterion%><br>
               </td>
             </tr>
             <tr>

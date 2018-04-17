@@ -10,14 +10,16 @@ const mainController = require('../controller/mainController');
 const mutationController = require('../controller/mutationController');
 const toolController = require('../controller/toolController');
 
+let runAllLock = false;
+
+
 
 router.get('/suite', (req, res, next) => {
-  console.log(mutationLibrary.length, mutationLibrary.map(mut => mut.id));
   let saved = false;
 
-  if (fs.existsSync('results.json')) {
+  if (fs.existsSync('mutopResults.json')) {
     try {
-      saved = fs.readJSONSync('results.json')
+      saved = fs.readJSONSync('mutopResults.json')
     } catch (err) {
       console.log("cannot parse json file")
     }
@@ -33,9 +35,9 @@ router.get('/suite', (req, res, next) => {
 router.get('/get-saved-analysis', (req, res, next) => {
   let saved = false;
 
-  if (fs.existsSync('results.json')) {
+  if (fs.existsSync('mutopResults.json')) {
     try {
-      saved = fs.readJSONSync('results.json')
+      saved = fs.readJSONSync('mutopResults.json')
     } catch (err) {
       console.log("cannot parse json file")
     }
@@ -51,58 +53,64 @@ router.get('/get-saved-analysis', (req, res, next) => {
 router.post('/test-mutant-operation', (req, res, next) => {
   try {
     const exists = mutationLibrary.find(mut => mut.id == req.body.mutant_id);
-    const source_file = "TestBench.v.0.0.2.html";
+    const source_file = "TestBench.v.0.0.3.html";
 
     let saved = false;
 
-    if (fs.existsSync('results.json')) {
+    if (fs.existsSync('mutopResults.json')) {
       try {
-        saved = fs.readJSONSync('results.json')
+        saved = fs.readJSONSync('mutopResults.json')
       } catch (err) {
         console.log("cannot parse json file")
       }
     }
 
     if (exists) {
-      return new Promise((resolve, reject) => {
-          router.get('/source', (req, res, next) => {
-            res.render('templates/mutant-template', {
-              template: "../" + source_file
-            });
-          });
-          resolve(source_file)
-        })
-        .then(source_file => mainController.checkSource(source_file, "TestBench", "/mut-op/source"))
-        .then(source => mutationController.mutateSource(source, [exists], "/mut-op"))
-        .then(source => {
-          source.mutants.map(mutant => {
-            router.get('/mutants/' + mutant.id, (req, res, next) => {
-              res.render('templates/mutant-template', {
-                template: mutant.file
-              });
-            });
-          })
-          return source;
-        })
-        .then(source => toolController.axeTools.runSM(source, "/mut-op"))
-        .then(source => {
-          if (saved) {
-            let found = source.mutants.find(mut => mut.id == ("TestBench-m" + req.body.mutant_id));
-            let inSaved = saved.source.mutants.find(mut => mut.id == ("TestBench-m" + req.body.mutant_id));
-            if (!inSaved) {
-              saved.source.mutants.push(found);
-            } else {
-              let index = saved.source.mutants.findIndex(mut => mut.id == ("TestBench-m" + req.body.mutant_id));
-              saved.source.mutants[index] = found;
-            }
-            return saved.source;
+      return mutationController.singleMutationViabilityCheck(source_file, exists)
+        .then(viable => {
+          if (viable) {
+            return new Promise((resolve, reject) => {
+                router.get('/source', (req, res, next) => {
+                  res.render('templates/mutant-template', {
+                    template: "../" + source_file
+                  });
+                });
+                resolve(source_file)
+              })
+              .then(source_file => mainController.checkSource(source_file, "TestBench", "/mut-op/source"))
+              .then(source => mutationController.mutateSource(source, [exists], "/mut-op"))
+              .then(source => {
+                source.mutants.map(mutant => {
+                  router.get('/mutants/' + mutant.id, (req, res, next) => {
+                    res.render('templates/mutant-template', {
+                      template: mutant.file
+                    });
+                  });
+                })
+                return source;
+              })
+              .then(source => toolController.axeTools.runSM(source, "/mut-op"))
+              .then(source => {
+                if (saved) {
+                  let found = source.mutants.find(mut => mut.id == ("TestBench-m" + req.body.mutant_id));
+                  let inSaved = saved.source.mutants.find(mut => mut.id == ("TestBench-m" + req.body.mutant_id));
+                  if (!inSaved) {
+                    saved.source.mutants.push(found);
+                  } else {
+                    let index = saved.source.mutants.findIndex(mut => mut.id == ("TestBench-m" + req.body.mutant_id));
+                    saved.source.mutants[index] = found;
+                  }
+                  return saved.source;
+                }
+                return source;
+              })
+              .then(source => mainController.postToolAnalysis(source))
+              .then(results => res.json(saveResults(results)))
+              .catch(console.error.bind(console))
+          } else {
+            return res.json(false);
           }
-          return source;
-        })
-        .then(source => mainController.postToolAnalysis(source))
-        .then(results => res.json(saveResults(results)))
-        .catch(console.error.bind(console))
-
+        });
 
     } else {
       return res.json(req.body.mutant_id + " not found.");
@@ -114,8 +122,10 @@ router.post('/test-mutant-operation', (req, res, next) => {
 
 
 router.get('/test-all-operations', (req, res, next) => {
-  try {
-    const source_file = "TestBench.v.0.0.2.html";
+  if (!runAllLock) {
+    runAllLock = true;
+
+    const source_file = "TestBench.v.0.0.3.html";
 
     let saved = false;
 
@@ -147,21 +157,29 @@ router.get('/test-all-operations', (req, res, next) => {
         })
         return source;
       })
-      .then(source => toolController.axeTools.runSM(source, "/mut-op"))
+      .then(source => toolController.axeTools.runSMSerial(source, "/mut-op"))
       .then(source => mainController.postToolAnalysis(source))
-      .then(results => res.redirect("/"))
+      .then(results => saveResults(results))
+      .then(() => {
+        runAllLock = false;
+        return res.json({
+          "error": false
+        })
+      })
       .catch(console.error.bind(console))
 
-  } catch (err) {
-    console.log(err);
+  } else {
+    return res.json({
+      "error": "RunAllLocked"
+    })
   }
 })
 
 router.get('/export-csv', (req, res, next) => {
   try {
-    if (fs.existsSync('results.json')) {
+    if (fs.existsSync('mutopResults.json')) {
       try {
-        saved = fs.readJSONSync('results.json')
+        saved = fs.readJSONSync('mutopResults.json')
       } catch (err) {
         console.log("cannot parse json file")
       }
