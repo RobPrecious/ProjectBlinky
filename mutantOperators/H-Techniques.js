@@ -2277,25 +2277,392 @@ module.exports = [
     "id": "H57-01",
     "name": "change-page-lang-to-non-existant",
     "description": "Change page lang to non-existant",
-    "class": "Element Change",
-    "subclass": "Empty Element",
+    "class": "Page Change",
+    "subclass": "Change Attribute",
     "WCAG": {
       "technique": "H57",
       "successCriterion": ["3.1.1"],
       "link": "https://www.w3.org/TR/WCAG20-TECHS/H57.html",
     },
     "check": (dom) => {
-      const document = dom.window.document;
-      if (document.lang) {
-        return true
+      return true;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("html").attr("lang", "doesnotexist");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H57-02",
+    "name": "empty-page-lang",
+    "description": "Empty page lang",
+    "class": "Page Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H57",
+      "successCriterion": ["3.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H57.html",
+    },
+    "check": (dom) => {
+      return true;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("html").attr("lang", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H57-03",
+    "name": "remove-page-lang",
+    "description": "Remove page lang",
+    "class": "Page Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H57",
+      "successCriterion": ["3.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H57.html",
+    },
+    "check": (dom) => {
+      return true;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("html").attr("lang", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H58-01",
+    "name": "change-element-lang",
+    "description": "Change element lang to non-existant",
+    "class": "Attribute Change",
+    "subclass": "Change Attribute",
+    "WCAG": {
+      "technique": "H58",
+      "successCriterion": ["3.1.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H58.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("[lang]").length > 0) {
+        return true;
       }
       return false;
     },
     "mutation": (mutant_dom) => {
-      const document = dom.window.document;
-      $("object").first().html("");
+      let $ = require('jquery')(mutant_dom.window);
+      $("[lang]").last().attr("lang", "doesnotexist");
       return mutant_dom.serialize();
     }
   },
+
+  {
+    "id": "H59-01",
+    "name": "empty-head-link-rel",
+    "description": "Empty rel attribute in head link",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H59",
+      "successCriterion": ["2.4.5", "2.4.8"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H59.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("head > link").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("head > link").first().attr("rel", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H59-02",
+    "name": "empty-head-link-href",
+    "description": "Empty href attribute in head link",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H59",
+      "successCriterion": ["2.4.5", "2.4.8"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H59.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("head > link").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("head > link").first().attr("href", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H59-03",
+    "name": "remove-head-link-rel",
+    "description": "Remove rel attribute in head link",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H59",
+      "successCriterion": ["2.4.5", "2.4.8"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H59.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("head > link").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("head > link").first().attr("rel", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H59-04",
+    "name": "remove-head-link-href",
+    "description": "Remove href attribute in head link",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H59",
+      "successCriterion": ["2.4.5", "2.4.8"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H59.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("head > link").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("head > link").first().attr("href", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H62-01",
+    "name": "empty-ruby-rb",
+    "description": "Empty ruby base word (rb)",
+    "class": "Element Change",
+    "subclass": "Empty Element",
+    "WCAG": {
+      "technique": "H62",
+      "successCriterion": ["3.1.6"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H62.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("ruby").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("ruby > rb").first().html("");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H62-02",
+    "name": "empty-ruby-rt",
+    "description": "Empty ruby rt",
+    "class": "Element Change",
+    "subclass": "Empty Element",
+    "WCAG": {
+      "technique": "H62",
+      "successCriterion": ["3.1.6"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H62.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("ruby").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("ruby > rt").first().html("");
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H62-03",
+    "name": "remove-ruby-rb",
+    "description": "Remove ruby base word (rb)",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H62",
+      "successCriterion": ["3.1.6"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H62.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("ruby").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("ruby > rb").first().remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H62-04",
+    "name": "remove-ruby-rt",
+    "description": "Remove ruby rt",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H62",
+      "successCriterion": ["3.1.6"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H62.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("ruby").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("ruby > rt").first().remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H63-01",
+    "name": "empty-table-scope-attribute",
+    "description": "Empty table scope attribute",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H63",
+      "successCriterion": ["1.3.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H63.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("[scope]").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("[scope]").first().attr("scope", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H63-02",
+    "name": "change-table-scope-attribute",
+    "description": "Change table scope attribute to invalid value",
+    "class": "Attribute Change",
+    "subclass": "Change Attribute",
+    "WCAG": {
+      "technique": "H63",
+      "successCriterion": ["1.3.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H63.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("[scope]").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("[scope]").first().attr("scope", "invalidvalue");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H64-01",
+    "name": "empty-iframe-title-attribute",
+    "description": "Empty iframe title attribute",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H64",
+      "successCriterion": ["2.4.1", "4.1.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H64.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("iframe").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("iframe").first().attr("title", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H64-02",
+    "name": "remove-iframe-title-attribute",
+    "description": "Remove iframe title attribute",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H64",
+      "successCriterion": ["2.4.1", "4.1.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H64.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("iframe").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("iframe").first().attr("title", null);
+      return mutant_dom.serialize();
+    }
+  },
+
 
 ]
