@@ -56,9 +56,21 @@ $(document).ready(function () {
   })
 
   $('#btnRunAll').on('click', function () {
-    var win = window.open("/mut-op/test-all-operations", '_blank');
-    win.focus();
+    $(this).html(`<span id="loading-spinner" style="font-size:14pt"> <i class="fas fa-spinner fa-spin text-white" ></i></span>`);
+    $(this).attr("disabled", true);
+    $.ajaxSetup({
+      timeout: 1000 * 60 * 3
+    });
+    $.get("/mut-op/test-all-operations", function (data) {
+      $('#btnRunAll').attr("disabled", false);
+
+      $('#btnRunAll').html("Run All" + (data.error == "RunAllLocked" ? " - Currently running" : ""));
+
+
+    });
   })
+
+
 
   function getData() {
     $.get("/mut-op/get-saved-analysis", function (data) {
