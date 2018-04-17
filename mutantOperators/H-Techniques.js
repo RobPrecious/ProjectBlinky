@@ -2665,4 +2665,105 @@ module.exports = [
   },
 
 
+  {
+    "id": "H65-01",
+    "name": "empty-input-title-attribute",
+    "description": "Empty input title attribute",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H65",
+      "successCriterion": ["1.1.1", "1.3.1", "3.3.2", "4.1.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H64.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("input[title]").length > 0) {
+        for (var i = 0; i < $("input[title]").length; i++) {
+          if (!$($("input[title]").get(i)).attr("aria-label")) {
+
+            if (!$($("input[title]").get(i)).attr("id")) {
+              return true;
+            }
+            if (!$("label[for=#'" + $($("input[title]").get(i)).attr("id") + "']")) {
+              return true
+            }
+          }
+        };
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let element;
+      for (var i = 0; i < $("input[title]").length; i++) {
+        if (!$($("input[title]").get(i)).attr("aria-label")) {
+
+          if (!$($("input[title]").get(i)).attr("id")) {
+            element = $($("input[title]").get(i));
+            break;
+          }
+          if (!$("label[for=#'" + $($("input[title]").get(i)).attr("id") + "']")) {
+            element = $($("input[title]").get(i));
+            break;
+          }
+        }
+      };
+      console.log(element.attr("title"));
+      element.attr("title", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H65-02",
+    "name": "remove-input-title-attribute",
+    "description": "Remove input title attribute",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H65",
+      "successCriterion": ["1.1.1", "1.3.1", "3.3.2", "4.1.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H64.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("input[title]").length > 0) {
+        for (var i = 0; i < $("input[title]").length; i++) {
+          if (!$($("input[title]").get(i)).attr("aria-label")) {
+
+            if (!$($("input[title]").get(i)).attr("id")) {
+              return true;
+            }
+            if (!$("label[for=#'" + $($("input[title]").get(i)).attr("id") + "']")) {
+              return true
+            }
+          }
+        };
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let element;
+      for (var i = 0; i < $("input[title]").length; i++) {
+        if (!$($("input[title]").get(i)).attr("aria-label")) {
+
+          if (!$($("input[title]").get(i)).attr("id")) {
+            element = $($("input[title]").get(i));
+            break;
+          }
+          if (!$("label[for=#'" + $($("input[title]").get(i)).attr("id") + "']")) {
+            element = $($("input[title]").get(i));
+            break;
+          }
+        }
+      };
+      element.attr("title", null);
+      return mutant_dom.serialize();
+    }
+  },
+
 ]
