@@ -12,6 +12,10 @@
       <div class="card-header">Total</div>
       <div class="card-body"><%=saved.analysis.all.axe.total%></div>
     </div>
+     <div class="card bg-info text-white mb-3 stat-card-small" >
+      <div class="card-header">Kill Score</div>
+      <div class="card-body"><%=(saved.analysis.all.axe.killed /saved.analysis.all.axe.total * 100).toFixed(0) + "%"%></div>
+    </div>
 </div>
 <br>
     <span id="loading-spinner" data-find-me="true"> <i class="fas fa-spinner fa-spin text-primary"></i></span>
