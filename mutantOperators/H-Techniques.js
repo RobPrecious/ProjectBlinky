@@ -2766,4 +2766,440 @@ module.exports = [
     }
   },
 
+  {
+    "id": "H67-01",
+    "name": "remove-alt-from-decorative-img",
+    "description": "Remove alt from decorative img",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H67",
+      "successCriterion": ["1.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H67.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("img[alt='']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("img[alt='']").first().attr("alt", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H69-01",
+    "name": "change-all-headings-to-p",
+    "description": "Change all headings to paragraphs",
+    "class": "Element Change",
+    "subclass": "Change Element",
+    "WCAG": {
+      "technique": "H69",
+      "successCriterion": ["2.4.1", "2.4.10"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H69.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h1,h2,h3,h4,h5").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let headings = $("h1,h2,h3,h4,h5");
+      for (let i = 0; i < headings.length; i++) {
+        $('<p>' + $(headings.get(i)).html() + '</p>').insertAfter(headings.get(i));
+        headings.get(i).remove();
+      }
+
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H69-02",
+    "name": "remove-all-headings",
+    "description": "Remove all headings",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H69",
+      "successCriterion": ["2.4.1", "2.4.10"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H69.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("h1,h2,h3,h4,h5").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let headings = $("h1,h2,h3,h4,h5");
+      for (let i = 0; i < headings.length; i++) {
+        headings.get(i).remove();
+      }
+
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H71-01",
+    "name": "reorder-legend-out-of-fieldset",
+    "description": "Reorder legend to be external of the fieldset",
+    "class": "Element Change",
+    "subclass": "Reorder Element",
+    "WCAG": {
+      "technique": "H71",
+      "successCriterion": ["1.3.1", "3.3.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H71.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("fieldset > legend").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("fieldset > legend").first().insertBefore($("fieldset > legend").parent());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H71-02",
+    "name": "remove-legend-out-of-fieldset",
+    "description": "Remove legend of a fieldset",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H71",
+      "successCriterion": ["1.3.1", "3.3.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H71.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("fieldset > legend").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("fieldset > legend").first().remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H73-01",
+    "name": "change-table-summary-attribute",
+    "description": "Change table summary attribute to the same text value as the caption",
+    "class": "Attribute Change",
+    "subclass": "Change Attribute",
+    "WCAG": {
+      "technique": "H73",
+      "successCriterion": ["1.3.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("table[summary]").length > 0) {
+        for (var i = 0; i < $("table[summary]").length; i++) {
+          if ($($("table[summary]")).children("caption").length > 0) {
+            return true
+          }
+        };
+        return false;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let element;
+      for (var i = 0; i < $("table[summary]").length; i++) {
+        if ($($("table[summary]")).children("caption").length > 0) {
+          element = $($("table[summary]").get(i));
+          break
+        }
+      };
+      element.attr("summary", element.children("caption").first().html());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H73-02",
+    "name": "change-table-caption-value",
+    "description": "Change table caption value to the same text value as the summary",
+    "class": "Element Change",
+    "subclass": "Change Element",
+    "WCAG": {
+      "technique": "H73",
+      "successCriterion": ["1.3.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("table[summary]").length > 0) {
+        for (var i = 0; i < $("table[summary]").length; i++) {
+          if ($($("table[summary]")).children("caption").length > 0) {
+            return true
+          }
+        };
+        return false;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let element;
+      for (var i = 0; i < $("table[summary]").length; i++) {
+        if ($($("table[summary]")).children("caption").length > 0) {
+          element = $($("table[summary]").get(i));
+          break
+        }
+      };
+      element.children("caption").first().html(element.attr("summary"));
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H93-01",
+    "name": "empty-two-id-attributes",
+    "description": "Empty two id attributes so that they match but empty",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H93",
+      "successCriterion": ["4.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H93.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("[id]").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("[id]").last().attr("id", "");
+      $("[id]").last().prev().attr("id", "");
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H95-01",
+    "name": "empty-captions-track-kind-attribute",
+    "description": "Empty track kind attribute",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H95",
+      "successCriterion": ["1.2.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H95.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='captions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video > track[kind='captions']").first().attr("kind", "");
+      return mutant_dom.serialize();
+    }
+  },
+  {
+    "id": "H95-02",
+    "name": "remove-captions-track-kind-attribute",
+    "description": "Remove track kind attribute",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H95",
+      "successCriterion": ["1.2.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H95.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='captions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video > track[kind='captions']").first().attr("kind", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H95-03",
+    "name": "reorder-captions-tracks-outside-video",
+    "description": "Reorder video tracks outside of video",
+    "class": "Element Change",
+    "subclass": "Reorder Element",
+    "WCAG": {
+      "technique": "H95",
+      "successCriterion": ["1.2.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H95.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='captions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video").first().children("track[kind='captions']").insertAfter($("video").first());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H95-04",
+    "name": "remove-captions-tracks-from-video",
+    "description": "Remove video tracks from video",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H95",
+      "successCriterion": ["1.2.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H95.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='captions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video > track[kind='captions']").remove();
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H96-01",
+    "name": "empty-descriptions-track-kind-attribute",
+    "description": "Empty descriptions track kind attribute",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H96",
+      "successCriterion": ["1.2.2", "1.2.3", "1.2.5", "1.2.7"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H96.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='descriptions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video > track[kind='descriptions']").first().attr("kind", "");
+      return mutant_dom.serialize();
+    }
+  },
+  {
+    "id": "H96-02",
+    "name": "remove-descriptions-track-kind-attribute",
+    "description": "Remove descriptions track kind attribute",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H96",
+      "successCriterion": ["1.2.2", "1.2.3", "1.2.5", "1.2.7"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H96.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='descriptions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video > track[kind='descriptions']").first().attr("kind", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+
+  {
+    "id": "H96-03",
+    "name": "reorder-descriptions-tracks-outside-video",
+    "description": "Reorder descriptions video tracks outside of video",
+    "class": "Element Change",
+    "subclass": "Reorder Element",
+    "WCAG": {
+      "technique": "H96",
+      "successCriterion": ["1.2.2", "1.2.3", "1.2.5", "1.2.7"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H96.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='descriptions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video").first().children("track[kind='descriptions']").insertAfter($("video").first());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H96-04",
+    "name": "remove-descriptions-tracks-from-video",
+    "description": "Remove descriptions video tracks from video",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H96",
+      "successCriterion": ["1.2.2", "1.2.3", "1.2.5", "1.2.7"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H96.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("video > track[kind='descriptions']").length > 0) {
+        return true;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("video > track[kind='descriptions']").remove();
+      return mutant_dom.serialize();
+    }
+  },
+
 ]

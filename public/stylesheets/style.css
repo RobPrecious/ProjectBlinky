@@ -94,8 +94,9 @@ body {
 }
 
 .stat-card .card-body {
-  font-size: 3em;
+  font-size: 2.45em;
   font-weight: bold;
+  padding-top: 27px;
 }
 
 .stat-card .card-body i {

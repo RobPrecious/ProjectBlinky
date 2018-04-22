@@ -166,27 +166,34 @@ router.get('/view-axe-results', (req, res, next) => {
 
 
 router.get("/load-saved", (req, res, next) => {
-  req.session.data = fs.readJSONSync('results.json');
-  req.session.data.stage = 4;
+  try {
+    req.session.data = fs.readJSONSync('results.json');
+    req.session.data.stage = 4;
 
-  //Will need re-implementing in the case where other input html methods are used
-  const source = "TestBench.v.0.0.2.html";
-  loadSource(source);
-  req.session.data.source.mutants.map(mutant => {
-    router.get('/mutants/' + mutant.id, (req, res, next) => {
+    router.get('/source', (req, res, next) => {
       res.render('templates/mutant-template', {
-        template: mutant.file
-      });
-    });
-  })
+        template: "../" + req.session.data.source.file
+      })
+    })
 
-  mainController.postToolAnalysis(req.session.data.source)
-    .then(data => {
-      return res.json(data);
+    req.session.data.source.mutants.map(mutant => {
+      router.get('/mutants/' + mutant.id, (req, res, next) => {
+        res.render('templates/mutant-template', {
+          template: mutant.file
+        });
+      });
     })
-    .catch(err => {
-      console.log(err);
-    })
+
+    mainController.postToolAnalysis(req.session.data.source)
+      .then(data => {
+        return res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 router.get('/get-session', (req, res, next) => {
@@ -198,12 +205,12 @@ router.get('/export-csv', (req, res, next) => {
   try {
     if (req.session.data && req.session.data.stage == 4) {
       let output = `${req.session.data.source.id} \n`
-      output += `ID, Class, Description, # Killed, # Live, # Total, WCAG SC \n`
-      req.session.data.analysis.mutationAnalysis.map(mutation => {
-        output += `${mutation.id}, ${mutation.class},` +
+      output += `ID,Class,Sub Class,Description,# Killed,# Live,# Total,WCAG Principles,WCAG Guidelines,WCAG Success Criterion,WCAG Technique, \n`
+      saved.analysis.mutationAnalysis.map(mutation => {
+        output += `${mutation.id}, ${mutation.class}, ${mutation.subclass},` +
           `${mutation.description}, ${mutation.analysis.axe.killed},` +
           `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
-          `${mutation.successCriteria}\n`;
+          `${mainControoler.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
       })
       fs.writeFile('output.csv', output, 'utf8', function (err) {
         if (err) {

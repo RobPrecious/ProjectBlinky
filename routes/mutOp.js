@@ -186,12 +186,12 @@ router.get('/export-csv', (req, res, next) => {
     }
     if (saved) {
       let output = `${saved.source.id} \n`
-      output += `ID, Class, Sub Class, Description, # Killed, # Live, # Total, WCAG Principle, WCAG Guideline, WCAG Success Criteria, \n`
+      output += `ID,Class,Sub Class,Description,# Killed,# Live,# Total,WCAG Principles,WCAG Guidelines,WCAG Success Criterion,WCAG Technique, \n`
       saved.analysis.mutationAnalysis.map(mutation => {
         output += `${mutation.id}, ${mutation.class}, ${mutation.subclass},` +
           `${mutation.description}, ${mutation.analysis.axe.killed},` +
           `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
-          `${mutation.WCAG.principle},${mutation.WCAG.guideline},${mutation.WCAG.successCriteria},\n`;
+          `${mainController.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
       })
       fs.writeFile('output.csv', output, 'utf8', function (err) {
         if (err) {
