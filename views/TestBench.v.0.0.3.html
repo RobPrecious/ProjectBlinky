@@ -148,12 +148,14 @@
 
 
 
-
+    <!-- Applet obsolete  
     <hr>
     <h2>H35</h2>
     <applet code="tictactoe.class" width="250" height="250" alt="tic-tac-toe game">
       tic-tac-toe game
     </applet>
+  
+  -->
 
     <hr>
     <h2>H37</h2>
@@ -255,7 +257,7 @@
     </div>
 
 
-
+    <!-- noembed obselete
     <hr>
     <h2>H46</h2>
     <embed src="../movies/history_of_rome.mov" height="60" width="144" autostart="false">
@@ -263,6 +265,7 @@
       <a href="../transcripts/transcript_history_rome.htm">Transcript of "The history of Rome"</a>
     </noembed>
     </embed>
+     -->
 
 
     <hr>
@@ -288,7 +291,7 @@
 
     <hr>
     <h2>H53</h2>
-    <object classid="http://www.example.com/analogclock.py">
+    <object type="application/vnd.adobe.flash-movie" data="helloworld.swf">
       <p>Here is some text that describes the object and its operation.</p>
     </object>
 
@@ -316,7 +319,7 @@
     <hr>
     <h2>H63</h2>
 
-    <table border="1">
+    <table>
       <caption>Contact Information</caption>
       <tr>
         <td></td>
@@ -382,6 +385,7 @@
       </fieldset>
     </form>
 
+    <!-- table summaries are obsolete
     <hr>
     <h2>H73</h2>
     <table summary="Summary Text">
@@ -399,6 +403,7 @@
         <td>4:19</td>
       </tr>
     </table>
+-->
 
     <hr>
     <h2>H93</h2>
@@ -424,8 +429,8 @@
       <hr>
       <h2>ARIA2</h2>
       <p>
-        <label for="test">Test (required)</label>
-        <input name="ariaexample" id="aria-example" aria-required="true" aria-label="Test" />
+        <label for="test-aria1">Test (required)</label>
+        <input name="ariaexample" id="test-aria1" aria-required="true" aria-label="test-aria1" />
       </p>
     </form>
 
@@ -537,33 +542,6 @@
       <input size="4" type="text" aria-required="true" title="Last 4 digits" />
     </div>
     <hr>
-    <div role="radiogroup" aria-labelledby="alert1">
-      <p id="alert1">Send an alert when balance exceeds $ 3,000</p>
-      <div>
-        <span role="radio" aria-labelledby="a1r1" name="a1radio"></span>
-        <span id="a1r1">Yes</span>
-      </div>
-      <div>
-        <span role="radio" aria-labelledby="a1r2" name="a1radio"></span>
-        <span id="a1r2">No</span>
-      </div>
-    </div>
-    <div role="radiogroup" aria-labelledby="alert2">
-      <p id="alert2">Send an alert when a charge exceeds $ 250</p>
-      <div>
-        <span role="radio" aria-labelledby="a2r1" name="a2radio"></span>
-        <span id="a2r1">Yes</span>
-      </div>
-      <div>
-        <span role="radio" aria-labelledby="a2r2" name="a2radio"></span>
-        <span id="a2r2">No</span>
-      </div>
-    </div>
-    <p>
-      <input type="submit" value="Continue" id="continue_btn" name="continue_btn" />
-    </p>
-
-
   </div>
 </body>
 
