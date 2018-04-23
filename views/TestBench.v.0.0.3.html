@@ -414,6 +414,156 @@
 
     </video>
 
+
+    <hr>
+    <h2>ARIA1</h2>
+    <form>
+      <label for="aria-fname">First name</label>
+      <input name="fname" type="text" id="aria-fname" aria-describedby="aria-describedby">
+      <p id="aria-describedby">A bit of instructions for this field linked with aria-describedby. </p>
+      <hr>
+      <h2>ARIA2</h2>
+      <p>
+        <label for="test">Test (required)</label>
+        <input name="ariaexample" id="aria-example" aria-required="true" aria-label="Test" />
+      </p>
+    </form>
+
+
+    <hr>
+    <h2>ARIA4</h2>
+    <ul role="tree" tabindex="0">
+      <li role="treeitem">Birds</li>
+      <li role="treeitem">Cats
+        <ul role="group">
+          <li role="treeitem">Siamese</li>
+          <li role="treeitem">Tabby</li>
+        </ul>
+      </li>
+      <li role="treeitem">Dogs
+        <ul role="group">
+          <li role="treeitem">Small Breeds
+            <ul role="group">
+              <li role="treeitem">Chihuahua</li>
+              <li role="treeitem">Italian Greyhound</li>
+              <li role="treeitem">Japanese Chin</li>
+            </ul>
+          </li>
+          <li role="treeitem">Medium Breeds
+            <ul role="group">
+              <li role="treeitem">Beagle</li>
+              <li role="treeitem">Cocker Spaniel</li>
+              <li role="treeitem">Pit Bull</li>
+            </ul>
+          </li>
+          <li role="treeitem">Large Breeds
+            <ul role="group">
+              <li role="treeitem">Afghan</li>
+              <li role="treeitem">Great Dane</li>
+              <li role="treeitem">Mastiff</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr>
+    <h2>ARIA6</h2>
+    <div role="navigation" aria-label="Primary">
+      <ul>
+        <li>...a list of links here ...</li>
+      </ul>
+    </div>
+    <div role="navigation" aria-label="Secondary">
+      <ul>
+        <li>...a list of links here ...</li>
+      </ul>
+    </div>
+
+    <hr>
+    <h2>ARIA7</h2>
+    <p>Download
+      <span id="report-title" tabindex="-1">2012 Sales Report</span>:
+      <a aria-labelledby="report-title pdf" href="#" id="pdf">PDF</a> |
+      <a aria-labelledby="report-title doc" href="#" id="doc">Word</a> |
+      <a aria-labelledby="report-title ppt" href="#" id="ppt">Powerpoint</a>
+    </p>
+
+    <hr>
+    <h2>ARIA8</h2>
+    <p>Baby Mayor: Seminole voters elect the city's youngest mayor ever by voting in 3 year old Willy "Dusty" Williams in yesterday's
+      mayoral election.
+      <a href="babymayor.html" aria-label="Read more about Seminole's new baby mayor">[Read more...]</a>
+    </p>
+
+    <hr>
+    <h2>ARIA10</h2>
+    <div role="img" aria-labelledby="star_id">
+      <img src="/images/fullstar.png" alt="" />
+      <img src="/images/fullstar.png" alt="" />
+      <img src="/images/fullstar.png" alt="" />
+      <img src="/images/fullstar.png" alt="" />
+      <img src="/images/emptystar.png" alt="" />
+    </div>
+
+    <div id="star_id">4 of 5</div>
+
+    <hr>
+    <h2>ARIA12</h2>
+    <div role="heading" aria-level="7">Jonagold</div>
+    <p>Jonagold is a cross between the Golden Delicious and Jonathan varieties...</p>
+
+    <hr>
+    <h2>ARIA15</h2>
+    <img src="/images/fullstar.png" alt="Star" aria-describedby="star-description">
+    <p id="star-description">This a star</p>
+
+    <hr>
+    <h2>ARIA16</h2>
+    <label id="l1" for="f3">Notify me</label>
+    <select name="amt" id="f3" aria-labelledby="l1 f3 l2">
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+    <span id="l2" tabindex="-1">days in advance</span>
+
+    <hr>
+    <h2>ARIA17</h2>
+    <div role="group" aria-labelledby="ssn1">
+      <span id="ssn1">Social Security#</span>
+      <span style="color: #D90D0D;"> * </span>
+      <input size="3" type="text" aria-required="true" title="First 3 digits" />-
+      <input size="2" type="text" aria-required="true" title="Next 2 digits" />-
+      <input size="4" type="text" aria-required="true" title="Last 4 digits" />
+    </div>
+    <hr>
+    <div role="radiogroup" aria-labelledby="alert1">
+      <p id="alert1">Send an alert when balance exceeds $ 3,000</p>
+      <div>
+        <span role="radio" aria-labelledby="a1r1" name="a1radio"></span>
+        <span id="a1r1">Yes</span>
+      </div>
+      <div>
+        <span role="radio" aria-labelledby="a1r2" name="a1radio"></span>
+        <span id="a1r2">No</span>
+      </div>
+    </div>
+    <div role="radiogroup" aria-labelledby="alert2">
+      <p id="alert2">Send an alert when a charge exceeds $ 250</p>
+      <div>
+        <span role="radio" aria-labelledby="a2r1" name="a2radio"></span>
+        <span id="a2r1">Yes</span>
+      </div>
+      <div>
+        <span role="radio" aria-labelledby="a2r2" name="a2radio"></span>
+        <span id="a2r2">No</span>
+      </div>
+    </div>
+    <p>
+      <input type="submit" value="Continue" id="continue_btn" name="continue_btn" />
+    </p>
+
+
   </div>
 </body>
 

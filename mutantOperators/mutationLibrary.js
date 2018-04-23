@@ -3,19 +3,15 @@ const {
   JSDOM
 } = jsdom;
 
-const changeAttribute = require('./changeAttribute');
-const changeElement = require('./changeElement');
-const other = require('./other');
 const H = require('./H-Techniques')
+const ARIA = require('./ARIA-Techniques')
 
 
 module.exports = () => {
   const operators = [
     ...H,
-    //...changeAttribute,
-    //...changeElement,
-    //...other,
+    ...ARIA
   ];
-  return operators.sort((a, b) => b.id.localeCompare(a.id));
+  return operators.sort((a, b) => a.id.localeCompare(b.id));
 
 };

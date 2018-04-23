@@ -501,81 +501,82 @@ module.exports = [
       return mutant_dom.serialize();
     }
   },
-
-  {
-    "id": "H35-01",
-    "name": "empty-applet-alt-tag",
-    "description": "Finds applet and empties alt tag",
-    "class": "Attribute Change",
-    "subclass": "Empty Attribute",
-    "WCAG": {
-      "technique": "H35",
-      "successCriterion": ["1.1.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
-    },
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      if ($("applet").length) {
-        return true
+  /*
+    {
+      "id": "H35-01",
+      "name": "empty-applet-alt-tag",
+      "description": "Finds applet and empties alt tag",
+      "class": "Attribute Change",
+      "subclass": "Empty Attribute",
+      "WCAG": {
+        "technique": "H35",
+        "successCriterion": ["1.1.1"],
+        "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
+      },
+      "check": (dom) => {
+        let $ = require('jquery')(dom.window);
+        if ($("applet").length) {
+          return true
+        }
+        return false;
+      },
+      "mutation": (mutant_dom) => {
+        let $ = require('jquery')(mutant_dom.window);
+        $("applet").first().attr("alt", "");
+        return mutant_dom.serialize();
       }
-      return false;
     },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("applet").first().attr("alt", "");
-      return mutant_dom.serialize();
-    }
-  },
 
-  {
-    "id": "H35-02",
-    "name": "remove-applet-alt-tag",
-    "description": "Finds applet and removes alt tag",
-    "class": "Attribute Change",
-    "subclass": "Remove Attribute",
-    "WCAG": {
-      "technique": "H35",
-      "successCriterion": ["1.1.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
-    },
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      if ($("applet").length) {
-        return true
+    {
+      "id": "H35-02",
+      "name": "remove-applet-alt-tag",
+      "description": "Finds applet and removes alt tag",
+      "class": "Attribute Change",
+      "subclass": "Remove Attribute",
+      "WCAG": {
+        "technique": "H35",
+        "successCriterion": ["1.1.1"],
+        "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
+      },
+      "check": (dom) => {
+        let $ = require('jquery')(dom.window);
+        if ($("applet").length) {
+          return true
+        }
+        return false;
+      },
+      "mutation": (mutant_dom) => {
+        let $ = require('jquery')(mutant_dom.window);
+        $("applet").first().attr("alt", null);
+        return mutant_dom.serialize();
       }
-      return false;
     },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("applet").first().attr("alt", null);
-      return mutant_dom.serialize();
-    }
-  },
 
-  {
-    "id": "H35-03",
-    "name": "remove-applet-internal-text",
-    "description": "Finds applet and removes internal text",
-    "class": "Element Change",
-    "subclass": "Empty Element",
-    "WCAG": {
-      "technique": "H35",
-      "successCriterion": ["1.1.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
-    },
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      if ($("applet").length) {
-        return true
+    {
+      "id": "H35-03",
+      "name": "remove-applet-internal-text",
+      "description": "Finds applet and removes internal text",
+      "class": "Element Change",
+      "subclass": "Empty Element",
+      "WCAG": {
+        "technique": "H35",
+        "successCriterion": ["1.1.1"],
+        "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
+      },
+      "check": (dom) => {
+        let $ = require('jquery')(dom.window);
+        if ($("applet").length) {
+          return true
+        }
+        return false;
+      },
+      "mutation": (mutant_dom) => {
+        let $ = require('jquery')(mutant_dom.window);
+        $("applet").first().html("");
+        return mutant_dom.serialize();
       }
-      return false;
     },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("applet").first().html("");
-      return mutant_dom.serialize();
-    }
-  },
+    */
 
   {
     "id": "H36-01",
