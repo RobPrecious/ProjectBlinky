@@ -113,8 +113,19 @@ $(document).ready(function () {
     });
   }
 
-  $('#btnExportCSV').on('click', function () {
+  $('#btnExportCSVAll').on('click', function () {
     window.location = "/mut-op/export-csv";
+  })
+  $('#btnExportCSVTech').on('click', function () {
+    window.location = "/mut-op/export-csv-techniques";
+  })
+
+  $('#btnExportCSVSCT').on('click', function () {
+    window.location = "/mut-op/export-csv-sc-with-t";
+  })
+
+  $('#btnExportCSVSCWT').on('click', function () {
+    window.location = "/mut-op/export-csv-sc-without-t";
   })
 
   function createBarChart(name, dom_location, labels, datasets, title) {
