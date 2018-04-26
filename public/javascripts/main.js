@@ -206,11 +206,11 @@ $(document).ready(function () {
 
 
   $("#btnRunAxe").on('click', function () {
+    $.ajaxSetup({
+      timeout: 1000 * 60 * 10
+    });
     $('<span id="loading-spinner"> <i class="fas fa-spinner fa-spin text-warning"></i></span>').insertAfter($(this));
     $(this).attr('disabled', true);
-    $.ajaxSetup({
-      timeout: 1000 * 60 * 3
-    })
     $.get("/run-att", function (data) {
       if (data == "Axe is already running.") {
         console.log(data);
@@ -261,6 +261,15 @@ $(document).ready(function () {
     $("#axe-total-violations .card-body").html(data.analysis.all.axe.violations);
     $("#axe-total-live .card-body").html(data.analysis.all.axe.killed + "/" + data.analysis.all.axe.total);
     $("#axe-kill-score .card-body").html((data.analysis.all.axe.killed / data.analysis.all.axe.total * 100).toFixed(0) + "%");
+
+    $("#tech-tested .card-body").html(data.analysis.WCAGAnalysis.techniqueOverall.total + "/79");
+    $("#tech-live .card-body").html(data.analysis.WCAGAnalysis.techniqueOverall.live + "/" + data.analysis.WCAGAnalysis.techniqueOverall.total);
+    $("#tech-kill-score .card-body").html((data.analysis.WCAGAnalysis.techniqueOverall.killed / data.analysis.WCAGAnalysis.techniqueOverall.total * 100).toFixed(0) + "%");
+
+    $("#sc-tested .card-body").html(data.analysis.WCAGAnalysis.scOverall.total + "/61");
+    $("#sc-live .card-body").html(data.analysis.WCAGAnalysis.scOverall.live + "/" + data.analysis.WCAGAnalysis.scOverall.total);
+    $("#sc-kill-score .card-body").html((data.analysis.WCAGAnalysis.scOverall.killed / data.analysis.WCAGAnalysis.scOverall.total * 100).toFixed(0) + "%");
+
   }
 
 

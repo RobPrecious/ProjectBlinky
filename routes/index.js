@@ -18,7 +18,7 @@ const {
 var csv = require('csv');
 
 
-let running = false;
+let axe_running = false;
 
 // ---------------------- STAGE 1 --------------------------- //
 router.get('/', (req, res, next) => {
@@ -123,7 +123,8 @@ router.get('/view-mutants-summary', (req, res, next) => {
 })
 
 router.get('/run-att', (req, res, next) => {
-  try {
+  if (!axe_running) {
+    axe_running = true;
     const source = req.session.data.source;
     return toolController.axeTools.runSM(source, "")
       .then(source => {
@@ -144,12 +145,12 @@ router.get('/run-att', (req, res, next) => {
         req.session.data.stage = 4;
         req.session.data.source = result.source;
         req.session.data.analysis = result.analysis;
+        axe_running = false;
         return res.json(result);
       })
       .catch(console.error.bind(console))
-
-  } catch (err) {
-    console.log(err);
+  } else {
+    return res.json("Axe is already running.");
   }
 })
 
@@ -206,11 +207,11 @@ router.get('/export-csv', (req, res, next) => {
     if (req.session.data && req.session.data.stage == 4) {
       let output = `${req.session.data.source.id} \n`
       output += `ID,Class,Sub Class,Description,# Killed,# Live,# Total,WCAG Principles,WCAG Guidelines,WCAG Success Criterion,WCAG Technique, \n`
-      saved.analysis.mutationAnalysis.map(mutation => {
+      req.session.data.analysis.mutationAnalysis.map(mutation => {
         output += `${mutation.id}, ${mutation.class}, ${mutation.subclass},` +
           `${mutation.description}, ${mutation.analysis.axe.killed},` +
           `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
-          `${mainControoler.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
+          `${mainController.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
       })
       fs.writeFile('output.csv', output, 'utf8', function (err) {
         if (err) {

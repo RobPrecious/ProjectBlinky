@@ -1,37 +1,87 @@
 <div class="c-col disabled" id="axe-results-section">
     <div class="section-title bg-danger text-white">
       <i data-col-id="axe-results-section" data-active=false class="fas fa-plus"></i>        
-      <h1>Axe Results</h1>
+      <h1>aXe Results</h1>
     </div>
               
     <div class="section-content hide">
-      <h2>Axe Results</h2>
-        <div class="stat-cards">
-        <div id="axe-total-violations" class="card bg-danger text-white mb-3 stat-card" >
-          <div class="card-header">Axe Violations</div>
-          <div class="card-body">0</div>
-        </div>
+      <h2>aXe Results</h2>
+      <div class="float-left">
+        <div class="float-none" style="display: table-row;">
+          <div class="stat-cards-med">
+            <h3>All Mutants</h3>
 
-        <div id="axe-total-live" class="card bg-danger text-white mb-3 stat-card" >
-          <div class="card-header">Killed Mutants</div>
-          <div class="card-body">0</div>
-        </div>
+            <div id="axe-total-violations" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">aXe Violations</div>
+              <div class="card-body">0</div>
+            </div>
 
-        <div id="axe-kill-score" class="card bg-danger text-white mb-3 stat-card" >
-          <div class="card-header">Killed</div>
-          <div class="card-body">0</div>
+            <div id="axe-total-live" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Killed Mutants</div>
+              <div class="card-body">0</div>
+            </div>
+
+            <div id="axe-kill-score" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Killed</div>
+              <div class="card-body">0</div>
+            </div>
+          </div>
+          
+          <div class="stat-cards-med">
+            <h3>Techniques</h3>
+
+            <div id="tech-tested" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Techniques Tested</div>
+              <div class="card-body">0</div>
+            </div>
+
+            <div id="tech-live" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Live Techniques</div>
+              <div class="card-body">0</div>
+            </div>
+
+            <div id="tech-kill-score" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Kill Score (of those tested)</div>
+              <div class="card-body">0</div>
+            </div>
+          </div>
+
+          <div class="stat-cards-med float-left">
+          <h3>Success Criteria</h3>
+
+            <div id="sc-tested" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Success Criteria Tested</div>
+              <div class="card-body">0</div>
+            </div>
+
+            <div id="sc-live" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Live Success Criteria</div>
+              <div class="card-body">0</div>
+            </div>
+
+            <div id="sc-kill-score" class="card bg-danger text-white mb-3 stat-card-med" >
+              <div class="card-header">Kill Score (of those tested)</div>
+              <div class="card-body">0</div>
+            </div>
         </div>
       </div>
-      <div class="canvas-holder">
-        <canvas id="classes-bar-chart"></canvas>
+      <div class="float-none">
+        <hr>
+        <button type="button" class="btn btn-danger btn-lg btn-block" id="btnViewAxeResults">View aXe results</button>
+        <button type="button" class="btn btn-danger btn-lg btn-block" id="btnExportCSV">Export to csv</button>
       </div>
-
-       <div class="canvas-holder">
-        <canvas id="sub-classes-bar-chart"></canvas>
       </div>
+      <div class="graph-container" >
+         <div class="canvas-holder">
+           <canvas id="classes-bar-chart"></canvas>
+        </div>
+        <div class="canvas-holder">
+          <canvas id="sub-classes-bar-chart"></canvas>
+        </div>
+      </div>
+       
 
-      <button type="button" class="btn btn-danger btn-lg btn-block" id="btnViewAxeResults">View axe results</button>
-      <button type="button" class="btn btn-danger btn-lg btn-block" id="btnExportCSV">Export to csv</button>
+     
 
     </div>
 </div>

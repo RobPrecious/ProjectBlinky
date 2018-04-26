@@ -83,7 +83,7 @@ module.exports = [
   {
     "id": "H04-01",
     "name": "change-tab-index-to-minus-1",
-    "description": "Finds tab index value and sets the first to minus 1, meaning other form elements are not accessible via tabbing",
+    "description": "Finds tab index value and sets the first to minus 1 meaning other form elements are not accessible via tabbing",
     "class": "Attribute Change",
     "subclass": "Empty Attribute",
     "WCAG": {
@@ -501,82 +501,82 @@ module.exports = [
       return mutant_dom.serialize();
     }
   },
-  /*
-    {
-      "id": "H35-01",
-      "name": "empty-applet-alt-tag",
-      "description": "Finds applet and empties alt tag",
-      "class": "Attribute Change",
-      "subclass": "Empty Attribute",
-      "WCAG": {
-        "technique": "H35",
-        "successCriterion": ["1.1.1"],
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
-      },
-      "check": (dom) => {
-        let $ = require('jquery')(dom.window);
-        if ($("applet").length) {
-          return true
-        }
-        return false;
-      },
-      "mutation": (mutant_dom) => {
-        let $ = require('jquery')(mutant_dom.window);
-        $("applet").first().attr("alt", "");
-        return mutant_dom.serialize();
-      }
-    },
 
-    {
-      "id": "H35-02",
-      "name": "remove-applet-alt-tag",
-      "description": "Finds applet and removes alt tag",
-      "class": "Attribute Change",
-      "subclass": "Remove Attribute",
-      "WCAG": {
-        "technique": "H35",
-        "successCriterion": ["1.1.1"],
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
-      },
-      "check": (dom) => {
-        let $ = require('jquery')(dom.window);
-        if ($("applet").length) {
-          return true
-        }
-        return false;
-      },
-      "mutation": (mutant_dom) => {
-        let $ = require('jquery')(mutant_dom.window);
-        $("applet").first().attr("alt", null);
-        return mutant_dom.serialize();
-      }
+  {
+    "id": "H35-01",
+    "name": "empty-applet-alt-tag",
+    "description": "Finds applet and empties alt tag",
+    "class": "Attribute Change",
+    "subclass": "Empty Attribute",
+    "WCAG": {
+      "technique": "H35",
+      "successCriterion": ["1.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
     },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("applet").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("applet").first().attr("alt", "");
+      return mutant_dom.serialize();
+    }
+  },
 
-    {
-      "id": "H35-03",
-      "name": "remove-applet-internal-text",
-      "description": "Finds applet and removes internal text",
-      "class": "Element Change",
-      "subclass": "Empty Element",
-      "WCAG": {
-        "technique": "H35",
-        "successCriterion": ["1.1.1"],
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
-      },
-      "check": (dom) => {
-        let $ = require('jquery')(dom.window);
-        if ($("applet").length) {
-          return true
-        }
-        return false;
-      },
-      "mutation": (mutant_dom) => {
-        let $ = require('jquery')(mutant_dom.window);
-        $("applet").first().html("");
-        return mutant_dom.serialize();
-      }
+  {
+    "id": "H35-02",
+    "name": "remove-applet-alt-tag",
+    "description": "Finds applet and removes alt tag",
+    "class": "Attribute Change",
+    "subclass": "Remove Attribute",
+    "WCAG": {
+      "technique": "H35",
+      "successCriterion": ["1.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
     },
-    */
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("applet").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("applet").first().attr("alt", null);
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H35-03",
+    "name": "remove-applet-internal-text",
+    "description": "Finds applet and removes internal text",
+    "class": "Element Change",
+    "subclass": "Empty Element",
+    "WCAG": {
+      "technique": "H35",
+      "successCriterion": ["1.1.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H35.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("applet").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("applet").first().html("");
+      return mutant_dom.serialize();
+    }
+  },
+
 
   {
     "id": "H36-01",
@@ -2121,32 +2121,32 @@ module.exports = [
       return mutant_dom.serialize();
     }
   },
-  /*
-    {
-      "id": "H46-01",
-      "name": "remove-noembed",
-      "description": "Remove noembed element",
-      "class": "Element Change",
-      "subclass": "Remove Element",
-      "WCAG": {
-        "technique": "H46",
-        "successCriterion": ["1.1.1", "1.2.8"],
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H46.html",
-      },
-      "check": (dom) => {
-        let $ = require('jquery')(dom.window);
-        if ($("noembed").length) {
-          return true
-        }
-        return false;
-      },
-      "mutation": (mutant_dom) => {
-        let $ = require('jquery')(mutant_dom.window);
-        $("noembed").first().remove();
-        return mutant_dom.serialize();
-      }
+
+  {
+    "id": "H46-01",
+    "name": "remove-noembed",
+    "description": "Remove noembed element",
+    "class": "Element Change",
+    "subclass": "Remove Element",
+    "WCAG": {
+      "technique": "H46",
+      "successCriterion": ["1.1.1", "1.2.8"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H46.html",
     },
-    */
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("noembed").length) {
+        return true
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      $("noembed").first().remove();
+      return mutant_dom.serialize();
+    }
+  },
+
 
   {
     "id": "H48-01",
@@ -2901,81 +2901,81 @@ module.exports = [
       return mutant_dom.serialize();
     }
   },
-  /*
-    {
-      "id": "H73-01",
-      "name": "change-table-summary-attribute",
-      "description": "Change table summary attribute to the same text value as the caption",
-      "class": "Attribute Change",
-      "subclass": "Change Attribute",
-      "WCAG": {
-        "technique": "H73",
-        "successCriterion": ["1.3.1"],
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
-      },
-      "check": (dom) => {
-        let $ = require('jquery')(dom.window);
-        if ($("table[summary]").length > 0) {
-          for (var i = 0; i < $("table[summary]").length; i++) {
-            if ($($("table[summary]")).children("caption").length > 0) {
-              return true
-            }
-          };
-          return false;
-        }
-        return false;
-      },
-      "mutation": (mutant_dom) => {
-        let $ = require('jquery')(mutant_dom.window);
-        let element;
-        for (var i = 0; i < $("table[summary]").length; i++) {
-          if ($($("table[summary]")).children("caption").length > 0) {
-            element = $($("table[summary]").get(i));
-            break
-          }
-        };
-        element.attr("summary", element.children("caption").first().html());
-        return mutant_dom.serialize();
-      }
-    },
 
-    {
-      "id": "H73-02",
-      "name": "change-table-caption-value",
-      "description": "Change table caption value to the same text value as the summary",
-      "class": "Element Change",
-      "subclass": "Change Element",
-      "WCAG": {
-        "technique": "H73",
-        "successCriterion": ["1.3.1"],
-        "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
-      },
-      "check": (dom) => {
-        let $ = require('jquery')(dom.window);
-        if ($("table[summary]").length > 0) {
-          for (var i = 0; i < $("table[summary]").length; i++) {
-            if ($($("table[summary]")).children("caption").length > 0) {
-              return true
-            }
-          };
-          return false;
-        }
-        return false;
-      },
-      "mutation": (mutant_dom) => {
-        let $ = require('jquery')(mutant_dom.window);
-        let element;
+  {
+    "id": "H73-01",
+    "name": "change-table-summary-attribute",
+    "description": "Change table summary attribute to the same text value as the caption",
+    "class": "Attribute Change",
+    "subclass": "Change Attribute",
+    "WCAG": {
+      "technique": "H73",
+      "successCriterion": ["1.3.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("table[summary]").length > 0) {
         for (var i = 0; i < $("table[summary]").length; i++) {
           if ($($("table[summary]")).children("caption").length > 0) {
-            element = $($("table[summary]").get(i));
-            break
+            return true
           }
         };
-        element.children("caption").first().html(element.attr("summary"));
-        return mutant_dom.serialize();
+        return false;
       }
+      return false;
     },
-  */
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let element;
+      for (var i = 0; i < $("table[summary]").length; i++) {
+        if ($($("table[summary]")).children("caption").length > 0) {
+          element = $($("table[summary]").get(i));
+          break
+        }
+      };
+      element.attr("summary", element.children("caption").first().html());
+      return mutant_dom.serialize();
+    }
+  },
+
+  {
+    "id": "H73-02",
+    "name": "change-table-caption-value",
+    "description": "Change table caption value to the same text value as the summary",
+    "class": "Element Change",
+    "subclass": "Change Element",
+    "WCAG": {
+      "technique": "H73",
+      "successCriterion": ["1.3.1"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
+    },
+    "check": (dom) => {
+      let $ = require('jquery')(dom.window);
+      if ($("table[summary]").length > 0) {
+        for (var i = 0; i < $("table[summary]").length; i++) {
+          if ($($("table[summary]")).children("caption").length > 0) {
+            return true
+          }
+        };
+        return false;
+      }
+      return false;
+    },
+    "mutation": (mutant_dom) => {
+      let $ = require('jquery')(mutant_dom.window);
+      let element;
+      for (var i = 0; i < $("table[summary]").length; i++) {
+        if ($($("table[summary]")).children("caption").length > 0) {
+          element = $($("table[summary]").get(i));
+          break
+        }
+      };
+      element.children("caption").first().html(element.attr("summary"));
+      return mutant_dom.serialize();
+    }
+  },
+
 
   {
     "id": "H93-01",

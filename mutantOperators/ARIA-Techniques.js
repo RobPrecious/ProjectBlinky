@@ -275,7 +275,7 @@ module.exports = [
     },
     "mutation": (mutant_dom) => {
       let $ = require('jquery')(mutant_dom.window);
-      $("#" + $("a[aria-labelledby]").last().attr("aria-labelledby").split(" ")[0]).html("");
+      $("a[aria-labelledby]").first().attr("aria-labelledby").split(" ").map(id => $("#" + id).html(""));
       return mutant_dom.serialize();
     }
   },
@@ -362,7 +362,15 @@ module.exports = [
           break;
         }
       }
-      element.attr("aria-labelledby", "");
+      element.attr("aria-labelledby").split(" ").map(id => {
+        if (id != element.attr("id")) {
+          $("#" + id).html("");
+        } else {
+          //if labeling itself remove this labelledby 
+          element.attr("aria-labelledby", element.attr("aria-labelledby").replace(id, ''));
+        }
+      });
+
       return mutant_dom.serialize();
     }
   },

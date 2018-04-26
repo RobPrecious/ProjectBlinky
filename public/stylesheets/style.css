@@ -85,6 +85,16 @@ body {
   margin: 10px 0px;
 }
 
+.stat-cards {
+  display: table;
+  height: 200px;
+}
+
+.stat-cards-med {
+  margin-right: 10px;
+  height: 150px;
+}
+
 .stat-card {
   width: 200px;
   height: 180px;
@@ -117,6 +127,36 @@ body {
 }
 
 .stat-card-small .card-body {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.stat-card-med {
+  width: 145px;
+  height: 100px;
+  float: left;
+  margin: 0 5px 0 0 !important;
+  text-align: center
+}
+
+.stat-card-med .card-header,
+.stat-card-med .card-body {
+  padding: 1px;
+}
+
+#all-mutant-results {
+  width: 100%;
+  display: block;
+  float: none;
+}
+
+.graph-container {
+  width: 260px;
+  display: block;
+  float: left;
+}
+
+.stat-card-med .card-body {
   font-size: 2em;
   font-weight: bold;
 }

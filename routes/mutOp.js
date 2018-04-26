@@ -17,9 +17,9 @@ let runAllLock = false;
 router.get('/suite', (req, res, next) => {
   let saved = false;
 
-  if (fs.existsSync('mutopResults.json')) {
+  if (fs.existsSync('results.json')) {
     try {
-      saved = fs.readJSONSync('mutopResults.json')
+      saved = fs.readJSONSync('results.json')
     } catch (err) {
       console.log("cannot parse json file")
     }
@@ -35,9 +35,9 @@ router.get('/suite', (req, res, next) => {
 router.get('/get-saved-analysis', (req, res, next) => {
   let saved = false;
 
-  if (fs.existsSync('mutopResults.json')) {
+  if (fs.existsSync('results.json')) {
     try {
-      saved = fs.readJSONSync('mutopResults.json')
+      saved = fs.readJSONSync('results.json')
     } catch (err) {
       console.log("cannot parse json file")
     }
@@ -57,9 +57,9 @@ router.post('/test-mutant-operation', (req, res, next) => {
 
     let saved = false;
 
-    if (fs.existsSync('mutopResults.json')) {
+    if (fs.existsSync('results.json')) {
       try {
-        saved = fs.readJSONSync('mutopResults.json')
+        saved = fs.readJSONSync('results.json')
       } catch (err) {
         console.log("cannot parse json file")
       }
@@ -129,9 +129,9 @@ router.get('/test-all-operations', (req, res, next) => {
 
     let saved = false;
 
-    if (fs.existsSync('mutopResults.json')) {
+    if (fs.existsSync('results.json')) {
       try {
-        saved = fs.readJSONSync('mutopResults.json')
+        saved = fs.readJSONSync('results.json')
       } catch (err) {
         console.log("cannot parse json file")
       }
@@ -177,9 +177,9 @@ router.get('/test-all-operations', (req, res, next) => {
 
 router.get('/export-csv', (req, res, next) => {
   try {
-    if (fs.existsSync('mutopResults.json')) {
+    if (fs.existsSync('results.json')) {
       try {
-        saved = fs.readJSONSync('mutopResults.json')
+        saved = fs.readJSONSync('results.json')
       } catch (err) {
         console.log("cannot parse json file")
       }
@@ -207,6 +207,77 @@ router.get('/export-csv', (req, res, next) => {
   }
 })
 
+
+router.get('/export-csv-techniques', (req, res, next) => {
+  try {
+    if (fs.existsSync('results.json')) {
+      try {
+        saved = fs.readJSONSync('results.json')
+      } catch (err) {
+        console.log("cannot parse json file")
+      }
+    }
+    if (saved) {
+      mainController.postToolAnalysis(saved.source)
+        .then(data => {
+          let output = `Technique,Kill Score (%),Kill Score (n/m), \n`
+          data.analysis.WCAGAnalysis.techniqueAnalysis.map(technique => {
+            output += `${technique.name}, ${(technique.axe.killed / technique.axe.total).toFixed(2) * 100 + "%"}, ${technique.axe.killed +"/"+ technique.axe.total},\n`
+          })
+          fs.writeFile('output.csv', output, 'utf8', function (err) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-technique-results.csv`);
+              return res.sendFile(path.resolve(__dirname, '../output.csv'));
+            }
+          });
+        });
+    }
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+router.get('/export-csv-sc', (req, res, next) => {
+  try {
+    if (fs.existsSync('results.json')) {
+      try {
+        saved = fs.readJSONSync('results.json')
+      } catch (err) {
+        console.log("cannot parse json file")
+      }
+    }
+    if (saved) {
+      mainController.postToolAnalysis(saved.source)
+        .then(data => {
+          let output = `Success Criteria,Kill Score (%),Kill Score (n/m), \n`
+          mainController.getWCAGSC().map(success => {
+            let sc = data.analysis.WCAGAnalysis.scAnalysis.find(w => w.name == success);
+            if (sc) {
+              output += `${sc.name}, ${(sc.axe.killed / sc.axe.total).toFixed(2) * 100 + "%"}, ${sc.axe.killed + "/" + sc.axe.total},\n`;
+            } else {
+              output += `${success},0%, 0/0,\n`;
+            }
+            /*  sc.techniques.map(technique => {
+                output += `,${technique.name}, ${(technique.axe.killed / technique.axe.total).toFixed(2) * 100 + "%"}, ${technique.axe.killed + "/" + technique.axe.total},\n`
+              })*/
+          })
+          fs.writeFile('output.csv', output, 'utf8', function (err) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-sc-results.csv`);
+              return res.sendFile(path.resolve(__dirname, '../output.csv'));
+            }
+          });
+        });
+    }
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 module.exports = router;
 
 function mergeSaved(saved) {
@@ -221,7 +292,7 @@ function mergeSaved(saved) {
 
 function saveResults(result) {
 
-  fs.outputJsonSync('mutopResults.json', result, {
+  fs.outputJsonSync('results.json', result, {
     spaces: '\t'
   }, err => {});
 
