@@ -202,31 +202,6 @@ router.get('/get-session', (req, res, next) => {
   return res.json(req.session.data);
 })
 
-router.get('/export-csv', (req, res, next) => {
-  try {
-    if (req.session.data && req.session.data.stage == 4) {
-      let output = `${req.session.data.source.id} \n`
-      output += `ID,Class,Sub Class,Description,# Killed,# Live,# Total,WCAG Principles,WCAG Guidelines,WCAG Success Criterion,WCAG Technique, \n`
-      req.session.data.analysis.mutationAnalysis.map(mutation => {
-        output += `${mutation.id}, ${mutation.class}, ${mutation.subclass},` +
-          `${mutation.description}, ${mutation.analysis.axe.killed},` +
-          `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
-          `${mainController.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
-      })
-      fs.writeFile('output.csv', output, 'utf8', function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.setHeader('Content-Disposition', `attachment; filename=${req.session.data.source.id}-results.csv`);
-          return res.sendFile(path.resolve(__dirname, '../output.csv'));
-        }
-      });
-    }
-  } catch (err) {
-    console.log(err)
-  }
-})
-
 router.get('/source', (req, res, next) => {
   res.render('templates/mutant-template', {
     template: '../TestBench.v.0.0.3.html'

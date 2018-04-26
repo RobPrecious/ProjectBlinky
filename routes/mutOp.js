@@ -185,22 +185,7 @@ router.get('/export-csv', (req, res, next) => {
       }
     }
     if (saved) {
-      let output = `${saved.source.id} \n`
-      output += `ID,Class,Sub Class,Description,# Killed,# Live,# Total,WCAG Principles,WCAG Guidelines,WCAG Success Criterion,WCAG Technique, \n`
-      saved.analysis.mutationAnalysis.map(mutation => {
-        output += `${mutation.id}, ${mutation.class}, ${mutation.subclass},` +
-          `${mutation.description}, ${mutation.analysis.axe.killed},` +
-          `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
-          `${mainController.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
-      })
-      fs.writeFile('output.csv', output, 'utf8', function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-results.csv`);
-          return res.sendFile(path.resolve(__dirname, '../output.csv'));
-        }
-      });
+      return mainController.csvExportStandard(res, saved);
     }
   } catch (err) {
     console.log(err)
@@ -219,27 +204,14 @@ router.get('/export-csv-techniques', (req, res, next) => {
     }
     if (saved) {
       mainController.postToolAnalysis(saved.source)
-        .then(data => {
-          let output = `Technique,Kill Score (%),Kill Score (n/m), \n`
-          data.analysis.WCAGAnalysis.techniqueAnalysis.map(technique => {
-            output += `${technique.name}, ${(technique.axe.killed / technique.axe.total).toFixed(2) * 100 + "%"}, ${technique.axe.killed +"/"+ technique.axe.total},\n`
-          })
-          fs.writeFile('output.csv', output, 'utf8', function (err) {
-            if (err) {
-              console.log(err);
-            } else {
-              res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-technique-results.csv`);
-              return res.sendFile(path.resolve(__dirname, '../output.csv'));
-            }
-          });
-        });
+        .then(data => mainController.csvExportTechnique(res, data));
     }
   } catch (err) {
     console.log(err)
   }
 })
 
-router.get('/export-csv-sc', (req, res, next) => {
+router.get('/export-csv-sc-with-t', (req, res, next) => {
   try {
     if (fs.existsSync('results.json')) {
       try {
@@ -250,28 +222,25 @@ router.get('/export-csv-sc', (req, res, next) => {
     }
     if (saved) {
       mainController.postToolAnalysis(saved.source)
-        .then(data => {
-          let output = `Success Criteria,Kill Score (%),Kill Score (n/m), \n`
-          mainController.getWCAGSC().map(success => {
-            let sc = data.analysis.WCAGAnalysis.scAnalysis.find(w => w.name == success);
-            if (sc) {
-              output += `${sc.name}, ${(sc.axe.killed / sc.axe.total).toFixed(2) * 100 + "%"}, ${sc.axe.killed + "/" + sc.axe.total},\n`;
-            } else {
-              output += `${success},0%, 0/0,\n`;
-            }
-            /*  sc.techniques.map(technique => {
-                output += `,${technique.name}, ${(technique.axe.killed / technique.axe.total).toFixed(2) * 100 + "%"}, ${technique.axe.killed + "/" + technique.axe.total},\n`
-              })*/
-          })
-          fs.writeFile('output.csv', output, 'utf8', function (err) {
-            if (err) {
-              console.log(err);
-            } else {
-              res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-sc-results.csv`);
-              return res.sendFile(path.resolve(__dirname, '../output.csv'));
-            }
-          });
-        });
+        .then(data => mainController.csvExportSCWithTechnique(res, data));
+    }
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+router.get('/export-csv-sc-without-t', (req, res, next) => {
+  try {
+    if (fs.existsSync('results.json')) {
+      try {
+        saved = fs.readJSONSync('results.json')
+      } catch (err) {
+        console.log("cannot parse json file")
+      }
+    }
+    if (saved) {
+      mainController.postToolAnalysis(saved.source)
+        .then(data => mainController.csvExportSCWithoutTechnique(res, data));
     }
   } catch (err) {
     console.log(err)

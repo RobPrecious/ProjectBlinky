@@ -431,8 +431,84 @@ const mainController = {
       scOverall,
       scAnalysis
     }
-  }
+  },
 
+
+  csvExportStandard: (res, data) => {
+    let output = `${data.source.id} \n`
+    output += `ID,Class,Sub Class,Description,# Killed,# Live,# Total,WCAG Principles,WCAG Guidelines,WCAG Success Criterion,WCAG Technique, \n`
+    data.analysis.mutationAnalysis.map(mutation => {
+      output += `${mutation.id}, ${mutation.class}, ${mutation.subclass},` +
+        `${mutation.description}, ${mutation.analysis.axe.killed},` +
+        `${mutation.analysis.axe.live}, ${mutation.analysis.axe.total},` +
+        `${mainController.getWCAGString(mutation.WCAG.successCriterion)},${mutation.WCAG.technique},\n`;
+    })
+    fs.writeFile('output.csv', output, 'utf8', function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.setHeader('Content-Disposition', `attachment; filename=${data.source.id}-results.csv`);
+        return res.sendFile(path.resolve(__dirname, '../output.csv'));
+      }
+    });
+  },
+  csvExportTechnique: (res, data) => {
+    let output = `Technique,Kill Score (%),Kill Score (n/m), \n`
+    data.analysis.WCAGAnalysis.techniqueAnalysis.map(technique => {
+      output += `${technique.name}, ${(technique.axe.killed / technique.axe.total).toFixed(2) * 100 + "%"}, ${technique.axe.killed + "/" + technique.axe.total},\n`
+    })
+    fs.writeFile('output.csv', output, 'utf8', function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-technique-results.csv`);
+        return res.sendFile(path.resolve(__dirname, '../output.csv'));
+      }
+    });
+  },
+  csvExportSCWithTechnique: (res, data) => {
+    let output = `Success Criteria,Techniques,Kill Score (%),Kill Score (n/m), \n`
+    mainController.getWCAGSC().map(success => {
+      let sc = data.analysis.WCAGAnalysis.scAnalysis.find(w => w.name == success);
+      if (sc) {
+        output += `${sc.name},, ${(sc.axe.killed / sc.axe.total).toFixed(2) * 100 + "%"}, ${sc.axe.killed + "/" + sc.axe.total},\n`;
+        sc.techniques.map(technique => {
+          output += `,${technique.name}, ${(technique.axe.killed / technique.axe.total).toFixed(2) * 100 + "%"}, ${technique.axe.killed + "/" + technique.axe.total},\n`
+        })
+      } else {
+        output += `${success},0%, 0/0,\n`;
+      }
+
+    })
+    fs.writeFile('output.csv', output, 'utf8', function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-sc-results.csv`);
+        return res.sendFile(path.resolve(__dirname, '../output.csv'));
+      }
+    });
+  },
+
+  csvExportSCWithoutTechnique: (res, data) => {
+    let output = `Success Criteria,Kill Score (%),Kill Score (n/m), \n`
+    mainController.getWCAGSC().map(success => {
+      let sc = data.analysis.WCAGAnalysis.scAnalysis.find(w => w.name == success);
+      if (sc) {
+        output += `${sc.name}, ${(sc.axe.killed / sc.axe.total).toFixed(2) * 100 + "%"}, ${sc.axe.killed + "/" + sc.axe.total},\n`;
+      } else {
+        output += `${success},0%, 0/0,\n`;
+      }
+    })
+    fs.writeFile('output.csv', output, 'utf8', function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.setHeader('Content-Disposition', `attachment; filename=${saved.source.id}-sc-results.csv`);
+        return res.sendFile(path.resolve(__dirname, '../output.csv'));
+      }
+    });
+  },
 
 }
 
