@@ -479,14 +479,14 @@ module.exports = [
 
   {
     "id": "H33-01",
-    "name": "remove-submit-image",
+    "name": "empty-achor-title-attribute",
     "description": "Finds anchor with title and empty the title attribute",
     "class": "Attribute Change",
     "subclass": "Empty Attribute",
     "WCAG": {
       "technique": "H33",
       "successCriterion": ["2.4.4", "2.4.9"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H32.html",
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H33.html",
     },
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
@@ -2562,56 +2562,6 @@ module.exports = [
     "mutation": (mutant_dom) => {
       let $ = require('jquery')(mutant_dom.window);
       $("ruby > rt").first().remove();
-      return mutant_dom.serialize();
-    }
-  },
-
-  {
-    "id": "H63-01",
-    "name": "empty-table-scope-attribute",
-    "description": "Empty table scope attribute",
-    "class": "Attribute Change",
-    "subclass": "Empty Attribute",
-    "WCAG": {
-      "technique": "H63",
-      "successCriterion": ["1.3.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H63.html",
-    },
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      if ($("[scope]").length > 0) {
-        return true;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("[scope]").first().attr("scope", "");
-      return mutant_dom.serialize();
-    }
-  },
-
-  {
-    "id": "H63-02",
-    "name": "change-table-scope-attribute",
-    "description": "Change table scope attribute to invalid value",
-    "class": "Attribute Change",
-    "subclass": "Change Attribute",
-    "WCAG": {
-      "technique": "H63",
-      "successCriterion": ["1.3.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H63.html",
-    },
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      if ($("[scope]").length > 0) {
-        return true;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      $("[scope]").first().attr("scope", "invalidvalue");
       return mutant_dom.serialize();
     }
   },
