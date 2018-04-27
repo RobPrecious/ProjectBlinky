@@ -2853,79 +2853,29 @@ module.exports = [
   },
 
   {
-    "id": "H73-01",
-    "name": "change-table-summary-attribute",
-    "description": "Change table summary attribute to the same text value as the caption",
-    "class": "Attribute Change",
-    "subclass": "Change Attribute",
-    "WCAG": {
-      "technique": "H73",
-      "successCriterion": ["1.3.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
-    },
-    "check": (dom) => {
-      let $ = require('jquery')(dom.window);
-      if ($("table[summary]").length > 0) {
-        for (var i = 0; i < $("table[summary]").length; i++) {
-          if ($($("table[summary]")).children("caption").length > 0) {
-            return true
-          }
-        };
-        return false;
-      }
-      return false;
-    },
-    "mutation": (mutant_dom) => {
-      let $ = require('jquery')(mutant_dom.window);
-      let element;
-      for (var i = 0; i < $("table[summary]").length; i++) {
-        if ($($("table[summary]")).children("caption").length > 0) {
-          element = $($("table[summary]").get(i));
-          break
-        }
-      };
-      element.attr("summary", element.children("caption").first().html());
-      return mutant_dom.serialize();
-    }
-  },
-
-  {
-    "id": "H73-02",
-    "name": "change-table-caption-value",
-    "description": "Change table caption value to the same text value as the summary",
+    "id": "H71-03",
+    "name": "empty-legend-html",
+    "description": "Empty the legend of a fieldset",
     "class": "Element Change",
-    "subclass": "Change Element",
+    "subclass": "Empty Element",
     "WCAG": {
-      "technique": "H73",
-      "successCriterion": ["1.3.1"],
-      "link": "https://www.w3.org/TR/WCAG20-TECHS/H73.html",
+      "technique": "H71",
+      "successCriterion": ["1.3.1", "3.3.2"],
+      "link": "https://www.w3.org/TR/WCAG20-TECHS/H71.html",
     },
     "check": (dom) => {
       let $ = require('jquery')(dom.window);
-      if ($("table[summary]").length > 0) {
-        for (var i = 0; i < $("table[summary]").length; i++) {
-          if ($($("table[summary]")).children("caption").length > 0) {
-            return true
-          }
-        };
-        return false;
+      if ($("fieldset > legend").length > 0) {
+        return true;
       }
       return false;
     },
     "mutation": (mutant_dom) => {
       let $ = require('jquery')(mutant_dom.window);
-      let element;
-      for (var i = 0; i < $("table[summary]").length; i++) {
-        if ($($("table[summary]")).children("caption").length > 0) {
-          element = $($("table[summary]").get(i));
-          break
-        }
-      };
-      element.children("caption").first().html(element.attr("summary"));
+      $("fieldset > legend").first().html("");
       return mutant_dom.serialize();
     }
   },
-
 
   {
     "id": "H93-01",
